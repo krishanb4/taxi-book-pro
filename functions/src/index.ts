@@ -7,3 +7,9 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   functions.logger.info("Hello logs!", {structuredData: true});
   response.status(200).send("Hello from Firebase!");
 });
+
+exports.createUser = functions.firestore
+    .document("bookings/{bookingId}")
+    .onCreate((snap, context) => {
+      console.log("Doc Created");
+    });
