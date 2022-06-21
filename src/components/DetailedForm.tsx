@@ -1,16 +1,36 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 import {Button, Form} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getFirestore, collection ,addDoc,serverTimestamp} from 'firebase/firestore';
-import { useCollection, } from 'react-firebase-hooks/firestore';
+import {collection, addDoc, serverTimestamp} from 'firebase/firestore';
+import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../config/firebase-config";
+import {useService} from "react-service-locator";
+import {BookingService} from "../services/booking-service";
 
-function DetailedForm() {
+const DetailedForm = (params:any) => {
+
+    const bookingService = useService(BookingService);
+
+    const nameRef = useRef(null);
+    const emailRef = useRef(null);
+    const phoneRef = useRef(null);
+    const costRef = useRef(null);
+    const commentsRef = useRef(null);
+    const journeyTypeRef = useRef(null);
+
+    const journeyDetails = {
+        adultCount:0,
+        childrenCount:0,
+        route:'',
+        pickupDate:'',
+        pickupTime:''
+    }
+    const [formDetails, setFormDetails] = useState(journeyDetails);
 
     const [value, loading, error] = useCollection(
         collection(db, 'bookings'),
         {
-            snapshotListenOptions: { includeMetadataChanges: true },
+            snapshotListenOptions: {includeMetadataChanges: true},
         }
     );
 
@@ -21,7 +41,7 @@ function DetailedForm() {
         cost: 27
     };
 
-    function createBooking (params: any) {
+    function createBooking(params: any) {
         const bookingRef = collection(db, 'bookings');
         console.log("Called create");
         return addDoc(bookingRef, {
@@ -33,36 +53,33 @@ function DetailedForm() {
         });
     };
 
-    function clear(event:any){
+    function clear(event: any) {
         event.preventDefault();
     }
 
 
     return (
         <div className={"col-2"}>
-            <Form onSubmit={clear}>
-                <Form.Group className="mb-2"  id={"email"}>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter Email" />
-                </Form.Group>
+            <Form onSubmit={(e)=> {
+                createBooking(temp).then(r => console.log(r));
+                clear(e);
+            }}>
+                <input className="mb-2" type="email" placeholder="Enter Email" ref={emailRef}>
+                </input>
 
-                <Form.Group className="mb-2" controlId="formBasicName">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="name" placeholder="Enter Name" />
-                </Form.Group>
+                <input className="mb-2" type="name" placeholder="Enter Name" ref={nameRef}>
+                </input>
 
-                <Form.Group className="mb-2" controlId="formBasicName">
-                    <Form.Label>Cost</Form.Label>
-                    <Form.Control type="number" placeholder="Cost" />
-                </Form.Group>
+                <input className="mb-2" type="number" placeholder="Cost" ref={costRef}>
+                </input>
 
-                <Form.Group className="mb-2" controlId="formBasicName">
-                    <Form.Label>Phone</Form.Label>
-                    <Form.Control type="phone" placeholder="Phone" />
-                </Form.Group>
+                <input className="mb-2" type="phone" placeholder="Phone" ref={phoneRef}>
+                </input>
 
+                <input className="mb-2" type="text" placeholder="Comments" ref={commentsRef}>
+                </input>
 
-                <Button variant="primary" type="submit" onClick={()=>createBooking(temp)}>
+                <Button variant="primary" type="submit">
                     Submit
                 </Button>
 

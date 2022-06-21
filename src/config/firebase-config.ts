@@ -1,4 +1,4 @@
-import {getFirestore} from 'firebase/firestore';
+import {connectFirestoreEmulator, getFirestore} from 'firebase/firestore';
 import {initializeApp} from "firebase/app"
 
 // Your web app's Firebase configuration
@@ -10,6 +10,6 @@ const firebaseConfig = {
     messagingSenderId: "256189431652",
     appId: "1:256189431652:web:001cacb4d01caa82d70471"
 };
-
 const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
+connectFirestoreEmulator(db, 'localhost', 8080);
