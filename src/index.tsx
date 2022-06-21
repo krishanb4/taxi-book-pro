@@ -1,19 +1,16 @@
 import 'reflect-metadata';
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {ServiceContainer} from "react-service-locator";
 import {BrowserRouter} from "react-router-dom";
-import App from "./App";
+import {ServiceContainer} from "react-service-locator";
+import {App} from "./App";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <ServiceContainer>
-                <App/>
-            </ServiceContainer>
-        </BrowserRouter>
-    </React.StrictMode>,
+    <BrowserRouter>
+        <ServiceContainer>
+            <App/>
+        </ServiceContainer>
+    </BrowserRouter>,
     document.getElementById('root')
 );
 

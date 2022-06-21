@@ -1,5 +1,4 @@
 import {Service, StatefulService} from "react-service-locator";
-import {BookingDetails} from "../models/booking-details";
 
 export interface IBookingServiceState {
     isBusy: boolean;
@@ -17,6 +16,7 @@ export class BookingService extends StatefulService<IBookingServiceState> {
     constructor() {
         super(BookingService.initialState);
     }
+
     //
     // public getBookingDetails(){
     //     return this.bookingRecord;
