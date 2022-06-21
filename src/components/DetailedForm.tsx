@@ -1,29 +1,31 @@
 import React, {useRef, useState} from "react";
 import {Button, Form} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {collection, addDoc, serverTimestamp} from 'firebase/firestore';
+import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../config/firebase-config";
 import {useService} from "react-service-locator";
 import {BookingService} from "../services/booking-service";
+import {BookingDetails} from "../models/booking-details";
 
-const DetailedForm = (params:any) => {
+const DetailedForm = (params: any) => {
 
+    const bookingDetails = new BookingDetails();
     const bookingService = useService(BookingService);
 
-    const nameRef = useRef(null);
-    const emailRef = useRef(null);
-    const phoneRef = useRef(null);
-    const costRef = useRef(null);
-    const commentsRef = useRef(null);
-    const journeyTypeRef = useRef(null);
+    const nameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const phoneRef = useRef<HTMLInputElement>(null);
+    const costRef = useRef<HTMLInputElement>(null);
+    const commentsRef = useRef<HTMLInputElement>(null);
+    const journeyTypeRef = useRef<HTMLInputElement>(null);
 
     const journeyDetails = {
-        adultCount:0,
-        childrenCount:0,
-        route:'',
-        pickupDate:'',
-        pickupTime:''
+        adultCount: 0,
+        childrenCount: 0,
+        route: '',
+        pickupDate: '',
+        pickupTime: ''
     }
     const [formDetails, setFormDetails] = useState(journeyDetails);
 
@@ -34,34 +36,30 @@ const DetailedForm = (params:any) => {
         }
     );
 
-    const temp = {
-        name: "fjkfg",
-        email: "fgjfgy@gmail.com",
-        phone: "56456",
-        cost: 27
-    };
-
-    function createBooking(params: any) {
-        const bookingRef = collection(db, 'bookings');
-        console.log("Called create");
-        return addDoc(bookingRef, {
-            created: serverTimestamp(),
-            name: params.name,
-            email: params.email,
-            phone: params.phone,
-            cost: params.cost
-        });
-    };
-
     function clear(event: any) {
         event.preventDefault();
+        event.target.reset();
     }
 
+    function mapBookingDetails() {
+        bookingDetails.setCost(parseFloat(costRef.current?.value ?? '0'));
+        bookingDetails.setName(nameRef.current?.value ?? '');
+        bookingDetails.setEmail(emailRef.current?.value ?? '');
+        bookingDetails.setPhone(phoneRef.current?.value ?? '');
+        bookingDetails.setComment(commentsRef.current?.value ?? '');
+    }
+
+    function sendDoc() {
+        mapBookingDetails();
+        bookingService.createBooking(bookingDetails).then(r => {
+            console.log("Created Doc");
+        });
+    }
 
     return (
         <div className={"col-2"}>
-            <Form onSubmit={(e)=> {
-                createBooking(temp).then(r => console.log(r));
+            <Form onSubmit={(e) => {
+                sendDoc();
                 clear(e);
             }}>
                 <input className="mb-2" type="email" placeholder="Enter Email" ref={emailRef}>
@@ -82,7 +80,6 @@ const DetailedForm = (params:any) => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-
             </Form>
             <div>
                 <div>

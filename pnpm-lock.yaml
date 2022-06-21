@@ -9,6 +9,7 @@ specifiers:
   '@types/jest': ^27.5.2
   '@types/node': ^16.11.41
   '@types/react': ^17.0.39
+  '@types/react-dom': ^18.0.5
   bootstrap: ^5.1.3
   firebase: ^9.0.0
   firebase-admin: ^11.0.0
@@ -33,6 +34,7 @@ dependencies:
   '@types/jest': 27.5.2
   '@types/node': 16.11.41
   '@types/react': 17.0.47
+  '@types/react-dom': 18.0.5
   bootstrap: 5.1.3_@popperjs+core@2.11.5
   firebase: 9.8.3
   firebase-admin: 11.0.0_@firebase+app-types@0.7.0
@@ -2986,6 +2988,12 @@ packages:
 
   /@types/range-parser/1.2.4:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
+    dev: false
+
+  /@types/react-dom/18.0.5:
+    resolution: {integrity: sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==}
+    dependencies:
+      '@types/react': 17.0.47
     dev: false
 
   /@types/react-transition-group/4.4.4:
