@@ -1,5 +1,7 @@
 import * as functions from "firebase-functions";
-
+// eslint-disable-next-line import/default
+import {MailUtils} from "./utils/mail-utils";
+// const nodemailer = require("nodemailer");
 // Start writing Firebase Functions
 // https://firebase.google.com/docs/functions/typescript
 
@@ -8,8 +10,9 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   response.status(200).send("Hello from Firebase!");
 });
 
-exports.createUser = functions.firestore
+exports.sendEmail = functions.firestore
     .document("bookings/{bookingId}")
     .onCreate((snap, context) => {
-      console.log("Doc Created");
+      // eslint-disable-next-line import/namespace
+      MailUtils.triggerEmail(snap);
     });
