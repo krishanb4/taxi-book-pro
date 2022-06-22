@@ -22,15 +22,7 @@ export class BookingService extends StatefulService<IBookingServiceState> {
 
     public createBooking() {
         const bookingRef = collection(db, 'bookings');
-        console.log("Called create");
-        return addDoc(bookingRef, {
-            created: serverTimestamp(),
-            name: this.bookingDetails.getName,
-            email: this.bookingDetails.getEmail,
-            phone: this.bookingDetails.getPhone,
-            cost: this.bookingDetails.getCost,
-            comments:this.bookingDetails.getComment
-        });
+        return addDoc(bookingRef, this.bookingDetails.parseJson());
     };
 
     public resetBookingDetails(){

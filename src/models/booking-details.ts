@@ -1,4 +1,5 @@
 import {JourneyType} from "../enums/journey-type";
+import {serverTimestamp} from "firebase/firestore";
 
 interface PersonalDetails extends Record<string, any> {
     name: string | undefined;
@@ -126,5 +127,23 @@ export class BookingDetails {
         return this._comments;
     }
 
+    public parseJson() {
+        return {
+            created: serverTimestamp(),
+            name: this._name,
+            email: this._email,
+            phone: this._phone,
+            cost: this._cost,
+            comments: this._comments,
+            adultCount: this._adultCount,
+            childCount: this._childCount,
+            journeyType: this._journeyType,
+            pickUpPoint: this._pickUpPoint,
+            pickUpPointOptionalAddress: this._pickUpPointOptionalAddress,
+            dropPoint: this._dropPoint,
+            dropPointOptionalAddress: this._dropPointOptionalAddress,
+            flightDetailsNote: this._flightDetailsNote,
+        }
+    }
 
 }
