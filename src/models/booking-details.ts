@@ -13,8 +13,8 @@ export class BookingDetails {
     private _email: string | null = null;
     private _phone: string | null = null;
     private _comments: string | null = null;
-    private _cost: number | null = null;
-    private _adultCount: number = 0;
+    private _cost: number | null = 0;
+    private _adultCount: number = 1;
     private _childCount: number = 0;
     private _journeyType: JourneyType = JourneyType.ARRIVAL_ONE_WAY;
     private _pickUpPoint: string | null = null;
@@ -22,6 +22,15 @@ export class BookingDetails {
     private _dropPoint: string | null = null;
     private _dropPointOptionalAddress: string | null = null;
     private _flightDetailsNote: string | null = null;
+    private _flightArrivalDate:Date = new Date();
+
+    public getFlightArrivalDate(): Date  {
+        return this._flightArrivalDate;
+    }
+
+    public setFlightArrivalDate(value: Date) {
+        this._flightArrivalDate = value;
+    }
 
     public getFlightDetailsNote(): string | null {
         return this._flightDetailsNote;
@@ -107,23 +116,23 @@ export class BookingDetails {
         this._comments = comments;
     }
 
-    public get getName(): string | null {
+    public getName(): string | null {
         return this._name;
     }
 
-    public get getEmail(): string | null {
+    public getEmail(): string | null {
         return this._email;
     }
 
-    public get getPhone(): string | null {
+    public getPhone(): string | null {
         return this._phone;
     }
 
-    public get getCost(): number | null {
+    public getCost(): number | null {
         return this._cost;
     }
 
-    public get getComment(): string | null {
+    public getComment(): string | null {
         return this._comments;
     }
 
@@ -143,6 +152,7 @@ export class BookingDetails {
             dropPoint: this._dropPoint,
             dropPointOptionalAddress: this._dropPointOptionalAddress,
             flightDetailsNote: this._flightDetailsNote,
+            flightArrivalDate:this._flightArrivalDate
         }
     }
 

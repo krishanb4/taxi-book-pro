@@ -1,0 +1,42 @@
+.titleBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.titleBooking {
+    color: #f5a302;
+}
+.btn-home {
+    font-weight: 500;
+    text-decoration: none;
+    color: #f5a302;
+}
+.btn-home:hover {
+    font-weight: 500;
+    text-decoration: none;
+    color: #f5a302;
+}
+
+.note {
+    background-color: #f5a302;
+}
+
+.forms-main {
+    background-color: #1e2329;
+}
+.title-bar-bg {
+    background-color: #2a2f35;
+}
+.fare {
+    font-weight: bold;
+}
+.btn-reservation-button {
+    background-color: #1e2329;
+    color: #f5a302;
+}
+.btn-reservation-button:hover {
+    color: #f5a302;
+    border: none;
+    background-color: #1e2329;
+    box-shadow: #1e2329 0px 2px 8px 0px;
+}

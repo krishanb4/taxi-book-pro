@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from "react-router-dom";
 import {ServiceContainer} from "react-service-locator";
 import {App} from "./App";
