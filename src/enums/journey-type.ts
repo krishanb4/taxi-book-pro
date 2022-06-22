@@ -1,6 +1,6 @@
 export enum JourneyType {
     ARRIVAL_ONE_WAY,
-    ARRIVAL_AND_DEPARTURE,
+    ROUND_TRIP,
     DEPARTURE,
     CITY_TOUR
 }

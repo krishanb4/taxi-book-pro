@@ -6,11 +6,9 @@ import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../config/firebase-config";
 import {useService} from "react-service-locator";
 import {BookingService} from "../services/booking-service";
-import {BookingDetails} from "../models/booking-details";
 
 const DetailedForm = (params: any) => {
 
-    const bookingDetails = new BookingDetails();
     const bookingService = useService(BookingService);
 
     const nameRef = useRef<HTMLInputElement>(null);
@@ -42,16 +40,16 @@ const DetailedForm = (params: any) => {
     }
 
     function mapBookingDetails() {
-        bookingDetails.setCost(parseFloat(costRef.current?.value ?? '0'));
-        bookingDetails.setName(nameRef.current?.value ?? '');
-        bookingDetails.setEmail(emailRef.current?.value ?? '');
-        bookingDetails.setPhone(phoneRef.current?.value ?? '');
-        bookingDetails.setComment(commentsRef.current?.value ?? '');
+        bookingService.bookingDetails.setCost(parseFloat(costRef.current?.value ?? '0'));
+        bookingService.bookingDetails.setName(nameRef.current?.value ?? '');
+        bookingService.bookingDetails.setEmail(emailRef.current?.value ?? '');
+        bookingService.bookingDetails.setPhone(phoneRef.current?.value ?? '');
+        bookingService.bookingDetails.setComment(commentsRef.current?.value ?? '');
     }
 
     function sendDoc() {
         mapBookingDetails();
-        bookingService.createBooking(bookingDetails).then(r => {
+        bookingService.createBooking().then(r => {
             console.log("Created Doc");
         });
     }

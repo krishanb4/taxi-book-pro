@@ -10,6 +10,8 @@ export interface IBookingServiceState {
 @Service()
 export class BookingService extends StatefulService<IBookingServiceState> {
 
+    public bookingDetails = new BookingDetails();
+
     static readonly initialState: IBookingServiceState = {
         isBusy: false,
     };
@@ -18,18 +20,34 @@ export class BookingService extends StatefulService<IBookingServiceState> {
         super(BookingService.initialState);
     }
 
-    public createBooking(bookingDetails: BookingDetails) {
+    public createBooking() {
         const bookingRef = collection(db, 'bookings');
         console.log("Called create");
         return addDoc(bookingRef, {
             created: serverTimestamp(),
-            name: bookingDetails.getName,
-            email: bookingDetails.getEmail,
-            phone: bookingDetails.getPhone,
-            cost: bookingDetails.getCost,
-            comments:bookingDetails.getComment
+            name: this.bookingDetails.getName,
+            email: this.bookingDetails.getEmail,
+            phone: this.bookingDetails.getPhone,
+            cost: this.bookingDetails.getCost,
+            comments:this.bookingDetails.getComment
         });
     };
+
+    public resetBookingDetails(){
+        this.bookingDetails = new BookingDetails();
+    }
+
+    public getBookingDetails():BookingDetails{
+        return this.bookingDetails;
+    }
+
+    public async getDestinations():Promise<string[]>{
+        return [""];
+    }
+
+    public async getPrice():Promise<number>{
+        return 25;
+    }
 
 
 }

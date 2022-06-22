@@ -1,0 +1,22 @@
+.form {
+    background-color: #1e2329;
+}
+.nav .nav-link {
+    font-weight: 500;
+    color: #f5a302;
+}
+.nav .nav-link:hover {
+    font-weight: 500;
+    color: #f5a302;
+}
+.subTitles {
+    color: #f5a302;
+}
+.formEnd {
+    font-weight: 500;
+    color: #f5a302;
+}
+.btn-book {
+    display: flex;
+    justify-content: center;
+}
