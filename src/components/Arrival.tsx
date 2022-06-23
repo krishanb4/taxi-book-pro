@@ -5,9 +5,10 @@ import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../config/firebase-config";
 import {useService} from "react-service-locator";
 import {BookingService} from "../services/booking-service";
-import NoteBanner from "./NoteBanner";
+import NoteBanner from "./banners/NoteBanner";
 import PersonalDetailsForm from "./forms/PersonalDetailsForm";
 import ArrivalDetailsForm from "./forms/ArrivalDetailsForm";
+import PriceBanner from "./banners/PriceBanner";
 
 const Arrival = (params: any) => {
 
@@ -69,15 +70,7 @@ const Arrival = (params: any) => {
             </form>
 
             <section className="travel-fare-banner  text-center">
-                <div className="container pt-5">
-                    <h1>
-                        Your Travel Fare is <span
-                        className="fare">€ {bookingService.arrivalBookingDetails.getCost()}</span>
-                    </h1>
-                    <div className="lead">
-                        Night Time Charge (Between 22:00 and 06:00) : € 15
-                    </div>
-                </div>
+                <PriceBanner/>
                 <div className="btn-reservation py-5">
                     <button type="submit" form={"booking-details-arrival"} className="btn btn-reservation-button">Submit
                         Reservation
@@ -86,7 +79,6 @@ const Arrival = (params: any) => {
             </section>
         </div>
     );
-
 
 }
 

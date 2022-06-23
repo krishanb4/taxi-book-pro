@@ -1,4 +1,4 @@
-import "./detailed-form.css"
+import "../detailed-form.css"
 
 const NoteBanner = () => {
   return(

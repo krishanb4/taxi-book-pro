@@ -7,9 +7,10 @@ import {useService} from "react-service-locator";
 import {BookingService} from "../services/booking-service";
 import {StateService} from "../services/state-service";
 import data from "../data/data.json"
-import NoteBanner from "./NoteBanner";
+import NoteBanner from "./banners/NoteBanner";
 import PersonalDetailsForm from "./forms/PersonalDetailsForm";
 import DepartureDetailsForm from "./forms/DepartureDetailsForm";
+import PriceBanner from "./banners/PriceBanner";
 
 const Departure = () => {
 
@@ -70,16 +71,8 @@ const Departure = () => {
                 </section>
             </form>
 
-
             <section className="travel-fare-banner  text-center">
-                <div className="container pt-5">
-                    <h1>
-                        Your Travel Fare is <span className="fare">€ {bookingService.departureBookingDetails.getCost()}</span>
-                    </h1>
-                    <div className="lead">
-                        Night Time Charge (Between 22:00 and 06:00) : € 15
-                    </div>
-                </div>
+                <PriceBanner/>
                 <div className="btn-reservation py-5">
                     <button type="submit" form={"booking-details-departure"} className="btn btn-reservation-button" >Submit Reservation</button>
                 </div>
