@@ -1,35 +1,42 @@
 import {JourneyType} from "../enums/journey-type";
 import {serverTimestamp} from "firebase/firestore";
 
-interface PersonalDetails extends Record<string, any> {
-    name: string | undefined;
-    email: string | undefined,
-    phone: number | undefined,
-}
-
 export class BookingDetails {
 
-    private _name: string | null = null;
-    private _email: string | null = null;
-    private _phone: string | null = null;
-    private _comments: string | null = null;
     private _cost: number | null = 0;
-    private _adultCount: number = 1;
-    private _childCount: number = 0;
     private _journeyType: JourneyType = JourneyType.ARRIVAL_ONE_WAY;
     private _pickUpPoint: string | null = null;
     private _pickUpPointOptionalAddress: string | null = null;
     private _dropPoint: string | null = null;
     private _dropPointOptionalAddress: string | null = null;
     private _flightDetailsNote: string | null = null;
-    private _flightArrivalDate:Date = new Date();
+    private _flightArrivalDate: Date = new Date();
+    private _pickUpDate: Date = new Date();
 
-    public getFlightArrivalDate(): Date  {
+    public setPickUpTime(hrs: number, min: number) {
+        this._pickUpDate.setHours(hrs);
+        this._pickUpDate.setMinutes(min);
+    }
+
+    public setFlightArrivalTime(hrs: number, min: number) {
+        this._flightArrivalDate.setHours(hrs);
+        this._flightArrivalDate.setMinutes(min);
+    }
+
+    public getPckUpDate(): Date {
+        return this._pickUpDate;
+    }
+
+    public setPickUpDate(value: Date) {
+        this._pickUpDate.setDate(value.getDate());
+    }
+
+    public getFlightArrivalDate(): Date {
         return this._flightArrivalDate;
     }
 
     public setFlightArrivalDate(value: Date) {
-        this._flightArrivalDate = value;
+        this._flightArrivalDate.setDate(value.getDate());
     }
 
     public getFlightDetailsNote(): string | null {
@@ -80,6 +87,38 @@ export class BookingDetails {
         this._journeyType = value;
     }
 
+    public setCost(cost: number): void {
+        this._cost = cost;
+    }
+
+    public getCost(): number | null {
+        return this._cost;
+    }
+
+    public parseJson() {
+        return {
+            created: serverTimestamp(),
+            cost: this._cost,
+            journeyType: this._journeyType,
+            pickUpPoint: this._pickUpPoint,
+            pickUpPointOptionalAddress: this._pickUpPointOptionalAddress,
+            dropPoint: this._dropPoint,
+            dropPointOptionalAddress: this._dropPointOptionalAddress,
+            flightDetailsNote: this._flightDetailsNote,
+            flightArrivalDate: this._flightArrivalDate
+        }
+    }
+
+}
+
+export class PersonalDetails{
+    private _name: string | null = null;
+    private _email: string | null = null;
+    private _phone: string | null = null;
+    private _comments: string | null = null;
+    private _adultCount: number = 1;
+    private _childCount: number = 0;
+
     public getAdultCount(): number {
         return this._adultCount;
     }
@@ -108,10 +147,6 @@ export class BookingDetails {
         this._phone = phone;
     }
 
-    public setCost(cost: number): void {
-        this._cost = cost;
-    }
-
     public setComment(comments: string | null): void {
         this._comments = comments;
     }
@@ -128,31 +163,18 @@ export class BookingDetails {
         return this._phone;
     }
 
-    public getCost(): number | null {
-        return this._cost;
-    }
-
     public getComment(): string | null {
         return this._comments;
     }
 
     public parseJson() {
         return {
-            created: serverTimestamp(),
             name: this._name,
             email: this._email,
             phone: this._phone,
-            cost: this._cost,
             comments: this._comments,
             adultCount: this._adultCount,
             childCount: this._childCount,
-            journeyType: this._journeyType,
-            pickUpPoint: this._pickUpPoint,
-            pickUpPointOptionalAddress: this._pickUpPointOptionalAddress,
-            dropPoint: this._dropPoint,
-            dropPointOptionalAddress: this._dropPointOptionalAddress,
-            flightDetailsNote: this._flightDetailsNote,
-            flightArrivalDate:this._flightArrivalDate
         }
     }
 

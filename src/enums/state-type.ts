@@ -1,5 +1,7 @@
 export enum StateType {
     SHORT_FORM,
-    DETAILED_FORM,
+    ARRIVAL,
+    DEPARTURE,
+    ROUND_TRIP,
     RESERVATION_CONFIRMED
 }

@@ -1,7 +1,8 @@
 import {Service, StatefulService} from "react-service-locator";
-import {addDoc, collection, serverTimestamp} from "firebase/firestore";
+import {addDoc, collection} from "firebase/firestore";
 import {db} from "../config/firebase-config";
-import {BookingDetails} from "../models/booking-details";
+import {BookingDetails, PersonalDetails} from "../models/booking-details";
+import {JourneyType} from "../enums/journey-type";
 
 export interface IBookingServiceState {
     isBusy: boolean;
@@ -10,7 +11,10 @@ export interface IBookingServiceState {
 @Service()
 export class BookingService extends StatefulService<IBookingServiceState> {
 
-    public bookingDetails = new BookingDetails();
+    public journeyType: JourneyType = JourneyType.ARRIVAL_ONE_WAY;
+    public arrivalBookingDetails = new BookingDetails();
+    public departureBookingDetails = new BookingDetails();
+    public personalDetails = new PersonalDetails();
 
     static readonly initialState: IBookingServiceState = {
         isBusy: false,
@@ -22,23 +26,37 @@ export class BookingService extends StatefulService<IBookingServiceState> {
 
     public createBooking() {
         const bookingRef = collection(db, 'bookings');
-        return addDoc(bookingRef, this.bookingDetails.parseJson());
+        return addDoc(bookingRef, {
+            personalDetails: this.personalDetails.parseJson(),
+            arrival: this.arrivalBookingDetails.parseJson(),
+            departure: this.departureBookingDetails.parseJson()
+        });
     };
 
-    public resetBookingDetails(){
-        this.bookingDetails = new BookingDetails();
+    public resetBookingDetails() {
+        this.arrivalBookingDetails = new BookingDetails();
+        this.departureBookingDetails = new BookingDetails();
+        this.personalDetails = new PersonalDetails();
     }
 
-    public getBookingDetails():BookingDetails{
-        return this.bookingDetails;
+    public getBookingDetails(): BookingDetails {
+        return this.arrivalBookingDetails;
     }
 
-    public async getDestinations():Promise<string[]>{
+    public async getDestinations(): Promise<string[]> {
         return [""];
     }
 
-    public async getPrice():Promise<number>{
+    public async getPrice(): Promise<number> {
         return 25;
+    }
+
+    public setJourneyType(value: JourneyType) {
+        this.journeyType = value;
+    }
+
+    public getJourneyType(): JourneyType {
+        return this.journeyType;
     }
 
 

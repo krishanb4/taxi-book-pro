@@ -11,14 +11,14 @@ import {StateType} from "../enums/state-type";
 const ShortForm = () => {
     const stateService = useService(StateService);
     const bookingService = useService(BookingService);
-    const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.bookingDetails.getJourneyType());
+    const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.arrivalBookingDetails.getJourneyType());
     const [price, setPrice] = useState<number>(0);
     const [adultCount, setAdultCount] = useState<number>(1);
     const [kidsCount, setKidsCount] = useState<number>(0);
     const [buttonState, setButtonState] = useState<boolean>(true);
 
     useEffect(() => {
-        bookingService.bookingDetails.setAdultCount(adultCount);
+        bookingService.personalDetails.setAdultCount(adultCount);
     }, []);
 
     const radios = [
@@ -31,14 +31,27 @@ const ShortForm = () => {
         event.preventDefault();
     }
 
-    async function fetchPrice() {
-        if (bookingService.bookingDetails.getAdultCount() !== 0 && bookingService.bookingDetails.getPickUpPoint() !== null && bookingService.bookingDetails.getDropPoint() !== null) {
-            bookingService.bookingDetails.setCost(await bookingService.getPrice())
-            setPrice(bookingService.bookingDetails.getCost()??0);
-            setButtonState(false);
-        } else {
-            setPrice(0);
-            console.log("Didnt fetch");
+    // async function fetchPrice() {
+    //     if (bookingService.personalDetails.getAdultCount() !== 0 && bookingService.departureBookingDetails.getPickUpPoint() !== null && bookingService.departureBookingDetails.getDropPoint() !== null) {
+    //         bookingService.departureBookingDetails.setCost(await bookingService.getPrice())
+    //         setPrice(bookingService.departureBookingDetails.getCost() ?? 0);
+    //         setButtonState(false);
+    //     } else {
+    //         setPrice(0);
+    //         console.log("Didnt fetch");
+    //     }
+    // }
+
+    function setStateAccordingToJourneyType(): StateType {
+        switch (bookingService.getJourneyType()) {
+            case JourneyType.ARRIVAL_ONE_WAY:
+                return StateType.ARRIVAL;
+            case JourneyType.DEPARTURE:
+                return StateType.DEPARTURE;
+            case JourneyType.ROUND_TRIP:
+                return StateType.ROUND_TRIP;
+            default:
+                return StateType.SHORT_FORM;
         }
     }
 
@@ -51,8 +64,8 @@ const ShortForm = () => {
                             <button className="nav-link" id="nav-home-tab" data-bs-toggle="tab" defaultChecked={true}
                                     onClick={async () => {
                                         setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
-                                        bookingService.bookingDetails.setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
-                                        await fetchPrice();
+                                        bookingService.setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
+                                        // await fetchPrice();
                                     }}
                                     data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                                     aria-selected="true">ARRIVAL
@@ -60,8 +73,8 @@ const ShortForm = () => {
                             <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
                                     onClick={async () => {
                                         setJourneyType(JourneyType.DEPARTURE);
-                                        bookingService.bookingDetails.setJourneyType(JourneyType.DEPARTURE);
-                                        await fetchPrice();
+                                        bookingService.setJourneyType(JourneyType.DEPARTURE);
+                                        // await fetchPrice();
                                     }}
                                     data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
                                     aria-selected="false">DEPARTURE
@@ -69,8 +82,8 @@ const ShortForm = () => {
                             <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                                     onClick={async () => {
                                         setJourneyType(JourneyType.ROUND_TRIP);
-                                        bookingService.bookingDetails.setJourneyType(JourneyType.ROUND_TRIP);
-                                        await fetchPrice();
+                                        bookingService.setJourneyType(JourneyType.ROUND_TRIP);
+                                        // await fetchPrice();
                                     }}
                                     data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
                                     aria-selected="false">ROUND TRIP
@@ -98,8 +111,12 @@ const ShortForm = () => {
                                     <p className="subTitles">PICKUP FROM</p>
                                     <select className="form-select" defaultValue={"SELECTED"}
                                             aria-label="Default select example" onChange={async (e) => {
-                                        bookingService.bookingDetails.setPickUpPoint(e.target.value);
-                                        await fetchPrice();
+                                                if(bookingService.getJourneyType()==JourneyType.DEPARTURE){
+                                                    bookingService.departureBookingDetails.setPickUpPoint(e.target.value);
+                                                }else{
+                                                    bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
+                                                }
+                                        // await fetchPrice();
                                     }}>
                                         <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
                                         {data.locations.map((item, key) => {
@@ -111,8 +128,12 @@ const ShortForm = () => {
                                     <p className="subTitles">DROP TO</p>
                                     <select className="form-select" defaultValue={"SELECTED"}
                                             aria-label="Default select example" onChange={async (e) => {
-                                        bookingService.bookingDetails.setDropPoint(e.target.value);
-                                        await fetchPrice();
+                                        if(bookingService.getJourneyType()==JourneyType.DEPARTURE){
+                                            bookingService.departureBookingDetails.setDropPoint(e.target.value);
+                                        }else{
+                                            bookingService.arrivalBookingDetails.setDropPoint(e.target.value);
+                                        }
+                                        // await fetchPrice();
                                     }}>
                                         <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
                                         {data.locations.map((item, key) => {
@@ -127,8 +148,8 @@ const ShortForm = () => {
                                     <select className="form-select" aria-label="Default select example"
                                             onChange={async (e) => {
                                                 setAdultCount(parseInt(e.target.value));
-                                                bookingService.bookingDetails.setAdultCount(parseInt(e.target.value));
-                                                await fetchPrice();
+                                                bookingService.personalDetails.setAdultCount(parseInt(e.target.value));
+                                                // await fetchPrice();
                                             }}>
                                         {data.adultCounts.map((item, key) => {
                                             return (<option value={item} key={item}>{item}</option>)
@@ -140,8 +161,8 @@ const ShortForm = () => {
                                     <select className="form-select" aria-label="Default select example"
                                             onChange={async (e) => {
                                                 setKidsCount(parseInt(e.target.value));
-                                                bookingService.bookingDetails.setChildCount(parseInt(e.target.value));
-                                                await fetchPrice();
+                                                bookingService.personalDetails.setChildCount(parseInt(e.target.value));
+                                                // await fetchPrice();
                                             }}>
                                         {data.kidCounts.map((item, key) => {
                                             return (<option value={item} key={item}>{item}</option>)
@@ -153,8 +174,8 @@ const ShortForm = () => {
                                 Destination!</h5>
                             <h5 className="text-center py-3 formEnd">Your Travel Fare: € {price}</h5>
                             <div className="btn-book">
-                                <button type="button" className="btn btn-light" disabled={buttonState} onClick={(e) => {
-                                    stateService.setCurrentStatus(StateType.DETAILED_FORM);
+                                <button type="button" className="btn btn-light" disabled={false} onClick={(e) => {
+                                    stateService.setCurrentStatus(setStateAccordingToJourneyType());
                                     clear(e);
                                     console.log(stateService.getCurrentStatus())
                                 }}>Book My Transfer Now
