@@ -47,8 +47,22 @@ export class BookingService extends StatefulService<IBookingServiceState> {
         return [""];
     }
 
-    public async getPrice(): Promise<number> {
-        return 25;
+    public async getPrice(): Promise<number> { // TODO - fetch prices from cloud
+        if (this.journeyType === JourneyType.DEPARTURE) {
+            return 25;
+        } else if(this.journeyType === JourneyType.ARRIVAL_ONE_WAY){
+            return 30;
+        }else{
+            return 40;
+        }
+    }
+
+    public setArrivalPrice(){
+        this.arrivalBookingDetails.setCost(25);
+    }
+
+    public setDeparturePrice(){
+        this.departureBookingDetails.setCost(25);
     }
 
     public setJourneyType(value: JourneyType) {
@@ -58,6 +72,5 @@ export class BookingService extends StatefulService<IBookingServiceState> {
     public getJourneyType(): JourneyType {
         return this.journeyType;
     }
-
 
 }
