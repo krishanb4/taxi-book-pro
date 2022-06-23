@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './short-form.css'
 import {useService} from "react-service-locator";
@@ -8,8 +8,10 @@ import {BookingService} from "../services/booking-service";
 import data from "../data/data.json"
 import {StateType} from "../enums/state-type";
 import Helpers from "../utils/helpers";
+import {Link, useNavigate} from "react-router-dom";
 
 const ShortForm = () => {
+    const navigate = useNavigate();
     const stateService = useService(StateService);
     const bookingService = useService(BookingService);
     const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.arrivalBookingDetails.getJourneyType());
@@ -20,7 +22,18 @@ const ShortForm = () => {
 
     useEffect(() => {
         bookingService.personalDetails.setAdultCount(adultCount);
+
     }, []);
+
+    const gotoArrivalPage = useCallback(() => navigate(`/arrival`, {
+        replace: false
+    }), [navigate]);
+    const gotoDeparturePage = useCallback(() => navigate(`/departure`, {
+        replace: false
+    }), [navigate]);
+    const gotoRoundTripPage = useCallback(() => navigate(`/round-trip`, {
+        replace: false
+    }), [navigate]);
 
     const radios = [
         {name: 'Arrival', value: JourneyType.ARRIVAL_ONE_WAY},
@@ -181,11 +194,16 @@ const ShortForm = () => {
                                 Destination!</h5>
                             <h5 className="text-center py-3 formEnd">Your Travel Fare: € {price}</h5>
                             <div className="btn-book">
-                                <button type="button" className="btn btn-light" disabled={buttonState} onClick={(e) => {
-                                    stateService.setCurrentStatus(setStateAccordingToJourneyType());
-                                    clear(e);
-                                    console.log(stateService.getCurrentStatus())
-                                }}>Book My Transfer Now
+                                <button type="button" className="btn btn-light"  disabled={buttonState} onClick={(e) => {
+                                    if (bookingService.journeyType === JourneyType.DEPARTURE) {
+                                        gotoDeparturePage();
+                                    } else if(bookingService.journeyType === JourneyType.ARRIVAL_ONE_WAY){
+                                        gotoArrivalPage();
+                                    }else{
+                                        gotoRoundTripPage();
+                                    }
+                                }}>
+                                    Book My Transfer Now
                                 </button>
                             </div>
                         </div>

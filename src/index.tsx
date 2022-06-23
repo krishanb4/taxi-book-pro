@@ -2,16 +2,25 @@ import 'reflect-metadata';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {ServiceContainer} from "react-service-locator";
-import {App} from "./App";
+import ShortForm from "./components/ShortForm";
+import Arrival from "./components/Arrival";
+import Departure from "./components/Departure";
+import RoundTrip from "./components/RoundTrip";
 
 ReactDOM.render(
-    <BrowserRouter>
-        <ServiceContainer>
-            <App/>
-        </ServiceContainer>
-    </BrowserRouter>,
+    <ServiceContainer>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<ShortForm/>}/>
+                <Route path='/arrival' element={<Arrival/>}/>
+                <Route path='/departure' element={<Departure/>}/>
+                <Route path='/round-trip' element={<RoundTrip/>}/>
+            </Routes>
+            {/*<App/>*/}
+        </BrowserRouter>
+    </ServiceContainer>,
     document.getElementById('root')
 );
 

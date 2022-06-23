@@ -16,7 +16,6 @@ const Arrival = (params: any) => {
     useEffect(() => {
     }, [])
 
-    const stateService = useService(StateService);
     const bookingService = useService(BookingService);
 
     const [value, loading, error] = useCollection(
@@ -70,7 +69,6 @@ const Arrival = (params: any) => {
                     </div>
                 </section>
             </form>
-
 
             <section className="travel-fare-banner  text-center">
                 <div className="container pt-5">

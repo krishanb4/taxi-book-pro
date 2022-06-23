@@ -23,7 +23,7 @@ const ArrivalDetailsForm = (params: any) => {
                     <div className="py-2">
                         Pickup From:
                     </div>
-                    <select className="form-select" required={true} defaultValue={bookingService.arrivalBookingDetails.getPickUpPoint()??"ORLY"}
+                    <select className="form-select" required={true} defaultValue={bookingService.arrivalBookingDetails.getPickUpPoint()??"SELECTED"}
                             aria-label="Default select example" onChange={async (e) => {
                         bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
                         console.log(bookingService.arrivalBookingDetails.getPickUpPoint())

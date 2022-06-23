@@ -16,7 +16,6 @@ const Departure = () => {
     useEffect(()=>{
     },[])
 
-    const stateService = useService(StateService);
     const bookingService = useService(BookingService);
 
     const [value, loading, error] = useCollection(
