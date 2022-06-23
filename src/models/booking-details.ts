@@ -3,6 +3,7 @@ import {serverTimestamp} from "firebase/firestore";
 
 export class BookingDetails {
 
+    private _isBooked: boolean = false;
     private _cost: number | null = 0;
     private _journeyType: JourneyType = JourneyType.ARRIVAL_ONE_WAY;
     private _pickUpPoint: string | null = null;
@@ -16,6 +17,14 @@ export class BookingDetails {
     public setPickUpTime(hrs: number, min: number) {
         this._pickUpDate.setHours(hrs);
         this._pickUpDate.setMinutes(min);
+    }
+
+    public isBooked(): boolean {
+        return this._isBooked;
+    }
+
+    public setBookStatus(value: boolean) {
+        this._isBooked = value;
     }
 
     public setFlightArrivalTime(hrs: number, min: number) {
@@ -105,13 +114,14 @@ export class BookingDetails {
             dropPoint: this._dropPoint,
             dropPointOptionalAddress: this._dropPointOptionalAddress,
             flightDetailsNote: this._flightDetailsNote,
-            flightArrivalDate: this._flightArrivalDate
+            flightArrivalDate: this._flightArrivalDate,
+            isBooked: this._isBooked,
         }
     }
 
 }
 
-export class PersonalDetails{
+export class PersonalDetails {
     private _name: string | null = null;
     private _email: string | null = null;
     private _phone: string | null = null;
@@ -175,6 +185,7 @@ export class PersonalDetails{
             comments: this._comments,
             adultCount: this._adultCount,
             childCount: this._childCount,
+            created: serverTimestamp()
         }
     }
 

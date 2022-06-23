@@ -5,8 +5,6 @@ import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../config/firebase-config";
 import {useService} from "react-service-locator";
 import {BookingService} from "../services/booking-service";
-import {StateService} from "../services/state-service";
-import data from "../data/data.json"
 import NoteBanner from "./NoteBanner";
 import PersonalDetailsForm from "./forms/PersonalDetailsForm";
 import DepartureDetailsForm from "./forms/DepartureDetailsForm";
@@ -14,8 +12,8 @@ import ArrivalDetailsForm from "./forms/ArrivalDetailsForm";
 
 const RoundTrip = () => {
 
-    useEffect(()=>{
-    },[])
+    useEffect(() => {
+    }, [])
 
     const bookingService = useService(BookingService);
 
@@ -54,7 +52,7 @@ const RoundTrip = () => {
             </section>
 
             {/* Note Banner */}
-            <NoteBanner></NoteBanner>
+            <NoteBanner/>
 
             {/* Forms */}
             <form id={"booking-details-round-trip"} onSubmit={(e) => {
@@ -66,8 +64,14 @@ const RoundTrip = () => {
                         <div className="row g-4">
                             <PersonalDetailsForm/>
                             <ArrivalDetailsForm/>
+                        </div>
+                        <div className="row g-4 row-cols-2">
+                            <div>
+
+                            </div>
                             <DepartureDetailsForm/>
                         </div>
+
                     </div>
                 </section>
             </form>
@@ -76,14 +80,17 @@ const RoundTrip = () => {
             <section className="travel-fare-banner  text-center">
                 <div className="container pt-5">
                     <h1>
-                        Your Travel Fare is <span className="fare">€ {bookingService.arrivalBookingDetails.getCost()}</span>
+                        Your Travel Fare is <span
+                        className="fare">€ {bookingService.arrivalBookingDetails.getCost()}</span>
                     </h1>
                     <div className="lead">
                         Night Time Charge (Between 22:00 and 06:00) : € 15
                     </div>
                 </div>
                 <div className="btn-reservation py-5">
-                    <button type="submit" form={"booking-details-round-trip"} className="btn btn-reservation-button" >Submit Reservation</button>
+                    <button type="submit" form={"booking-details-round-trip"}
+                            className="btn btn-reservation-button">Submit Reservation
+                    </button>
                 </div>
             </section>
         </div>

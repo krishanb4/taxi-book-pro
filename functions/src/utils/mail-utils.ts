@@ -18,10 +18,10 @@ export class MailUtils {
     });
     const mailOptions = {
       from: "defyngames@gmail.com",
-      to: snap.data().email,
+      to: snap.data().personalDetails.email,
       subject: "Taxi Book form message",
       html: `<h1>Order Confirmation</h1>
-     <p> <b>Email: </b>${snap.data().email} </p>`,
+     <p> <b>Email: </b>${snap.data().personalDetails.email} </p>`,
     };
     transporter.sendMail(mailOptions, (error: any, data: any) => {
       if (error) {

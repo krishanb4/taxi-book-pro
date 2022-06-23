@@ -6,23 +6,22 @@ import {StateService} from "../services/state-service";
 import {JourneyType} from "../enums/journey-type";
 import {BookingService} from "../services/booking-service";
 import data from "../data/data.json"
-import {StateType} from "../enums/state-type";
 import Helpers from "../utils/helpers";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {findPrice2} from "../data/json/fakePriceFinder";
 
 const ShortForm = () => {
     const navigate = useNavigate();
     const stateService = useService(StateService);
     const bookingService = useService(BookingService);
     const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.arrivalBookingDetails.getJourneyType());
-    const [price, setPrice] = useState<number>(0);
+    const [price, setPrice] = useState<string>("0");
     const [adultCount, setAdultCount] = useState<number>(1);
     const [kidsCount, setKidsCount] = useState<number>(0);
     const [buttonState, setButtonState] = useState<boolean>(true);
 
     useEffect(() => {
         bookingService.personalDetails.setAdultCount(adultCount);
-
     }, []);
 
     const gotoArrivalPage = useCallback(() => navigate(`/arrival`, {
@@ -48,30 +47,30 @@ const ShortForm = () => {
     async function fetchPrice() { // TODO - fetch prices separately for arrival and departure
         if (Helpers.validationBeforeFetchPrice(bookingService.arrivalBookingDetails, bookingService.personalDetails) ||
             Helpers.validationBeforeFetchPrice(bookingService.departureBookingDetails, bookingService.personalDetails)) {
-            if(bookingService.journeyType === JourneyType.DEPARTURE){
-                bookingService.setDeparturePrice()
-            }else{
-                bookingService.setArrivalPrice()
+            let p: any;
+            if (bookingService.arrivalBookingDetails.isBooked()) {
+                p = findPrice2(bookingService.arrivalBookingDetails, bookingService.personalDetails, bookingService);
+            } else {
+                p = findPrice2(bookingService.departureBookingDetails, bookingService.personalDetails, bookingService);
             }
 
-            setPrice(await bookingService.getPrice());
+            if (p === undefined) {
+                setPrice("Price cannot display at this moment");
+            } else {
+                if (bookingService.arrivalBookingDetails.isBooked() && bookingService.departureBookingDetails.isBooked()) {
+                    bookingService.arrivalBookingDetails.setCost(parseInt(p.replace("€ ", "")))
+                    bookingService.departureBookingDetails.setCost(parseInt(p.replace("€ ", "")))
+                } else if (bookingService.arrivalBookingDetails.isBooked()) {
+                    bookingService.arrivalBookingDetails.setCost(parseInt(p.replace("€ ", "")))
+                } else {
+                    bookingService.departureBookingDetails.setCost(parseInt(p.replace("€ ", "")))
+                }
+                setPrice(p);
+            }
             setButtonState(false);
         } else {
-            setPrice(0);
+            setPrice("0");
             console.log("Didnt fetch");
-        }
-    }
-
-    function setStateAccordingToJourneyType(): StateType {
-        switch (bookingService.getJourneyType()) {
-            case JourneyType.ARRIVAL_ONE_WAY:
-                return StateType.ARRIVAL;
-            case JourneyType.DEPARTURE:
-                return StateType.DEPARTURE;
-            case JourneyType.ROUND_TRIP:
-                return StateType.ROUND_TRIP;
-            default:
-                return StateType.SHORT_FORM;
         }
     }
 
@@ -85,6 +84,7 @@ const ShortForm = () => {
                                     onClick={async () => {
                                         setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
                                         bookingService.setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
+                                        bookingService.arrivalBookingDetails.setBookStatus(true);
                                         await fetchPrice();
                                     }}
                                     data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
@@ -94,6 +94,7 @@ const ShortForm = () => {
                                     onClick={async () => {
                                         setJourneyType(JourneyType.DEPARTURE);
                                         bookingService.setJourneyType(JourneyType.DEPARTURE);
+                                        bookingService.departureBookingDetails.setBookStatus(true);
                                         await fetchPrice();
                                     }}
                                     data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
@@ -103,6 +104,8 @@ const ShortForm = () => {
                                     onClick={async () => {
                                         setJourneyType(JourneyType.ROUND_TRIP);
                                         bookingService.setJourneyType(JourneyType.ROUND_TRIP);
+                                        bookingService.arrivalBookingDetails.setBookStatus(true);
+                                        bookingService.departureBookingDetails.setBookStatus(true);
                                         await fetchPrice();
                                     }}
                                     data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
@@ -131,7 +134,7 @@ const ShortForm = () => {
                                     <p className="subTitles">PICKUP FROM</p>
                                     <select className="form-select" defaultValue={"SELECTED"}
                                             aria-label="Default select example" onChange={async (e) => {
-                                        if (bookingService.getJourneyType() == JourneyType.DEPARTURE) {
+                                        if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
                                             bookingService.departureBookingDetails.setPickUpPoint(e.target.value);
                                         } else {
                                             bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
@@ -148,7 +151,7 @@ const ShortForm = () => {
                                     <p className="subTitles">DROP TO</p>
                                     <select className="form-select" defaultValue={"SELECTED"}
                                             aria-label="Default select example" onChange={async (e) => {
-                                        if (bookingService.getJourneyType() == JourneyType.DEPARTURE) {
+                                        if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
                                             bookingService.departureBookingDetails.setDropPoint(e.target.value);
                                         } else {
                                             bookingService.arrivalBookingDetails.setDropPoint(e.target.value);
@@ -192,14 +195,14 @@ const ShortForm = () => {
                             </div>
                             <h5 className="text-center py-3 formEnd">Please choose your Pickup Place and
                                 Destination!</h5>
-                            <h5 className="text-center py-3 formEnd">Your Travel Fare: € {price}</h5>
+                            <h5 className="text-center py-3 formEnd">Your Travel Fare: {price}</h5>
                             <div className="btn-book">
-                                <button type="button" className="btn btn-light"  disabled={buttonState} onClick={(e) => {
+                                <button type="button" className="btn btn-light" disabled={buttonState} onClick={(e) => {
                                     if (bookingService.journeyType === JourneyType.DEPARTURE) {
                                         gotoDeparturePage();
-                                    } else if(bookingService.journeyType === JourneyType.ARRIVAL_ONE_WAY){
+                                    } else if (bookingService.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
                                         gotoArrivalPage();
-                                    }else{
+                                    } else {
                                         gotoRoundTripPage();
                                     }
                                 }}>
