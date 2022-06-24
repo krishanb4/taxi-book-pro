@@ -10,6 +10,8 @@ import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import DepartureDetailsForm from "../forms/DepartureDetailsForm";
 import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
 import PriceBanner from "../banners/PriceBanner";
+import RecaptchaItem from "../items/RecaptchaItem";
+import ReservationButton from "../items/ReservationButton";
 
 const RoundTrip = () => {
 
@@ -79,11 +81,8 @@ const RoundTrip = () => {
 
             <section className="travel-fare-banner  text-center">
                 <PriceBanner/>
-                <div className="btn-reservation py-5">
-                    <button type="submit" form={"booking-details-round-trip"}
-                            className="btn btn-reservation-button">Submit Reservation
-                    </button>
-                </div>
+                <RecaptchaItem/>
+                <ReservationButton formId={"booking-details-round-trip"}/>
             </section>
         </div>
     );

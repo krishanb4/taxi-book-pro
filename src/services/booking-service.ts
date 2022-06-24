@@ -1,8 +1,9 @@
-import {Service, StatefulService} from "react-service-locator";
+import {Inject, Service, StatefulService} from "react-service-locator";
 import {addDoc, collection} from "firebase/firestore";
 import {db} from "../config/firebase-config";
 import {BookingDetails, PersonalDetails} from "../models/booking-details";
 import {JourneyType} from "../enums/journey-type";
+import {RecaptchaService} from "./recaptcha-service";
 
 export interface IBookingServiceState {
     isBusy: boolean;
@@ -20,6 +21,9 @@ export class BookingService extends StatefulService<IBookingServiceState> {
         isBusy: false,
     };
 
+    @Inject(RecaptchaService)
+    private readonly recaptchaService?: RecaptchaService;
+
     constructor() {
         super(BookingService.initialState);
     }
@@ -27,10 +31,14 @@ export class BookingService extends StatefulService<IBookingServiceState> {
     public createBooking() {
         const bookingRef = collection(db, 'bookings');
         return addDoc(bookingRef, {
+            recaptchaToken: this.recaptchaService?.getToken(),
             personalDetails: this.personalDetails.parseJson(),
             arrival: this.arrivalBookingDetails.parseJson(),
             departure: this.departureBookingDetails.parseJson()
-        });
+        }).then(
+            // this.recaptchaService?.setToken(null);
+
+        );
     };
 
     public resetBookingDetails() {

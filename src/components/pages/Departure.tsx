@@ -11,6 +11,8 @@ import NoteBanner from "../banners/NoteBanner";
 import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import DepartureDetailsForm from "../forms/DepartureDetailsForm";
 import PriceBanner from "../banners/PriceBanner";
+import RecaptchaItem from "../items/RecaptchaItem";
+import ReservationButton from "../items/ReservationButton";
 
 const Departure = () => {
 
@@ -73,9 +75,8 @@ const Departure = () => {
 
             <section className="travel-fare-banner  text-center">
                 <PriceBanner/>
-                <div className="btn-reservation py-5">
-                    <button type="submit" form={"booking-details-departure"} className="btn btn-reservation-button" >Submit Reservation</button>
-                </div>
+                <RecaptchaItem/>
+                <ReservationButton formId={"booking-details-departure"}/>
             </section>
         </div>
     );

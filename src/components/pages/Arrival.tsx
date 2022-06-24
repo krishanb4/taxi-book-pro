@@ -9,6 +9,8 @@ import NoteBanner from "../banners/NoteBanner";
 import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
 import PriceBanner from "../banners/PriceBanner";
+import RecaptchaItem from "../items/RecaptchaItem";
+import ReservationButton from "../items/ReservationButton";
 
 const Arrival = (params: any) => {
 
@@ -71,12 +73,10 @@ const Arrival = (params: any) => {
 
             <section className="travel-fare-banner  text-center">
                 <PriceBanner/>
-                <div className="btn-reservation py-5">
-                    <button type="submit" form={"booking-details-arrival"} className="btn btn-reservation-button">Submit
-                        Reservation
-                    </button>
-                </div>
+                <RecaptchaItem/>
+                <ReservationButton formId={"booking-details-arrival"}/>
             </section>
+
         </div>
     );
 

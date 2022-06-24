@@ -11,7 +11,7 @@ const Home = () => {
     const navigate = useNavigate();
     const bookingService = useService(BookingService);
     const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.arrivalBookingDetails.getJourneyType());
-    const [price, setPrice] = useState<string>("0");
+    const [priceMessage, setPriceMessage] = useState<string>("");
     const [adultCount, setAdultCount] = useState<number>(1);
     const [kidsCount, setKidsCount] = useState<number>(0);
     const [buttonState, setButtonState] = useState<boolean>(true);
@@ -47,12 +47,12 @@ const Home = () => {
 
     // TODO - fetch prices separately for arrival and departure
     async function fetchPrice() {
-        let test = await Helpers.fetchPrice(bookingService);
-        if (test === undefined) {
-            setPrice("Price cannot display at this moment");
-            setButtonState(false);
+        let priceStr = await Helpers.fetchPrice(bookingService);
+        if (priceStr === undefined) {
+            setPriceMessage("Price cannot display at this moment");
         } else {
-            setPrice(test);
+            setPriceMessage("Your Travel Fare: "+priceStr);
+            setButtonState(false);
         }
     }
 
@@ -62,37 +62,40 @@ const Home = () => {
                 <div className="container p-5">
                     <nav>
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" defaultChecked={true}
+                            <button className="nav-link" id="nav-arrival-tab" data-bs-toggle="tab"
                                     onClick={async () => {
+                                        bookingService.resetBookingDetails();
                                         setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
                                         bookingService.setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
                                         bookingService.arrivalBookingDetails.setBookStatus(true);
                                         bookingService.departureBookingDetails.setBookStatus(false);
                                         await fetchPrice();
                                     }}
-                                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                    data-bs-target="#nav-arrival" type="button" role="tab" aria-controls="nav-home"
                                     aria-selected="true">ARRIVAL
                             </button>
-                            <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                            <button className="nav-link" id="nav-departure-tab" data-bs-toggle="tab"
                                     onClick={async () => {
+                                        bookingService.resetBookingDetails();
                                         setJourneyType(JourneyType.DEPARTURE);
                                         bookingService.setJourneyType(JourneyType.DEPARTURE);
                                         bookingService.departureBookingDetails.setBookStatus(true);
                                         bookingService.arrivalBookingDetails.setBookStatus(false);
                                         await fetchPrice();
                                     }}
-                                    data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                    data-bs-target="#nav-departure" type="button" role="tab" aria-controls="nav-profile"
                                     aria-selected="false">DEPARTURE
                             </button>
-                            <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                            <button className="nav-link" id="nav-round-trip-tab" data-bs-toggle="tab"
                                     onClick={async () => {
+                                        bookingService.resetBookingDetails();
                                         setJourneyType(JourneyType.ROUND_TRIP);
                                         bookingService.setJourneyType(JourneyType.ROUND_TRIP);
                                         bookingService.arrivalBookingDetails.setBookStatus(true);
                                         bookingService.departureBookingDetails.setBookStatus(true);
                                         await fetchPrice();
                                     }}
-                                    data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                    data-bs-target="#nav-round-trip" type="button" role="tab" aria-controls="nav-contact"
                                     aria-selected="false">ROUND TRIP
                             </button>
                         </div>
@@ -179,7 +182,7 @@ const Home = () => {
                             </div>
                             <h5 className="text-center py-3 formEnd">Please choose your Pickup Place and
                                 Destination!</h5>
-                            <h5 className="text-center py-3 formEnd">Your Travel Fare: {price}</h5>
+                            <h5 className="text-center py-3 formEnd">{priceMessage}</h5>
                             <div className="btn-book">
                                 <button type="button" className="btn btn-light" disabled={buttonState} onClick={(e) => {
                                     if (bookingService.journeyType === JourneyType.DEPARTURE) {
