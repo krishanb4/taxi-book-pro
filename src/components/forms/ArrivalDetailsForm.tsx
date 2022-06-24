@@ -26,7 +26,6 @@ const ArrivalDetailsForm = (params: any) => {
                     <select className="form-select" required={true} defaultValue={bookingService.arrivalBookingDetails.getPickUpPoint()??"SELECTED"}
                             aria-label="Default select example" onChange={async (e) => {
                         bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
-                        console.log(bookingService.arrivalBookingDetails.getPickUpPoint())
                     }}>
                         <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
                         {data.locations.map((item, key) => {

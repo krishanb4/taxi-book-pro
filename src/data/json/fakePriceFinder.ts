@@ -18,7 +18,6 @@ function findPrice2(bookingDetails: BookingDetails, personalDetails: PersonalDet
         return value.trip === trip && value.from === bookingDetails.getPickUpPoint() && value.to === bookingDetails.getDropPoint();
     });
 
-    console.log(bookingDetails.getPickUpPoint());
     if (personalDetails.getAdultCount() + personalDetails.getChildCount() === 1 || personalDetails.getAdultCount() + personalDetails.getChildCount() === 2 || personalDetails.getAdultCount() + personalDetails.getChildCount() === 3) {
         return eval(`selected?.list["1-3 P."]`);
     } else {

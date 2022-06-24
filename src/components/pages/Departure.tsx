@@ -1,16 +1,16 @@
 import React, {useEffect} from "react";
-import './detailed-form.css';
+import '../styles/detailed-form.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
-import {db} from "../config/firebase-config";
+import {db} from "../../config/firebase-config";
 import {useService} from "react-service-locator";
-import {BookingService} from "../services/booking-service";
-import {StateService} from "../services/state-service";
-import data from "../data/data.json"
-import NoteBanner from "./banners/NoteBanner";
-import PersonalDetailsForm from "./forms/PersonalDetailsForm";
-import DepartureDetailsForm from "./forms/DepartureDetailsForm";
-import PriceBanner from "./banners/PriceBanner";
+import {BookingService} from "../../services/booking-service";
+import {StateService} from "../../services/state-service";
+import data from "../../data/data.json"
+import NoteBanner from "../banners/NoteBanner";
+import PersonalDetailsForm from "../forms/PersonalDetailsForm";
+import DepartureDetailsForm from "../forms/DepartureDetailsForm";
+import PriceBanner from "../banners/PriceBanner";
 
 const Departure = () => {
 
@@ -47,7 +47,7 @@ const Departure = () => {
                             <h1 className="titleBooking">Booking (Departure)</h1>
                         </div>
                         <div>
-                            <p><a href="#" className="btn-home">Home</a> / Booking</p>
+                            <p><a href="src/components/pages/Departure#" className="btn-home">Home</a> / Booking</p>
                         </div>
                     </div>
                 </div>

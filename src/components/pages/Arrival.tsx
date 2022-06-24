@@ -1,20 +1,16 @@
 import React, {useEffect} from "react";
-import './detailed-form.css';
+import '../styles/detailed-form.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
-import {db} from "../config/firebase-config";
+import {db} from "../../config/firebase-config";
 import {useService} from "react-service-locator";
-import {BookingService} from "../services/booking-service";
-import NoteBanner from "./banners/NoteBanner";
-import PersonalDetailsForm from "./forms/PersonalDetailsForm";
-import DepartureDetailsForm from "./forms/DepartureDetailsForm";
-import ArrivalDetailsForm from "./forms/ArrivalDetailsForm";
-import PriceBanner from "./banners/PriceBanner";
+import {BookingService} from "../../services/booking-service";
+import NoteBanner from "../banners/NoteBanner";
+import PersonalDetailsForm from "../forms/PersonalDetailsForm";
+import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
+import PriceBanner from "../banners/PriceBanner";
 
-const RoundTrip = () => {
-
-    useEffect(() => {
-    }, [])
+const Arrival = (params: any) => {
 
     const bookingService = useService(BookingService);
 
@@ -24,6 +20,9 @@ const RoundTrip = () => {
             snapshotListenOptions: {includeMetadataChanges: true},
         }
     );
+
+    useEffect(() => {
+    }, [])
 
     function clear(event: any) {
         event.preventDefault();
@@ -43,10 +42,10 @@ const RoundTrip = () => {
                 <div className="container">
                     <div className="titleBar">
                         <div>
-                            <h1 className="titleBooking">Booking (Round Trip)</h1>
+                            <h1 className="titleBooking">Booking (Arrival)</h1>
                         </div>
                         <div>
-                            <p><a href="#" className="btn-home">Home</a> / Booking</p>
+                            <p><a href="/" className="btn-home">Home</a> / Booking</p>
                         </div>
                     </div>
                 </div>
@@ -56,7 +55,7 @@ const RoundTrip = () => {
             <NoteBanner/>
 
             {/* Forms */}
-            <form id={"booking-details-round-trip"} onSubmit={(e) => {
+            <form id={"booking-details-arrival"} onSubmit={(e) => {
                 sendDoc();
                 clear(e);
             }}>
@@ -66,13 +65,6 @@ const RoundTrip = () => {
                             <PersonalDetailsForm/>
                             <ArrivalDetailsForm/>
                         </div>
-                        <div className="row g-4 row-cols-2">
-                            <div>
-
-                            </div>
-                            <DepartureDetailsForm/>
-                        </div>
-
                     </div>
                 </section>
             </form>
@@ -80,15 +72,14 @@ const RoundTrip = () => {
             <section className="travel-fare-banner  text-center">
                 <PriceBanner/>
                 <div className="btn-reservation py-5">
-                    <button type="submit" form={"booking-details-round-trip"}
-                            className="btn btn-reservation-button">Submit Reservation
+                    <button type="submit" form={"booking-details-arrival"} className="btn btn-reservation-button">Submit
+                        Reservation
                     </button>
                 </div>
             </section>
         </div>
     );
 
-
 }
 
-export default RoundTrip;
+export default Arrival;

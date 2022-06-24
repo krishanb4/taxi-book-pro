@@ -1,4 +1,4 @@
-import "../detailed-form.css"
+import "../styles/detailed-form.css"
 import React from "react";
 import {useService} from "react-service-locator";
 import {BookingService} from "../../services/booking-service";
