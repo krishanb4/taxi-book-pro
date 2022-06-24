@@ -9,6 +9,7 @@ const RecaptchaItem = () => {
     const recaptchaService = useService(RecaptchaService);
 
     function onChangeRecaptcha(value: any) {
+        console.log(value);
         recaptchaService.setToken(value);
     }
 
