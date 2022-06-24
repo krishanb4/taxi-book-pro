@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import '../styles/detailed-form.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
@@ -11,8 +11,14 @@ import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
 import PriceBanner from "../banners/PriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
 import ReservationButton from "../items/ReservationButton";
+import {useNavigate} from "react-router-dom";
 
 const Arrival = (params: any) => {
+
+    const navigate = useNavigate();
+    const gotoHomePage = useCallback(() => navigate(`/`, {
+        replace: false
+    }), [navigate]);
 
     const bookingService = useService(BookingService);
 
@@ -33,7 +39,8 @@ const Arrival = (params: any) => {
 
     function sendDoc() {
         bookingService.createBooking().then(r => {
-            console.log("Created Doc");
+            console.log("Submitted Booking..");
+            gotoHomePage();
         });
     }
 
