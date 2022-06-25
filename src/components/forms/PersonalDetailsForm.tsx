@@ -15,34 +15,34 @@ const PersonalDetailsForm = (params: any) => {
 
     return (<div className="col-md text-light">
         <div className="title-bar-bg">
-            <h5 className="p-1 text-center">Personal Details</h5>
+            <h5 className="p-2 text-center main-titles">Personal Details</h5>
         </div>
-        <div className="booking-form">
+        <div className="px-5 pb-4 pt-5 booking-form">
             <div className="mb-3">
-                <label htmlFor="name" className="col-form-label">
+                <label htmlFor="name" className="mb-3 form-sub-title">
                     Your Name:
                 </label>
                 <input type="text" required={true} className="form-control" id="name"
                        placeholder="Enter your name" onChange={(e)=>{
                     bookingService.personalDetails.setName(e.target.value);
                 }}/>
-                <label htmlFor="last-name" className="col-form-label">
+                <label htmlFor="last-name" className="mb-3 form-sub-title">
                     Phone:
                 </label>
                 <input type="text" required={true} className="form-control" id="phone" onChange={(e)=>{
                     bookingService.personalDetails.setPhone(e.target.value);
                 }}/>
-                <label htmlFor="email" className="col-form-label">
+                <label htmlFor="email" className="mb-3 form-sub-title">
                     Email:
                 </label>
                 <input type="email" required={true} className="form-control" id="email"
                        placeholder="Your Email Address" onChange={(e)=>{
                     bookingService.personalDetails.setEmail(e.target.value);
                 }}/>
-                <div className="py-3">
+                <div className="py-3 mb-3 form-sub-title">
                     Number of Passengers
                 </div>
-                <div className="row g-4">
+                <div className="row g-4 mb-3 form-sub-title">
                     <div className="col-md">
                         Adults
                     </div>
@@ -72,7 +72,7 @@ const PersonalDetailsForm = (params: any) => {
                         </select>
                     </div>
                 </div>
-                <div className="mb-3 py-3">
+                <div className="mb-3 py-3 mb-3 form-sub-title">
                     <label htmlFor="additionalNote" className="form-label"> Additional
                         Notes:</label>
                     <textarea className="form-control" id="additionalNote" rows={3}

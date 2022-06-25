@@ -27,7 +27,7 @@ export class MailUtils {
         from: "defyngames@gmail.com"
       },
       // uncomment below to send emails in development/test env:
-      // send: true,
+      send: true,
       transport
     });
       const ownerEmail = new Email({

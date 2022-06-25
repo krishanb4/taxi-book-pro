@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from "react";
-import '../styles/detailed-form.css';
+import '../../styles/booking-style.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../../config/firebase-config";
@@ -81,9 +81,9 @@ const Departure = () => {
             </form>
 
             <section className="travel-fare-banner  text-center">
-                <PriceBanner/>
                 <RecaptchaItem/>
-                <ReservationButton formId={"booking-details-departure"}/>
+                <PriceBanner formId={"booking-details-departure"}/>
+                {/*<ReservationButton formId={"booking-details-departure"}/>*/}
             </section>
         </div>
     );

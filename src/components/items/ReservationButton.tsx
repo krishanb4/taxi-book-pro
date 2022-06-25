@@ -1,4 +1,4 @@
-import "../styles/detailed-form.css"
+import "../../styles/style.css"
 import React from "react";
 import {useService} from "react-service-locator";
 import {RecaptchaService} from "../../services/recaptcha-service";
