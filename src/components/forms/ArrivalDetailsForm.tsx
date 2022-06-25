@@ -59,6 +59,20 @@ const ArrivalDetailsForm = (params: any) => {
                                             }}/>
                     </div>
                     <label htmlFor="date" className="col-form-label">
+                        Pickup Date:
+                    </label>
+                    <input type="date" className="form-control" id="date" required={true}
+                           placeholder="Select Pickup Date..." onChange={(e) => {
+                        bookingService.arrivalBookingDetails.setPickUpDate(new Date(e.target.value));
+                    }}/>
+                    <label htmlFor="time" className="col-form-label">
+                        Pickup Time: *
+                    </label>
+                    <input type="time" className="form-control" id="time" required={true} onChange={(e) => {
+                        let time = e.target.value.split(":");
+                        bookingService.arrivalBookingDetails.setPickUpTime(parseInt(time[0]), parseInt(time[1]));
+                    }}/>
+                    <label htmlFor="date" className="col-form-label">
                         Flight/Train Arrival Date:
                     </label>
                     <input type="date" className="form-control" id="date"

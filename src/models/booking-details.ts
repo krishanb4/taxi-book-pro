@@ -116,6 +116,7 @@ export class BookingDetails {
             flightDetailsNote: this._flightDetailsNote,
             flightArrivalDate: this._flightArrivalDate,
             isBooked: this._isBooked,
+            pickUpDate: this._pickUpDate,
         }
     }
 
@@ -185,7 +186,7 @@ export class PersonalDetails {
             comments: this._comments,
             adultCount: this._adultCount,
             childCount: this._childCount,
-            created: serverTimestamp()
+            created: serverTimestamp(),
         }
     }
 
