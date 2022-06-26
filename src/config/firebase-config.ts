@@ -1,6 +1,7 @@
 import {connectFirestoreEmulator, getFirestore} from 'firebase/firestore';
 import {initializeApp} from "firebase/app"
-import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
+import {connectFunctionsEmulator, getFunctions} from "firebase/functions";
+import {AppConfig} from "./app-config";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,5 +15,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
 const functions = getFunctions(firebaseApp);
-connectFirestoreEmulator(db, 'localhost', 8080);
-connectFunctionsEmulator(functions, "localhost", 5001);
+if (AppConfig.isEmulatorMode) {
+    connectFirestoreEmulator(db, 'localhost', 8080);
+    connectFunctionsEmulator(functions, "localhost", 5001);
+}

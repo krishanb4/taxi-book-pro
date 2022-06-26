@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from "react";
-import '../styles/detailed-form.css';
+import '../../styles/booking-style.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../../config/firebase-config";
@@ -46,22 +46,37 @@ const Arrival = (params: any) => {
 
     return (
         <div>
-            {/* Title Bar */}
-            <section className="bg-dark text-light p-3">
+            <section className="nav-bar-main">
                 <div className="container">
-                    <div className="titleBar">
-                        <div>
-                            <h1 className="titleBooking">Booking (Arrival)</h1>
+                    <div className="navbar navbar-expand-lg">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                            <span className="navbar-toggler-icon navbar-dark" />
+                        </button>
+                        <div className="collapse navbar-collapse" id="navmenu">
+                            <ul className="navbar-nav me-auto">
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">HOME</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">BOOK NOW</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">UPCOMING TRANSFERS</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">RATES</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">CONTACT</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div>
-                            <p><a href="/" className="btn-home">Home</a> / Booking</p>
-                        </div>
+                        <form className="d-flex" role="search">
+                            <button className="btn signup-btn" type="submit">SIGN UP</button>
+                        </form>
                     </div>
                 </div>
             </section>
-
-            {/* Note Banner */}
-            <NoteBanner/>
 
             {/* Forms */}
             <form id={"booking-details-arrival"} onSubmit={(e) => {
@@ -69,6 +84,8 @@ const Arrival = (params: any) => {
                 clear(e);
             }}>
                 <section className="forms-main">
+                    {/* Note Banner */}
+                    <NoteBanner/>
                     <div className="container p-5">
                         <div className="row g-4">
                             <PersonalDetailsForm/>
@@ -79,11 +96,9 @@ const Arrival = (params: any) => {
             </form>
 
             <section className="travel-fare-banner  text-center">
-                <PriceBanner/>
                 <RecaptchaItem/>
-                <ReservationButton formId={"booking-details-arrival"}/>
+                <PriceBanner formId={"booking-details-arrival"}/>
             </section>
-
         </div>
     );
 

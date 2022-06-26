@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import '../styles/short-form.css'
+import '../../styles/style.css'
 import {useService} from "react-service-locator";
 import {JourneyType} from "../../enums/journey-type";
 import {BookingService} from "../../services/booking-service";
@@ -11,7 +11,7 @@ const Home = () => {
     const navigate = useNavigate();
     const bookingService = useService(BookingService);
     const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.arrivalBookingDetails.getJourneyType());
-    const [priceMessage, setPriceMessage] = useState<string>("");
+    const [priceMessage, setPriceMessage] = useState<string>("€ 0");
     const [adultCount, setAdultCount] = useState<number>(1);
     const [kidsCount, setKidsCount] = useState<number>(0);
     const [buttonState, setButtonState] = useState<boolean>(true);
@@ -49,20 +49,53 @@ const Home = () => {
     async function fetchPrice() {
         let priceStr = await Helpers.fetchPrice(bookingService);
         if (priceStr === undefined) {
-            setPriceMessage("Price cannot display at this moment");
+            setPriceMessage("€ 0");
         } else {
-            setPriceMessage("Your Travel Fare: "+priceStr);
+            setPriceMessage(priceStr);
             setButtonState(false);
         }
     }
 
     return (
         <div>
-            <section className="form">
+            <section className="nav-bar-main">
+                <div className="container">
+                    <div className="navbar navbar-expand-lg">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                            <span className="navbar-toggler-icon navbar-dark" />
+                        </button>
+                        <div className="collapse navbar-collapse" id="navmenu">
+                            <ul className="navbar-nav me-auto">
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">HOME</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">BOOK NOW</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">UPCOMING TRANSFERS</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">RATES</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">CONTACT</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <form className="d-flex" role="search">
+                            <button className="btn signup-btn" type="submit">SIGN UP</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section className="form" >
                 <div className="container p-5">
+                    <img src={require("../../assets/images/pdt-logo-temp.png")} alt="pdtlogo" className="pb-5 logo"/>
                     <nav>
-                        <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button className="nav-link" id="nav-arrival-tab" data-bs-toggle="tab"
+                        <div className="nav nav-tabs form-btn-main" id="nav-tab" role="tablist">
+                            <button className={"nav-link "}  id="nav-arrival-tab" data-bs-toggle="tab"
                                     onClick={async () => {
                                         bookingService.resetBookingDetails();
                                         setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
@@ -72,7 +105,9 @@ const Home = () => {
                                         await fetchPrice();
                                     }}
                                     data-bs-target="#nav-arrival" type="button" role="tab" aria-controls="nav-home"
-                                    aria-selected="true">ARRIVAL
+                                    aria-selected="true">
+                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/road.svg"} alt="" /></span>
+                                <span className="col-md">Arrival</span>
                             </button>
                             <button className="nav-link" id="nav-departure-tab" data-bs-toggle="tab"
                                     onClick={async () => {
@@ -84,7 +119,9 @@ const Home = () => {
                                         await fetchPrice();
                                     }}
                                     data-bs-target="#nav-departure" type="button" role="tab" aria-controls="nav-profile"
-                                    aria-selected="false">DEPARTURE
+                                    aria-selected="false">
+                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/plane.svg"} alt="" /></span>
+                                <span className="col-md">Departure</span>
                             </button>
                             <button className="nav-link" id="nav-round-trip-tab" data-bs-toggle="tab"
                                     onClick={async () => {
@@ -96,11 +133,13 @@ const Home = () => {
                                         await fetchPrice();
                                     }}
                                     data-bs-target="#nav-round-trip" type="button" role="tab" aria-controls="nav-contact"
-                                    aria-selected="false">ROUND TRIP
+                                    aria-selected="false">
+                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/van.svg"} alt="" /></span>
+                                <span className="col-md">Round Trip</span>
                             </button>
                         </div>
                     </nav>
-                    <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-content form-content p-5" id="nav-tabContent">
                         <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
                              aria-labelledby="nav-home-tab" tabIndex={0}>
 
@@ -115,10 +154,10 @@ const Home = () => {
                              tabIndex={0}>
 
                         </div>
-                        <div className="container">
+                        <div className="container" style={{marginBottom:-110}}>
                             <div className="row g-4">
                                 <div className="col-md py-3">
-                                    <p className="subTitles">PICKUP FROM</p>
+                                    <p className="subTitles">Pickup Location</p>
                                     <select className="form-select" defaultValue={"SELECTED"}
                                             aria-label="Default select example" onChange={async (e) => {
                                         if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
@@ -135,7 +174,7 @@ const Home = () => {
                                     </select>
                                 </div>
                                 <div className="col-md py-3">
-                                    <p className="subTitles">DROP TO</p>
+                                    <p className="subTitles">Drop-off Location</p>
                                     <select className="form-select" defaultValue={"SELECTED"}
                                             aria-label="Default select example" onChange={async (e) => {
                                         if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
@@ -154,7 +193,7 @@ const Home = () => {
                             </div>
                             <div className="row g-4">
                                 <div className="col-md py-3">
-                                    <p className="subTitles">ADULTS</p>
+                                    <p className="subTitles">Adult Riders</p>
                                     <select className="form-select" aria-label="Default select example"
                                             onChange={async (e) => {
                                                 setAdultCount(parseInt(e.target.value));
@@ -167,7 +206,7 @@ const Home = () => {
                                     </select>
                                 </div>
                                 <div className="col-md py-3">
-                                    <p className="subTitles">KIDS</p>
+                                    <p className="subTitles">Child</p>
                                     <select className="form-select" aria-label="Default select example"
                                             onChange={async (e) => {
                                                 setKidsCount(parseInt(e.target.value));
@@ -179,12 +218,17 @@ const Home = () => {
                                         })}
                                     </select>
                                 </div>
+
                             </div>
-                            <h5 className="text-center py-3 formEnd">Please choose your Pickup Place and
-                                Destination!</h5>
-                            <h5 className="text-center py-3 formEnd">{priceMessage}</h5>
-                            <div className="btn-book">
-                                <button type="button" className="btn btn-light" disabled={buttonState} onClick={(e) => {
+                            <div className="p-3 row g-0 travel-fare-group-main">
+                                <div className={"p-3 col-md text-center travel-fare-group "}>
+                                    <h4>Your Travel Fare -
+                                        <span className={"price"}>
+                                            {priceMessage}
+                                        </span>
+                                    </h4>
+                                </div>
+                                <button type="button" className="col-md p-3 btn btn-primary booknow-btn" disabled={buttonState} onClick={(e) => {
                                     if (bookingService.journeyType === JourneyType.DEPARTURE) {
                                         gotoDeparturePage();
                                     } else if (bookingService.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
@@ -193,9 +237,10 @@ const Home = () => {
                                         gotoRoundTripPage();
                                     }
                                 }}>
-                                    Book My Transfer Now
+                                    Book Now
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </div>

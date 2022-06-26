@@ -31,6 +31,7 @@ export class BookingService extends StatefulService<IBookingServiceState> {
     public createBooking() {
         const bookingRef = collection(db, 'bookings');
         return addDoc(bookingRef, {
+            journeyType: this.journeyType,
             recaptchaToken: this.recaptchaService?.getToken(),
             personalDetails: this.personalDetails.parseJson(),
             arrival: this.arrivalBookingDetails.parseJson(),

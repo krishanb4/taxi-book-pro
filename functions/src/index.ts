@@ -13,14 +13,14 @@ exports.helloWorld = functions.region("europe-west1").https.onRequest((request, 
 
 exports.sendEmail = functions.region("europe-west1").firestore
     .document("bookings/{bookingId}")
-    .onCreate((snap, context) => {
+    .onCreate(async (snap, context) => {
         if (snap.data().recaptchaToken !== null) {
             // eslint-disable-next-line import/namespace,max-len
             const result = ApiUtils.getRecaptchaStatus(snap.data().recaptchaToken).then(
-                (status) => {
+                async (status) => {
                     console.log("Get Recaptcha Token Verification Successfully ");
                     if (status) {
-                        MailUtils.triggerEmail(snap);
+                        await MailUtils.triggerEmail(snap);
                     } else {
                         DBUtils.deleteBooking(snap).then(() => {
                             console.log("Deleted Spam Record..");

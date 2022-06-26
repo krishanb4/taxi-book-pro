@@ -1,4 +1,4 @@
 export const recaptchaConfig = {
-  secretKey: "6Lf-RpggAAAAAJz-tPbFnggfio4QUpsuskKcbDo_",
-  siteKey: "6Lf-RpggAAAAAEpewUZmQatyj2Y5wHrOFmCRNyQK",
+  secretKey: "6Ld7B5wgAAAAAIMm6bimkUSK0BCMpsymI9kc4G2J",
+  siteKey: "6Ld7B5wgAAAAANF5s1Z4tJfhWPhEoDNSyM7bOfNO",
 };

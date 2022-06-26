@@ -1,8 +1,9 @@
-import "../styles/detailed-form.css"
+import "../../styles/style.css"
 import {useService} from "react-service-locator";
 import {RecaptchaService} from "../../services/recaptcha-service";
 import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
+import {AppConfig} from "../../config/app-config";
 
 const RecaptchaItem = () => {
 
@@ -14,12 +15,11 @@ const RecaptchaItem = () => {
     }
 
     return(
-        <div className={"text-center d-inline-block py-3"}>
+        <div className={"pb-5 fare-section text-center"}>
             <ReCAPTCHA
-                sitekey="6Lf-RpggAAAAAEpewUZmQatyj2Y5wHrOFmCRNyQK"
+                sitekey={AppConfig.recaptchaSiteKey}
                 onChange={onChangeRecaptcha}
             />
-            {/*    secret key - 6Lf-RpggAAAAAJz-tPbFnggfio4QUpsuskKcbDo_*/}
         </div>
     );
 }

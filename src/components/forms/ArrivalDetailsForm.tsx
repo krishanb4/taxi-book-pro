@@ -16,10 +16,10 @@ const ArrivalDetailsForm = (params: any) => {
     return (
         <div className="col-md text-light">
             <div className="title-bar-bg">
-                <h5 className="p-1 text-center">Arrival or Pickup Details</h5>
+                <h5 className="p-2 text-center main-titles">Arrival or Pickup Details</h5>
             </div>
-            <div className="booking-form">
-                <div className="mb-3">
+            <div className="px-5 pb-4 pt-5 booking-form">
+                <div className="mb-3 form-sub-title">
                     <div className="py-2">
                         Pickup From:
                     </div>
@@ -58,6 +58,20 @@ const ArrivalDetailsForm = (params: any) => {
                                                 bookingService.arrivalBookingDetails.setDropPointOptionalAddress(e.target.value);
                                             }}/>
                     </div>
+                    <label htmlFor="date" className="col-form-label">
+                        Pickup Date:
+                    </label>
+                    <input type="date" className="form-control" id="date" required={true}
+                           placeholder="Select Pickup Date..." onChange={(e) => {
+                        bookingService.arrivalBookingDetails.setPickUpDate(new Date(e.target.value));
+                    }}/>
+                    <label htmlFor="time" className="col-form-label">
+                        Pickup Time: *
+                    </label>
+                    <input type="time" className="form-control" id="time" required={true} onChange={(e) => {
+                        let time = e.target.value.split(":");
+                        bookingService.arrivalBookingDetails.setPickUpTime(parseInt(time[0]), parseInt(time[1]));
+                    }}/>
                     <label htmlFor="date" className="col-form-label">
                         Flight/Train Arrival Date:
                     </label>
