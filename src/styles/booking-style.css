@@ -1,31 +1,38 @@
 .nav-bar-main {
     background-color: #001841;
 }
+
 .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right : 20px;
+    padding-right: 20px;
 }
+
 .nav-link-ex {
     color: white;
     font-weight: 500;
 }
+
 .nav-item-custom {
     padding-right: 50px;
 }
+
 .nav-link-ex:hover {
     color: #f57d01;
     font-weight: 500;
 }
+
 .signup-btn {
     background-image: linear-gradient(to bottom, #f37800, #fe9800);
     color: white;
     font-weight: 500;
 }
+
 .signup-btn:hover {
     background-image: linear-gradient(to bottom, #f37800, #fe9800);
     color: white;
     font-weight: 500;
     border: none;
 }
+
 .navbar-toggler {
     line-height: 0;
     font-size: inherit;
@@ -37,6 +44,7 @@
     transform: translateY(+30px);
     background-color: #870000;
 }
+
 .form-select, .form-control {
     border-radius: 10px;
 }
@@ -46,6 +54,7 @@
     border: 1px solid white;
     border-radius: 30px;
 }
+
 .title-bar-bg {
     margin: 0 auto;
     width: 60%;
@@ -54,13 +63,16 @@
     border: 1px solid #5291f7;
     transform: translateY(+20px);
 }
+
 .main-titles {
     margin: 0 auto;
 }
-.form-sub-title{
+
+.form-sub-title {
     color: #1e1e1e;
     font-weight: bold;
 }
+
 .adults-children {
     font-weight: normal;
 }
@@ -68,30 +80,34 @@
 .fare-section {
     background-color: #000d23;
 }
+
 .fare-main {
     width: 50%;
     margin: 0 auto;
 }
+
 .fare {
     font-weight: bold;
     font-style: italic;
 }
+
 .your-travel-fare {
     font-size: xxx-large;
     color: #00ff85;
 }
+
 .nighttime-charge {
     color: #df9396;
 }
+
 .btn-reservation-button {
     background-image: linear-gradient(to bottom, #f37800, #fe9800);
     color: white;
     font-weight: 500;
-    width: 20%;
     height: 30%;
-    transform: translateY(+100%);
-
+    padding: 20px;
 }
+
 .btn-reservation-button:hover {
     color: white;
     border: none;
