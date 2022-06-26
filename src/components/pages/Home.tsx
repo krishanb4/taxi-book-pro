@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import '../../styles/style.css'
+import '../../styles/style.scss'
 import {useService} from "react-service-locator";
 import {JourneyType} from "../../enums/journey-type";
 import {BookingService} from "../../services/booking-service";
@@ -64,6 +64,29 @@ const Home = () => {
         }
     }
 
+    async function onModeSelect(mode: JourneyType) {
+        bookingService.resetBookingDetails();
+        setJourneyType(mode);
+        bookingService.setJourneyType(mode);
+        bookingService.arrivalBookingDetails.setBookStatus(true);
+        bookingService.departureBookingDetails.setBookStatus(false);
+        await fetchPrice();
+    }
+
+    function buildModeButton(mode: JourneyType, title: string, image: string) {
+        return <button className={"nav-link nav-mode-tab"} data-bs-toggle="tab"
+                       onClick={async (e) => {
+                           e.preventDefault();
+                           await onModeSelect(mode);
+                       }}
+                       data-bs-target="#nav-arrival" type="button" role="tab" aria-controls="nav-home"
+                       aria-selected="true">
+            <div className="col-md nav-mode-img"><img className={"form-btn-svg"} src={image}
+                                                      alt=""/></div>
+            <div className="col-md nav-mode-label">{title}</div>
+        </button>;
+    }
+
     return (
         <div>
             <section className="nav-bar-main">
@@ -102,73 +125,15 @@ const Home = () => {
             <section className="form">
                 <div className="container p-5">
                     <img src={require("../../assets/images/pdt-logo-temp.png")} alt="pdtlogo" className="pb-5 logo"/>
-                    <nav>
-                        <div className="nav nav-tabs form-btn-main" id="nav-tab" role="tablist">
-                            <button className={"nav-link "} id="nav-arrival-tab" data-bs-toggle="tab"
-                                    onClick={async () => {
-                                        bookingService.resetBookingDetails();
-                                        setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
-                                        bookingService.setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
-                                        bookingService.arrivalBookingDetails.setBookStatus(true);
-                                        bookingService.departureBookingDetails.setBookStatus(false);
-                                        await fetchPrice();
-                                    }}
-                                    data-bs-target="#nav-arrival" type="button" role="tab" aria-controls="nav-home"
-                                    aria-selected="true">
-                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/road.svg"}
-                                                              alt=""/></span>
-                                <span className="col-md">Arrival</span>
-                            </button>
-                            <button className="nav-link" id="nav-departure-tab" data-bs-toggle="tab"
-                                    onClick={async () => {
-                                        bookingService.resetBookingDetails();
-                                        setJourneyType(JourneyType.DEPARTURE);
-                                        bookingService.setJourneyType(JourneyType.DEPARTURE);
-                                        bookingService.departureBookingDetails.setBookStatus(true);
-                                        bookingService.arrivalBookingDetails.setBookStatus(false);
-                                        await fetchPrice();
-                                    }}
-                                    data-bs-target="#nav-departure" type="button" role="tab" aria-controls="nav-profile"
-                                    aria-selected="false">
-                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/plane.svg"}
-                                                              alt=""/></span>
-                                <span className="col-md">Departure</span>
-                            </button>
-                            <button className="nav-link" id="nav-round-trip-tab" data-bs-toggle="tab"
-                                    onClick={async () => {
-                                        bookingService.resetBookingDetails();
-                                        setJourneyType(JourneyType.ROUND_TRIP);
-                                        bookingService.setJourneyType(JourneyType.ROUND_TRIP);
-                                        bookingService.arrivalBookingDetails.setBookStatus(true);
-                                        bookingService.departureBookingDetails.setBookStatus(true);
-                                        await fetchPrice();
-                                    }}
-                                    data-bs-target="#nav-round-trip" type="button" role="tab"
-                                    aria-controls="nav-contact"
-                                    aria-selected="false">
-                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/van.svg"}
-                                                              alt=""/></span>
-                                <span className="col-md">Round Trip</span>
-                            </button>
-                        </div>
-                    </nav>
-                    <div className="tab-content form-content p-5" id="nav-tabContent">
-                        <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
-                             aria-labelledby="nav-home-tab" tabIndex={0}>
-
-                        </div>
-                        <div className="tab-pane fade" id="nav-profile" role="tabpanel"
-                             aria-labelledby="nav-profile-tab"
-                             tabIndex={0}>
-
-                        </div>
-                        <div className="tab-pane fade" id="nav-contact" role="tabpanel"
-                             aria-labelledby="nav-contact-tab"
-                             tabIndex={0}>
-
-                        </div>
-                        <div className="container" style={{marginBottom: -100}}>
-                            <div className="row g-4">
+                    <br/><br/><br/><br/>
+                    <div className="tab-content home-form p-5">
+                        <div className="container" style={{marginBottom: -100, marginTop: -140}}>
+                            <div className="nav nav-tabs form-btn-main" id="nav-tab" role="tablist">
+                                {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, 'Arrival', '/assets/road.svg')}
+                                {buildModeButton(JourneyType.DEPARTURE, 'Arrival', '/assets/plane.svg')}
+                                {buildModeButton(JourneyType.ROUND_TRIP, 'Arrival', '/assets/van.svg')}
+                            </div>
+                            <div className="row g-4 mt-2">
                                 <div className="col-md py-3">
                                     <p className="subTitles">Pickup Location</p>
                                     <select className="form-select" defaultValue={"SELECTED"}

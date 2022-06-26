@@ -1,4 +1,4 @@
-import "../../styles/style.css"
+import "../../styles/style.scss"
 import {useService} from "react-service-locator";
 import {RecaptchaService} from "../../services/recaptcha-service";
 import ReCAPTCHA from "react-google-recaptcha";
