@@ -14,7 +14,7 @@ const Home = () => {
     const [priceMessage, setPriceMessage] = useState<string>("€ 0");
     const [adultCount, setAdultCount] = useState<number>(1);
     const [kidsCount, setKidsCount] = useState<number>(0);
-    const [buttonState, setButtonState] = useState<boolean>(true);
+    const [isPriceLoading, setIsPriceLoading] = useState<boolean>(false);
 
     useEffect(() => {
         bookingService.personalDetails.setAdultCount(adultCount);
@@ -40,19 +40,27 @@ const Home = () => {
         replace: false
     }), [navigate]);
 
-
-    function clear(event: any) {
-        event.preventDefault();
-    }
-
     // TODO - fetch prices separately for arrival and departure
     async function fetchPrice() {
+        setIsPriceLoading(true);
         let priceStr = await Helpers.fetchPrice(bookingService);
         if (priceStr === undefined) {
             setPriceMessage("€ 0");
+            setIsPriceLoading(false);
         } else {
             setPriceMessage(priceStr);
-            setButtonState(false);
+            setIsPriceLoading(false);
+        }
+    }
+
+    function onBookNowClick(e: any) {
+        e.preventDefault();
+        if (bookingService.journeyType === JourneyType.DEPARTURE) {
+            gotoDeparturePage();
+        } else if (bookingService.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
+            gotoArrivalPage();
+        } else {
+            gotoRoundTripPage();
         }
     }
 
@@ -61,8 +69,9 @@ const Home = () => {
             <section className="nav-bar-main">
                 <div className="container">
                     <div className="navbar navbar-expand-lg">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                            <span className="navbar-toggler-icon navbar-dark" />
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navmenu">
+                            <span className="navbar-toggler-icon navbar-dark"/>
                         </button>
                         <div className="collapse navbar-collapse" id="navmenu">
                             <ul className="navbar-nav me-auto">
@@ -90,12 +99,12 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="form" >
+            <section className="form">
                 <div className="container p-5">
                     <img src={require("../../assets/images/pdt-logo-temp.png")} alt="pdtlogo" className="pb-5 logo"/>
                     <nav>
                         <div className="nav nav-tabs form-btn-main" id="nav-tab" role="tablist">
-                            <button className={"nav-link "}  id="nav-arrival-tab" data-bs-toggle="tab"
+                            <button className={"nav-link "} id="nav-arrival-tab" data-bs-toggle="tab"
                                     onClick={async () => {
                                         bookingService.resetBookingDetails();
                                         setJourneyType(JourneyType.ARRIVAL_ONE_WAY);
@@ -106,7 +115,8 @@ const Home = () => {
                                     }}
                                     data-bs-target="#nav-arrival" type="button" role="tab" aria-controls="nav-home"
                                     aria-selected="true">
-                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/road.svg"} alt="" /></span>
+                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/road.svg"}
+                                                              alt=""/></span>
                                 <span className="col-md">Arrival</span>
                             </button>
                             <button className="nav-link" id="nav-departure-tab" data-bs-toggle="tab"
@@ -120,7 +130,8 @@ const Home = () => {
                                     }}
                                     data-bs-target="#nav-departure" type="button" role="tab" aria-controls="nav-profile"
                                     aria-selected="false">
-                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/plane.svg"} alt="" /></span>
+                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/plane.svg"}
+                                                              alt=""/></span>
                                 <span className="col-md">Departure</span>
                             </button>
                             <button className="nav-link" id="nav-round-trip-tab" data-bs-toggle="tab"
@@ -132,9 +143,11 @@ const Home = () => {
                                         bookingService.departureBookingDetails.setBookStatus(true);
                                         await fetchPrice();
                                     }}
-                                    data-bs-target="#nav-round-trip" type="button" role="tab" aria-controls="nav-contact"
+                                    data-bs-target="#nav-round-trip" type="button" role="tab"
+                                    aria-controls="nav-contact"
                                     aria-selected="false">
-                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/van.svg"} alt="" /></span>
+                                <span className="col-md"><img className={"form-btn-svg"} src={"/assets/van.svg"}
+                                                              alt=""/></span>
                                 <span className="col-md">Round Trip</span>
                             </button>
                         </div>
@@ -154,7 +167,7 @@ const Home = () => {
                              tabIndex={0}>
 
                         </div>
-                        <div className="container" style={{marginBottom:-110}}>
+                        <div className="container" style={{marginBottom: -100}}>
                             <div className="row g-4">
                                 <div className="col-md py-3">
                                     <p className="subTitles">Pickup Location</p>
@@ -228,15 +241,8 @@ const Home = () => {
                                         </span>
                                     </h4>
                                 </div>
-                                <button type="button" className="col-md p-3 btn btn-primary booknow-btn" disabled={buttonState} onClick={(e) => {
-                                    if (bookingService.journeyType === JourneyType.DEPARTURE) {
-                                        gotoDeparturePage();
-                                    } else if (bookingService.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
-                                        gotoArrivalPage();
-                                    } else {
-                                        gotoRoundTripPage();
-                                    }
-                                }}>
+                                <button type="button" className="col-md p-3 btn booknow-btn"
+                                        disabled={isPriceLoading} onClick={onBookNowClick}>
                                     Book Now
                                 </button>
                             </div>

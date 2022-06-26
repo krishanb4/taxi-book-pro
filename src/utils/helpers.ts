@@ -7,7 +7,7 @@ class Helpers {
         return personalDetails.getAdultCount() !== 0 && bookingDetails.getPickUpPoint() !== null && bookingDetails.getDropPoint() !== null;
     }
 
-    public static async fetchPrice(bookingService: BookingService) { // TODO - fetch prices separately for arrival and departure
+    public static async fetchPrice(bookingService: BookingService) {
         if (Helpers.validationBeforeFetchPrice(bookingService.arrivalBookingDetails, bookingService.personalDetails) ||
             Helpers.validationBeforeFetchPrice(bookingService.departureBookingDetails, bookingService.personalDetails)) {
             let p: any;
