@@ -14,8 +14,8 @@ const RecaptchaItem = () => {
         recaptchaService.setToken(value);
     }
 
-    return(
-        <div className={"pb-5 fare-section text-center"}>
+    return (
+        <div className={"pb-5 text-center recaptcha-box"}>
             <ReCAPTCHA
                 sitekey={AppConfig.recaptchaSiteKey}
                 onChange={onChangeRecaptcha}

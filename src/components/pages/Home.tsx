@@ -131,8 +131,8 @@ const Home = () => {
                             <div className={'home-form-header-bar'}>
                                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                     {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, 'Arrival', '/assets/road.svg')}
-                                    {buildModeButton(JourneyType.DEPARTURE, 'Arrival', '/assets/plane.svg')}
-                                    {buildModeButton(JourneyType.ROUND_TRIP, 'Arrival', '/assets/van.svg')}
+                                    {buildModeButton(JourneyType.DEPARTURE, 'Departure', '/assets/plane.svg')}
+                                    {buildModeButton(JourneyType.ROUND_TRIP, 'Round Trip', '/assets/van.svg')}
                                 </div>
                             </div>
                             <div className={'home-form-inner'}>

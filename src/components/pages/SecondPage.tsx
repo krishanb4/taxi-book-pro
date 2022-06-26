@@ -1,5 +1,6 @@
 import React, {useCallback} from "react";
 import '../../styles/booking-style.css';
+import '../../styles/second-page.scss';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../../config/firebase-config";
@@ -39,7 +40,7 @@ const SecondPage = (props: any) => {
     }
 
     return (
-        <div>
+        <div className={'second-page'}>
             <section className="nav-bar-main">
                 <div className="container">
                     <div className="navbar navbar-expand-lg">
@@ -87,7 +88,7 @@ const SecondPage = (props: any) => {
                 </section>
             </form>
 
-            <section className="travel-fare-banner  text-center">
+            <section className="travel-fare-banner text-center fare-section">
                 <RecaptchaItem/>
                 <PriceBanner formId={"booking-details-arrival"}/>
             </section>
