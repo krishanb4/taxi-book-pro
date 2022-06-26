@@ -11,7 +11,6 @@ import DepartureDetailsForm from "../forms/DepartureDetailsForm";
 import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
 import PriceBanner from "../banners/PriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
-import ReservationButton from "../items/ReservationButton";
 import {useNavigate} from "react-router-dom";
 
 const RoundTrip = () => {
@@ -47,22 +46,37 @@ const RoundTrip = () => {
 
     return (
         <div>
-            {/* Title Bar */}
-            <section className="bg-dark text-light p-3">
+            <section className="nav-bar-main">
                 <div className="container">
-                    <div className="titleBar">
-                        <div>
-                            <h1 className="titleBooking">Booking (Round Trip)</h1>
+                    <div className="navbar navbar-expand-lg">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                            <span className="navbar-toggler-icon navbar-dark" />
+                        </button>
+                        <div className="collapse navbar-collapse" id="navmenu">
+                            <ul className="navbar-nav me-auto">
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">HOME</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">BOOK NOW</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">UPCOMING TRANSFERS</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">RATES</a>
+                                </li>
+                                <li className="nav-item nav-item-custom">
+                                    <a href="#" className="nav-link nav-link-ex">CONTACT</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div>
-                            <p><a href="src/components/pages/RoundTrip#" className="btn-home">Home</a> / Booking</p>
-                        </div>
+                        <form className="d-flex" role="search">
+                            <button className="btn signup-btn" type="submit">SIGN UP</button>
+                        </form>
                     </div>
                 </div>
             </section>
-
-            {/* Note Banner */}
-            <NoteBanner/>
 
             {/* Forms */}
             <form id={"booking-details-round-trip"} onSubmit={(e) => {
@@ -70,6 +84,8 @@ const RoundTrip = () => {
                 clear(e);
             }}>
                 <section className="forms-main">
+                    {/* Note Banner */}
+                    <NoteBanner/>
                     <div className="container p-5">
                         <div className="row g-4">
                             <PersonalDetailsForm/>
@@ -87,9 +103,8 @@ const RoundTrip = () => {
             </form>
 
             <section className="travel-fare-banner  text-center">
-                <PriceBanner formId={"booking-details-round-trip"}/>
                 <RecaptchaItem/>
-                {/*<ReservationButton formId={"booking-details-round-trip"}/>*/}
+                <PriceBanner formId={"booking-details-round-trip"}/>
             </section>
         </div>
     );

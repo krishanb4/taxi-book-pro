@@ -16,18 +16,9 @@ const PriceBanner = (params: { formId: string | undefined; }) => {
                             className="fare">{bookingService.arrivalBookingDetails.isBooked()? bookingService.arrivalBookingDetails.getCost():bookingService.departureBookingDetails.getCost()}</span></span><br/>
                         <span className="nighttime-charge">Night Time Charge (Between 22:00 and 06:00) : € 15</span>
                     </div>
-                    {/*<button type="button" className="btn btn-reservation-button">Reserve Now</button>*/}
                     <ReservationButton formId={params.formId}/>
-
                 </div>
             </div>
-            {/*<h1>*/}
-            {/*    Your Travel Fare is <span*/}
-            {/*    className="fare">€ {bookingService.arrivalBookingDetails.isBooked()? bookingService.arrivalBookingDetails.getCost():bookingService.departureBookingDetails.getCost()}</span>*/}
-            {/*</h1>*/}
-            {/*<div className="lead">*/}
-            {/*    Night Time Charge (Between 22:00 and 06:00) : € 15*/}
-            {/*</div>*/}
         </div>
     );
 }

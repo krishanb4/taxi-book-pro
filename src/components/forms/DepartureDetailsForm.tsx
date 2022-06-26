@@ -15,10 +15,10 @@ const DepartureDetailsForm = (params: any) => {
     return (
         <div className="col-md text-light">
             <div className="title-bar-bg">
-                <h5 className="p-1 text-center">Departure or Pickup Details</h5>
+                <h5 className="p-2 text-center main-titles">Departure or Pickup Details</h5>
             </div>
-            <div className="booking-form">
-                <div className="mb-3">
+            <div className="px-5 pb-4 pt-5 booking-form">
+                <div className="mb-3 form-sub-title">
                     <div className="py-2">
                         Pickup From:
                     </div>
