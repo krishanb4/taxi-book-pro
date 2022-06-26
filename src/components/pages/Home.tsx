@@ -123,95 +123,96 @@ const Home = () => {
             </section>
 
             <section className="form">
-                <div className="container p-5">
+                <div className="container py-5">
                     <img src={require("../../assets/images/pdt-logo-temp.png")} alt="pdtlogo" className="pb-5 logo"/>
                     <br/><br/><br/><br/>
-                    <div className="tab-content home-form p-5">
-                        <div className="container" style={{marginBottom: -100, marginTop: -140}}>
-                            <div className="nav nav-tabs form-btn-main" id="nav-tab" role="tablist">
-                                {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, 'Arrival', '/assets/road.svg')}
-                                {buildModeButton(JourneyType.DEPARTURE, 'Arrival', '/assets/plane.svg')}
-                                {buildModeButton(JourneyType.ROUND_TRIP, 'Arrival', '/assets/van.svg')}
-                            </div>
-                            <div className="row g-4 mt-2">
-                                <div className="col-md py-3">
-                                    <p className="subTitles">Pickup Location</p>
-                                    <select className="form-select" defaultValue={"SELECTED"}
-                                            aria-label="Default select example" onChange={async (e) => {
-                                        if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
-                                            bookingService.departureBookingDetails.setPickUpPoint(e.target.value);
-                                        } else {
-                                            bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
-                                        }
-                                        await fetchPrice();
-                                    }}>
-                                        <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
-                                        {data.locations.map((item, key) => {
-                                            return (<option value={item} key={item}>{item}</option>)
-                                        })}
-                                    </select>
-                                </div>
-                                <div className="col-md py-3">
-                                    <p className="subTitles">Drop-off Location</p>
-                                    <select className="form-select" defaultValue={"SELECTED"}
-                                            aria-label="Default select example" onChange={async (e) => {
-                                        if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
-                                            bookingService.departureBookingDetails.setDropPoint(e.target.value);
-                                        } else {
-                                            bookingService.arrivalBookingDetails.setDropPoint(e.target.value);
-                                        }
-                                        await fetchPrice();
-                                    }}>
-                                        <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
-                                        {data.locations.map((item, key) => {
-                                            return (<option value={item} key={item}>{item}</option>)
-                                        })}
-                                    </select>
+                    <div className="tab-content home-form">
+                        <div className="home-form-outer">
+                            <div className={'home-form-header-bar'}>
+                                <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                    {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, 'Arrival', '/assets/road.svg')}
+                                    {buildModeButton(JourneyType.DEPARTURE, 'Arrival', '/assets/plane.svg')}
+                                    {buildModeButton(JourneyType.ROUND_TRIP, 'Arrival', '/assets/van.svg')}
                                 </div>
                             </div>
-                            <div className="row g-4">
-                                <div className="col-md py-3">
-                                    <p className="subTitles">Adult Riders</p>
-                                    <select className="form-select" aria-label="Default select example"
-                                            onChange={async (e) => {
-                                                setAdultCount(parseInt(e.target.value));
-                                                bookingService.personalDetails.setAdultCount(parseInt(e.target.value));
-                                                await fetchPrice();
-                                            }}>
-                                        {data.adultCounts.map((item, key) => {
-                                            return (<option value={item} key={item}>{item}</option>)
-                                        })}
-                                    </select>
+                            <div className={'home-form-inner'}>
+                                <div className="row g-4 mt-2">
+                                    <div className="col-md py-3">
+                                        <p className="subTitles">Pickup Location</p>
+                                        <select className="form-select" defaultValue={"SELECTED"}
+                                                aria-label="Default select example" onChange={async (e) => {
+                                            if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
+                                                bookingService.departureBookingDetails.setPickUpPoint(e.target.value);
+                                            } else {
+                                                bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
+                                            }
+                                            await fetchPrice();
+                                        }}>
+                                            <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
+                                            {data.locations.map((item, key) => {
+                                                return (<option value={item} key={item}>{item}</option>)
+                                            })}
+                                        </select>
+                                    </div>
+                                    <div className="col-md py-3">
+                                        <p className="subTitles">Drop-off Location</p>
+                                        <select className="form-select" defaultValue={"SELECTED"}
+                                                aria-label="Default select example" onChange={async (e) => {
+                                            if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
+                                                bookingService.departureBookingDetails.setDropPoint(e.target.value);
+                                            } else {
+                                                bookingService.arrivalBookingDetails.setDropPoint(e.target.value);
+                                            }
+                                            await fetchPrice();
+                                        }}>
+                                            <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
+                                            {data.locations.map((item, key) => {
+                                                return (<option value={item} key={item}>{item}</option>)
+                                            })}
+                                        </select>
+                                    </div>
                                 </div>
-                                <div className="col-md py-3">
-                                    <p className="subTitles">Child</p>
-                                    <select className="form-select" aria-label="Default select example"
-                                            onChange={async (e) => {
-                                                setKidsCount(parseInt(e.target.value));
-                                                bookingService.personalDetails.setChildCount(parseInt(e.target.value));
-                                                await fetchPrice();
-                                            }}>
-                                        {data.kidCounts.map((item, key) => {
-                                            return (<option value={item} key={item}>{item}</option>)
-                                        })}
-                                    </select>
-                                </div>
+                                <div className="row g-4">
+                                    <div className="col-md py-3">
+                                        <p className="subTitles">Adult Riders</p>
+                                        <select className="form-select" aria-label="Default select example"
+                                                onChange={async (e) => {
+                                                    setAdultCount(parseInt(e.target.value));
+                                                    bookingService.personalDetails.setAdultCount(parseInt(e.target.value));
+                                                    await fetchPrice();
+                                                }}>
+                                            {data.adultCounts.map((item, key) => {
+                                                return (<option value={item} key={item}>{item}</option>)
+                                            })}
+                                        </select>
+                                    </div>
+                                    <div className="col-md py-3">
+                                        <p className="subTitles">Child</p>
+                                        <select className="form-select" aria-label="Default select example"
+                                                onChange={async (e) => {
+                                                    setKidsCount(parseInt(e.target.value));
+                                                    bookingService.personalDetails.setChildCount(parseInt(e.target.value));
+                                                    await fetchPrice();
+                                                }}>
+                                            {data.kidCounts.map((item, key) => {
+                                                return (<option value={item} key={item}>{item}</option>)
+                                            })}
+                                        </select>
+                                    </div>
 
-                            </div>
-                            <div className="p-3 row g-0 travel-fare-group-main">
-                                <div className={"p-3 col-md text-center travel-fare-group "}>
-                                    <h4>Your Travel Fare -
-                                        <span className={"price"}>
-                                            {priceMessage}
-                                        </span>
-                                    </h4>
                                 </div>
-                                <button type="button" className="col-md p-3 btn booknow-btn"
-                                        disabled={isPriceLoading} onClick={onBookNowClick}>
-                                    Book Now
-                                </button>
                             </div>
-
+                            <div className="home-form-footer-bar">
+                                <div className="home-form-footer-bar-inner">
+                                    <div className={"text-center travel-fare-group"}>
+                                        <div>Your Travel Fare - <span className={"price"}> {priceMessage} </span></div>
+                                    </div>
+                                    <button type="button" className="btn booknow-btn"
+                                            disabled={isPriceLoading} onClick={onBookNowClick}>
+                                        Book Now
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

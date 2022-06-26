@@ -1,3 +1,10 @@
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
 .nav-bar-main {
   background-color: #001841;
 }
@@ -39,25 +46,21 @@
   color: white;
 }
 
-.form {
+body {
   background-image: url("../assets/images/home-bg-img-01.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 200px;
+}
+
+.form {
   height: calc(100vh - 56px);
 }
 
 .logo {
-  width: 30%;
-  height: auto;
-}
-
-.form-btn-main {
-  width: 40%;
-  background-color: #e2e1e5;
-  border-radius: 5px;
-  margin: 0 auto;
-  transform: translateY(+25px);
+  width: 100%;
+  max-width: 300px;
 }
 
 button.nav-link {
@@ -98,6 +101,49 @@ button.nav-link.active {
   background-color: rgba(255, 255, 255, 0.4);
   border: 1px solid white;
   border-radius: 30px;
+
+  .home-form-outer {
+    position: relative;
+
+    .home-form-header-bar {
+      width: 100%;
+      position: absolute;
+      top: -90px;
+
+      .nav {
+        max-width: 600px;
+        background-color: #e2e1e5;
+        border-radius: 5px;
+        margin: 0 auto;
+      }
+    }
+
+    .home-form-inner {
+      padding-left: 60px;
+      padding-right: 60px;
+      padding-bottom: 60px;
+
+      .nav-mode-tab {
+        .nav-mode-img {
+          margin-bottom: 10px;
+        }
+
+        .nav-mode-label {
+        }
+      }
+    }
+
+    .home-form-footer-bar {
+      width: 100%;
+      position: absolute;
+      bottom: -50px;
+
+      & > div {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+  }
 }
 
 .form-select {
@@ -109,11 +155,6 @@ button.nav-link.active {
   font-weight: bold;
 }
 
-
-.travel-fare-group-main {
-  margin: 0 auto;
-  width: 60%;
-}
 
 .travel-fare-group {
   background-color: #00ff85;
@@ -131,32 +172,57 @@ h4 {
   font-style: italic;
 }
 
-.booknow-btn {
-  width: 50px;
-  background-color: #e2e1e5;
-  color: #1e1e1e;
-  font-weight: bold;
-  font-size: x-large;
-  border-radius: 0 10px 10px 0;
-  border: none;
-}
+.home-form-footer-bar-inner {
+  display: flex;
+  flex-wrap: nowrap;
 
-.booknow-btn:hover {
-  width: 50px;
-  background-image: linear-gradient(to bottom, #f37800, #fe9800);
-  color: #1e1e1e;
-  font-weight: bold;
-  font-size: x-large;
-  border-radius: 0 10px 10px 0;
-  border: none;
-}
-
-.nav-mode-tab {
-  .nav-mode-img {
-    margin-bottom: 10px;
+  .travel-fare-group {
+    flex-grow: 1;
+    font-size: 26px;
+    padding: 1.5rem 0.75rem;
   }
 
-  .nav-mode-label {
+  .booknow-btn {
+    padding: 1.5rem 0.75rem;
+    flex-grow: 1;
+    background-color: #e2e1e5;
+    color: #1e1e1e;
+    font-weight: bold;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    font-size: 26px;
 
+    &:hover {
+      background-image: linear-gradient(to bottom, #f37800, #fe9800);
+    }
+  }
+
+}
+
+@media (max-width: $breakpoint-md) {
+  .home-form {
+    .home-form-outer {
+      .home-form-header-bar {
+        .nav {
+        }
+      }
+
+      .home-form-inner {
+        .nav-mode-tab {
+          .nav-mode-img {
+          }
+
+          .nav-mode-label {
+          }
+        }
+      }
+
+      .home-form-footer-bar {
+        bottom: -90px;
+
+        & > div {
+        }
+      }
+    }
   }
 }
