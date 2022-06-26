@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback} from "react";
 import '../../styles/booking-style.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
@@ -19,9 +19,6 @@ const RoundTrip = () => {
     const gotoHomePage = useCallback(() => navigate(`/`, {
         replace: false
     }), [navigate]);
-
-    useEffect(() => {
-    }, [])
 
     const bookingService = useService(BookingService);
 
@@ -49,8 +46,9 @@ const RoundTrip = () => {
             <section className="nav-bar-main">
                 <div className="container">
                     <div className="navbar navbar-expand-lg">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                            <span className="navbar-toggler-icon navbar-dark" />
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navmenu">
+                            <span className="navbar-toggler-icon navbar-dark"/>
                         </button>
                         <div className="collapse navbar-collapse" id="navmenu">
                             <ul className="navbar-nav me-auto">
@@ -86,7 +84,7 @@ const RoundTrip = () => {
                 <section className="forms-main">
                     {/* Note Banner */}
                     <NoteBanner/>
-                    <div className="container p-5">
+                    <div className="container">
                         <div className="row g-4">
                             <PersonalDetailsForm/>
                             <ArrivalDetailsForm/>

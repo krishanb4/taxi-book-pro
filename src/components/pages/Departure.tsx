@@ -1,18 +1,15 @@
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback} from "react";
 import '../../styles/booking-style.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../../config/firebase-config";
 import {useService} from "react-service-locator";
 import {BookingService} from "../../services/booking-service";
-import {StateService} from "../../services/state-service";
-import data from "../../data/data.json"
 import NoteBanner from "../banners/NoteBanner";
 import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import DepartureDetailsForm from "../forms/DepartureDetailsForm";
 import PriceBanner from "../banners/PriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
-import ReservationButton from "../items/ReservationButton";
 import {useNavigate} from "react-router-dom";
 
 const Departure = () => {
@@ -21,9 +18,6 @@ const Departure = () => {
     const gotoHomePage = useCallback(() => navigate(`/`, {
         replace: false
     }), [navigate]);
-
-    useEffect(()=>{
-    },[])
 
     const bookingService = useService(BookingService);
 
@@ -88,7 +82,7 @@ const Departure = () => {
                 <section className="forms-main">
                     {/* Note Banner */}
                     <NoteBanner/>
-                    <div className="container p-5">
+                    <div className="container">
                         <div className="row g-4">
                             <PersonalDetailsForm/>
                             <DepartureDetailsForm/>

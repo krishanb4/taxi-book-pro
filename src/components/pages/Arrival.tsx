@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from "react";
+import React, {useCallback} from "react";
 import '../../styles/booking-style.css';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
@@ -10,7 +10,6 @@ import PersonalDetailsForm from "../forms/PersonalDetailsForm";
 import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
 import PriceBanner from "../banners/PriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
-import ReservationButton from "../items/ReservationButton";
 import {useNavigate} from "react-router-dom";
 
 const Arrival = (params: any) => {
@@ -29,9 +28,6 @@ const Arrival = (params: any) => {
         }
     );
 
-    useEffect(() => {
-    }, [])
-
     function clear(event: any) {
         event.preventDefault();
         event.target.reset();
@@ -49,8 +45,9 @@ const Arrival = (params: any) => {
             <section className="nav-bar-main">
                 <div className="container">
                     <div className="navbar navbar-expand-lg">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                            <span className="navbar-toggler-icon navbar-dark" />
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navmenu">
+                            <span className="navbar-toggler-icon navbar-dark"/>
                         </button>
                         <div className="collapse navbar-collapse" id="navmenu">
                             <ul className="navbar-nav me-auto">
@@ -86,8 +83,8 @@ const Arrival = (params: any) => {
                 <section className="forms-main">
                     {/* Note Banner */}
                     <NoteBanner/>
-                    <div className="container p-5">
-                        <div className="row g-4">
+                    <div className="container">
+                        <div className="row">
                             <PersonalDetailsForm/>
                             <ArrivalDetailsForm/>
                         </div>
