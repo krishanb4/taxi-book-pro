@@ -81,12 +81,12 @@ const ArrivalDetailsForm = (params: any) => {
                 Flight/Train Coming From:
             </label>
             <input type="text" className="form-control" id="flight-coming-from"
-                   placeholder="From where your Flight/ Train is coming?"/>
+                   placeholder="From where your Flight/ Train is coming?" onChange={(e)=>bookingService.arrivalBookingDetails.setFlightComeFrom(e.target.value)}/>
             <label htmlFor="flight-num" className="col-form-label">
                 Flight/Train Number:
             </label>
             <input type="text" className="form-control" id="flight-num"
-                   placeholder="Number of your Flight or Train"/>
+                   placeholder="Number of your Flight or Train" onChange={(e)=>bookingService.arrivalBookingDetails.setFlightNumberStr(e.target.value)}/>
         </div>
     </SectionFrame>
 }

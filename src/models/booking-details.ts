@@ -13,6 +13,25 @@ export class BookingDetails {
     private _flightDetailsNote: string | null = null;
     private _flightArrivalDate: Date = new Date();
     private _pickUpDate: Date = new Date();
+    private _flightNumberStr: string | null = null;
+    private _flightComeFrom: string | null = null;
+
+
+    public getFlightComeFrom(): string | null {
+        return this._flightComeFrom;
+    }
+
+    public setFlightComeFrom(value: string) {
+        this._flightComeFrom = value;
+    }
+
+    public getFlightNumberStr(): string | null {
+        return this._flightNumberStr;
+    }
+
+    public setFlightNumberStr(value: string) {
+        this._flightNumberStr = value;
+    }
 
     public setPickUpTime(hrs: number, min: number) {
         this._pickUpDate.setHours(hrs);
@@ -117,6 +136,8 @@ export class BookingDetails {
             flightArrivalDate: this._flightArrivalDate,
             isBooked: this._isBooked,
             pickUpDate: this._pickUpDate,
+            flightComeFrom:this._flightComeFrom,
+            flightNumber:this._flightNumberStr
         }
     }
 
