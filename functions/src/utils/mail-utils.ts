@@ -7,6 +7,7 @@ import phones from "../data/phones.json";
 import Email from "email-templates";
 import path from "path";
 import {DataExtractUtils} from "./data-extract-utils";
+import {BackendConfig} from "../config/backend-config";
 
 // eslint-disable-next-line require-jsdoc
 export class MailUtils {
@@ -14,17 +15,17 @@ export class MailUtils {
     public static async triggerEmail(snap: QueryDocumentSnapshot) {
 
         const transport = nodemailer.createTransport({
-            host: "smtp.gmail.com",
+            host: BackendConfig.emailCredentials.host,
             port: 465,
             secure: true,
             auth: {
-                user: "defyngames@gmail.com",
-                pass: "fjrzafzlfmhetbmo",
+                user: BackendConfig.emailCredentials.username,
+                pass: BackendConfig.emailCredentials.password,
             },
         });
         const customerEmail = new Email({
             message: {
-                from: "defyngames@gmail.com"
+                from: BackendConfig.emailCredentials.username
             },
             // uncomment below to send emails in development/test env:
             send: true,
@@ -32,7 +33,7 @@ export class MailUtils {
         });
         const ownerEmail = new Email({
             message: {
-                from: "defyngames@gmail.com"
+                from: BackendConfig.emailCredentials.username
             },
             // uncomment below to send emails in development/test env:
             send: true,
