@@ -15,12 +15,10 @@ const Home = () => {
     const uiService = useService(UiService);
     const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.arrivalBookingDetails.getJourneyType());
     const [priceMessage, setPriceMessage] = useState<string>("€ 0");
-    const [adultCount, setAdultCount] = useState<number>(1);
-    const [kidsCount, setKidsCount] = useState<number>(0);
     const [isPriceLoading, setIsPriceLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        bookingService.personalDetails.setAdultCount(adultCount);
+        bookingService.personalDetails.setAdultCount(bookingService.personalDetails.getAdultCount());
         if (bookingService.getJourneyType() === JourneyType.ROUND_TRIP) {
             bookingService.arrivalBookingDetails.setBookStatus(true);
             bookingService.departureBookingDetails.setBookStatus(true);
@@ -31,6 +29,7 @@ const Home = () => {
             bookingService.arrivalBookingDetails.setBookStatus(false);
             bookingService.departureBookingDetails.setBookStatus(true);
         }
+        fetchPrice().then();
     }, []);
 
     const gotoArrivalPage = useCallback(() => navigate(`/arrival`, {
@@ -76,7 +75,6 @@ const Home = () => {
     }
 
     async function onModeSelect(mode: JourneyType) {
-        bookingService.resetBookingDetails();
         setJourneyType(mode);
         bookingService.setJourneyType(mode);
         bookingService.arrivalBookingDetails.setBookStatus(true);
@@ -85,7 +83,7 @@ const Home = () => {
     }
 
     function buildModeButton(mode: JourneyType, title: string, image: string) {
-        return <button className={"nav-link nav-mode-tab"} data-bs-toggle="tab"
+        return <button className={"nav-link nav-mode-tab" + (bookingService.state.journeyType===mode?" active":"")} data-bs-toggle="tab"
                        onClick={async (e) => {
                            e.preventDefault();
                            await onModeSelect(mode);
@@ -160,8 +158,8 @@ const Home = () => {
                                     <div className="col-md py-3">
                                         <p className="subTitles">Adult Riders</p>
                                         <select className="form-select" aria-label="Default select example"
+                                                defaultValue={bookingService.personalDetails.getAdultCount()}
                                                 onChange={async (e) => {
-                                                    setAdultCount(parseInt(e.target.value));
                                                     bookingService.personalDetails.setAdultCount(parseInt(e.target.value));
                                                     await fetchPrice();
                                                 }}>
@@ -173,8 +171,8 @@ const Home = () => {
                                     <div className="col-md py-3">
                                         <p className="subTitles">Child</p>
                                         <select className="form-select" aria-label="Default select example"
+                                                defaultValue={bookingService.personalDetails.getChildCount()}
                                                 onChange={async (e) => {
-                                                    setKidsCount(parseInt(e.target.value));
                                                     bookingService.personalDetails.setChildCount(parseInt(e.target.value));
                                                     await fetchPrice();
                                                 }}>
