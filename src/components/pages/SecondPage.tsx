@@ -10,6 +10,7 @@ import NoteBanner from "../banners/NoteBanner";
 import PriceBanner from "../banners/PriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
 import {useNavigate} from "react-router-dom";
+import {MainNavbar} from "../banners/MainNavbar";
 
 const SecondPage = (props: any) => {
 
@@ -42,36 +43,9 @@ const SecondPage = (props: any) => {
     return (
         <div className={'second-page'}>
             <section className="nav-bar-main">
-                <div className="container">
-                    <div className="navbar navbar-expand-lg">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navmenu">
-                            <span className="navbar-toggler-icon navbar-dark"/>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navmenu">
-                            <ul className="navbar-nav me-auto">
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">HOME</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">BOOK NOW</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">UPCOMING TRANSFERS</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">RATES</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">CONTACT</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <form className="d-flex" role="search">
-                            <button className="btn signup-btn" type="submit">SIGN UP</button>
-                        </form>
-                    </div>
-                </div>
+                <section className="nav-bar-main">
+                    <MainNavbar src={require('../../assets/logos/ppt-mini-logo.png')}/>
+                </section>
             </section>
 
             {/* Forms */}

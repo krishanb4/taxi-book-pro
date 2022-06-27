@@ -6,6 +6,7 @@ import {BookingService} from "../../services/booking-service";
 import data from "../../data/data.json"
 import Helpers from "../../utils/helpers";
 import {useNavigate} from "react-router-dom";
+import {MainNavbar} from "../banners/MainNavbar";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -90,41 +91,14 @@ const Home = () => {
     return (
         <div>
             <section className="nav-bar-main">
-                <div className="container">
-                    <div className="navbar navbar-expand-lg">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navmenu">
-                            <span className="navbar-toggler-icon navbar-dark"/>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navmenu">
-                            <ul className="navbar-nav me-auto">
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">HOME</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">BOOK NOW</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">UPCOMING TRANSFERS</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">RATES</a>
-                                </li>
-                                <li className="nav-item nav-item-custom">
-                                    <a href="#" className="nav-link nav-link-ex">CONTACT</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <form className="d-flex" role="search">
-                            <button className="btn signup-btn" type="submit">SIGN UP</button>
-                        </form>
-                    </div>
-                </div>
+                <MainNavbar src={require('../../assets/logos/ppt-mini-logo.png')}/>
             </section>
 
             <section className="form">
                 <div className="container py-5">
-                    <img src={require("../../assets/images/pdt-logo-temp.png")} alt="pdtlogo" className="pb-5 logo"/>
+                    <div className={'d-flex'}>
+                        <img src={require("../../assets/logos/ppt-logo.png")} alt="pdtlogo"
+                             className="pb-5 logo m-auto"/></div>
                     <br/><br/><br/><br/>
                     <div className="tab-content home-form">
                         <div className="home-form-outer">

@@ -41,8 +41,8 @@
 
 
 .note {
-    transform: translateY(+30px);
     background-color: #870000;
+    line-height: 2;
 }
 
 .form-select, .form-control {
