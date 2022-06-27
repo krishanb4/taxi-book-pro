@@ -26,9 +26,8 @@ export function MainNavbar(props: { src: any }) {
                     </li>
                 </ul>
             </div>
-            <form className="d-flex" role="search">
-                <button className="btn signup-btn" type="submit">SIGN UP</button>
-            </form>
+            <a className="btn signup-btn" href="tel:8665562570" type="submit">CALL +3(360)
+                582-2259</a>
         </div>
     </div>;
 }
