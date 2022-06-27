@@ -83,7 +83,7 @@ const Home = () => {
     }
 
     function buildModeButton(mode: JourneyType, title: string, image: string) {
-        return <button className={"nav-link nav-mode-tab"} data-bs-toggle="tab"
+        return <button className={"nav-link nav-mode-tab" + (bookingService.state.journeyType===mode?" active":"")} data-bs-toggle="tab"
                        onClick={async (e) => {
                            e.preventDefault();
                            await onModeSelect(mode);
