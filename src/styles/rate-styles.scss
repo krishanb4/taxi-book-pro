@@ -12,35 +12,19 @@
   }
 
   .style02 {
-    color: #ffffff;
+    color: black;
     font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.61);
   }
 
   .style03 {
-    color: #ffffff;
+    color: black;
     font-size: 15px;
     cursor: pointer;
     font-weight: 600;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.61);
     height: 54px;
 
-  }
-
-  td.style03:hover span#price {
-    color: #fff;
-    display: none;
-  }
-
-  td.style03 span#button {
-    color: #fff;
-    display: none;
-    line-height: 16px;
-    font-size: 13px;
-  }
-
-  td.style03:hover span#button {
-    display: block;
   }
 
   .align-left {
