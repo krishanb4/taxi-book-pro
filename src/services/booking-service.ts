@@ -7,6 +7,7 @@ import {RecaptchaService} from "./recaptcha-service";
 
 export interface IBookingServiceState {
     isBusy: boolean;
+    journeyType: JourneyType;
 }
 
 @Service()
@@ -19,6 +20,7 @@ export class BookingService extends StatefulService<IBookingServiceState> {
 
     static readonly initialState: IBookingServiceState = {
         isBusy: false,
+        journeyType: JourneyType.ARRIVAL_ONE_WAY,
     };
 
     @Inject(RecaptchaService)
@@ -56,32 +58,25 @@ export class BookingService extends StatefulService<IBookingServiceState> {
         return [""];
     }
 
-    public async getPrice(): Promise<number> { // TODO - fetch prices from cloud
-        if (this.journeyType === JourneyType.DEPARTURE) {
-            return 25;
-        } else if(this.journeyType === JourneyType.ARRIVAL_ONE_WAY){
-            return 30;
-        }else{
-            return 40;
-        }
-    }
 
-    public setArrivalPrice(){
+    public setArrivalPrice() {
         this.arrivalBookingDetails.setCost(25);
     }
 
-    public setDeparturePrice(){
+    public setDeparturePrice() {
         this.departureBookingDetails.setCost(25);
     }
 
     public setJourneyType(value: JourneyType) {
         this.journeyType = value;
+        this.setState({...this.state, journeyType:value})
     }
 
     public getJourneyType(): JourneyType {
         return this.journeyType;
     }
-    public validateInitialData() : boolean{
+
+    public validateInitialData(): boolean {
         return true;
     }
 }
