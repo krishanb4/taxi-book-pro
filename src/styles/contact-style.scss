@@ -1,0 +1,32 @@
+.contact-main {
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid white;
+  border-radius: 30px;
+  color: black;
+}
+
+.contact-main-title {
+  color: white;
+  font-weight: bold;
+  margin: 0 auto;
+  width: 50%;
+  background-image: linear-gradient(to bottom, #03296a, #011b46);
+  border-radius: 10px;
+  border: 1px solid #5291f7;
+  transform: translateY(-50%);
+}
+
+.contact-title {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.contact-sub-title {
+  font-size: large;
+  font-weight: bold;
+}
+
+.contact-details {
+  font-weight: normal;
+}

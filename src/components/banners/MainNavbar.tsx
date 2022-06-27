@@ -13,20 +13,17 @@ export function MainNavbar(props: { src: any }) {
             <div className="collapse navbar-collapse" id="navmenu">
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item nav-item-custom">
-                        <Link to={'/'} className="nav-link nav-link-ex">HOME</Link>
-                    </li>
-                    <li className="nav-item nav-item-custom">
                         <Link to={'/'} className="nav-link nav-link-ex">BOOK NOW</Link>
                     </li>
                     <li className="nav-item nav-item-custom">
                         <Link to={'/rates'} className="nav-link nav-link-ex">RATES</Link>
                     </li>
                     <li className="nav-item nav-item-custom">
-                        <a href="#" className="nav-link nav-link-ex">CONTACT</a>
+                        <Link to={'/contact'} className="nav-link nav-link-ex">CONTACT</Link>
                     </li>
                 </ul>
             </div>
-            <a className="btn signup-btn" href="tel:8665562570" type="submit">CALL +3(360)
+            <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +3(360)
                 582-2259</a>
         </div>
     </div>;
