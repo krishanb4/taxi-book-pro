@@ -7,10 +7,12 @@ import data from "../../data/data.json"
 import Helpers from "../../utils/helpers";
 import {useNavigate} from "react-router-dom";
 import {MainNavbar} from "../banners/MainNavbar";
+import {UiService} from "../../services/ui-service";
 
 const Home = () => {
     const navigate = useNavigate();
     const bookingService = useService(BookingService);
+    const uiService = useService(UiService);
     const [journeyType, setJourneyType] = useState<JourneyType>(bookingService.arrivalBookingDetails.getJourneyType());
     const [priceMessage, setPriceMessage] = useState<string>("€ 0");
     const [adultCount, setAdultCount] = useState<number>(1);
@@ -54,7 +56,15 @@ const Home = () => {
         }
     }
 
-    function onBookNowClick(e: any) {
+    async function onBookNowClick(e: any) {
+        const isDataValid = bookingService.validateInitialData();
+        if (!isDataValid) {
+            await uiService.addMessageAlert({
+                title: 'Cannot proceed!',
+                subtitle: 'Please complete booking details before continuing.'
+            });
+            return;
+        }
         e.preventDefault();
         if (bookingService.journeyType === JourneyType.DEPARTURE) {
             gotoDeparturePage();

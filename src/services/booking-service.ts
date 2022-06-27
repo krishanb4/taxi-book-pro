@@ -81,5 +81,7 @@ export class BookingService extends StatefulService<IBookingServiceState> {
     public getJourneyType(): JourneyType {
         return this.journeyType;
     }
-
+    public validateInitialData() : boolean{
+        return true;
+    }
 }
