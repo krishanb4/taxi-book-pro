@@ -47,7 +47,7 @@ const Home = () => {
         setIsPriceLoading(true);
         let priceStr = await Helpers.fetchPrice(bookingService);
         if (priceStr === undefined) {
-            setPriceMessage("€ 0");
+            setPriceMessage("N/A");
             setIsPriceLoading(false);
         } else {
             setPriceMessage(priceStr);
