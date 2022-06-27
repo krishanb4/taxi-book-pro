@@ -1,10 +1,11 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export function MainNavbar(props: { src: any }) {
     return <div className="container">
         <div className="navbar navbar-expand-lg">
-            <a className="navbar-brand" href="#"><img height={50} src={props.src}
-                                                      alt=""/></a>
+            <Link className="navbar-brand" to={'/'}><img height={50} src={props.src}
+                                                         alt=""/></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navmenu">
                 <span className="navbar-toggler-icon navbar-dark"/>
@@ -12,16 +13,13 @@ export function MainNavbar(props: { src: any }) {
             <div className="collapse navbar-collapse" id="navmenu">
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item nav-item-custom">
-                        <a href="#" className="nav-link nav-link-ex">HOME</a>
+                        <Link to={'/'} className="nav-link nav-link-ex">HOME</Link>
                     </li>
                     <li className="nav-item nav-item-custom">
-                        <a href="#" className="nav-link nav-link-ex">BOOK NOW</a>
+                        <Link to={'/'} className="nav-link nav-link-ex">BOOK NOW</Link>
                     </li>
                     <li className="nav-item nav-item-custom">
-                        <a href="#" className="nav-link nav-link-ex">UPCOMING TRANSFERS</a>
-                    </li>
-                    <li className="nav-item nav-item-custom">
-                        <a href="#" className="nav-link nav-link-ex">RATES</a>
+                        <Link to={'/rates'} className="nav-link nav-link-ex">RATES</Link>
                     </li>
                     <li className="nav-item nav-item-custom">
                         <a href="#" className="nav-link nav-link-ex">CONTACT</a>

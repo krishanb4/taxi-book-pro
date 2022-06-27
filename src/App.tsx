@@ -5,6 +5,7 @@ import Home from "./components/pages/Home";
 import Departure from "./components/pages/Departure";
 import RoundTrip from "./components/pages/RoundTrip";
 import {Route, Routes} from "react-router-dom";
+import {Rates} from "./components/pages/Rates";
 
 export const App: React.FC = () => {
     useEffect(() => {
@@ -18,6 +19,7 @@ export const App: React.FC = () => {
                 <Route path='/arrival' element={<Arrival/>}/>
                 <Route path='/departure' element={<Departure/>}/>
                 <Route path='/round-trip' element={<RoundTrip/>}/>
+                <Route path='/rates' element={<Rates/>}/>
             </Routes>
         </div>
     );
