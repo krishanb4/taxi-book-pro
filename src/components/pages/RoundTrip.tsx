@@ -1,28 +1,46 @@
-import React from "react";
+import React, {useEffect} from "react";
 import '../../styles/booking-style.css';
-import OldPersonalDetailsForm from "../forms/OldPersonalDetailsForm";
-import OldDepartureDetailsForm from "../forms/OldDepartureDetailsForm";
-import OldArrivalDetailsForm from "../forms/OldArrivalDetailsForm";
-import OldSecondPage from "./OldSecondPage";
 import {useService} from "react-service-locator";
-import {BookingService} from "../../services/booking-service";
+import {PersonalDetailsForm} from "../forms/PersonalDetailsForm";
+import {SecondPage} from "./SecondPage";
+import {ArrivalDetailsForm} from "../forms/ArrivalDetailsForm";
+import {DepartureDetailsForm} from "../forms/DepartureDetailsForm";
+import {FieldValue, useForm, UseFormReturn} from "react-hook-form";
+import {ReservationService} from "../../services/reservation-service";
+import {TripProcessor} from "../../data/json/trip-processor";
+import {IPersonData} from "../../definitions/i-person-data";
+import {IBookingInfo} from "../../definitions/i-booking-info";
 
-const RoundTrip = () => {
-    const bookingService = useService(BookingService);
+export const RoundTrip = () => {
 
-    // function priceFetch() {
-    //     if(bookingService.arrivalBookingDetails.getPickUpPoint()==)
-    // }
-    return <OldSecondPage>
-        <div className="row">
-            <OldPersonalDetailsForm/>
-            <OldArrivalDetailsForm/>
-        </div>
-        <div className="row row-cols-2">
-            <OldDepartureDetailsForm/>
-        </div>
-    </OldSecondPage>
+    const formHook: UseFormReturn<FieldValue<any>> = useForm();
+    const reservationService = useService(ReservationService);
+
+    useEffect(() => {
+        console.log(reservationService.state);
+        console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
+    }, [reservationService.state]);
+
+    const onChangeForm = () => {
+        reservationService.setFormData({
+            personalFormData: formHook.getValues() as IPersonData,
+            arrivalFromDetails: formHook.getValues() as IBookingInfo,
+            departureFormDetails: formHook.getValues() as IBookingInfo,
+        })
+
+    };
+
+    return <form id={"booking-details-departure"} onChange={onChangeForm}>
+        <SecondPage formHook={formHook}>
+            <div className="row">
+                <PersonalDetailsForm formHook={formHook}/>
+                <ArrivalDetailsForm formHook={formHook}/>
+            </div>
+            <div className="row row-cols-2">
+                <DepartureDetailsForm formHook={formHook}/>
+            </div>
+        </SecondPage>
+    </form>
 
 }
 
-export default RoundTrip;
