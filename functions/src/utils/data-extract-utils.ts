@@ -1,5 +1,8 @@
 // eslint-disable-next-line require-jsdoc
 import {QueryDocumentSnapshot} from "firebase-functions/lib/providers/firestore";
+import _ from "lodash";
+import {firestore} from "firebase-admin";
+import Timestamp = firestore.Timestamp;
 
 // eslint-disable-next-line require-jsdoc
 export class DataExtractUtils {
@@ -18,14 +21,8 @@ export class DataExtractUtils {
         }
     }
 
-    public static getCost(snap: QueryDocumentSnapshot): number {
-        if (snap.data().journeyType === 0) {
-            return snap.data().arrival.cost;
-        } else if (snap.data().journeyType === 1) {
-            return snap.data().arrival.cost;
-        } else {
-            return snap.data().departure.cost;
-        }
+    public static getCost(snap: QueryDocumentSnapshot): string {
+        return snap.data().cost;
     }
 
     public static getCustomerName(snap: QueryDocumentSnapshot): string {
@@ -53,11 +50,12 @@ export class DataExtractUtils {
     }
 
     public static getPersonCount(snap: QueryDocumentSnapshot): number {
-        return snap.data().personalDetails.adultCount + snap.data().personalDetails.childCount;
+        return _.toNumber(snap.data().personalDetails.adultCount) + _.toNumber(snap.data().personalDetails.childCount);
     }
 
     public static getBookedDate(snap: QueryDocumentSnapshot): string {
-        return snap.data().created.toString();
+        const created: Timestamp = snap.data().created;
+        return created.toDate().toUTCString();
     }
 
     public static getPhone(snap: QueryDocumentSnapshot): string {
@@ -70,11 +68,11 @@ export class DataExtractUtils {
 
     public static getTripDate(snap: QueryDocumentSnapshot): string {
         if (snap.data().journeyType === 0) {
-            return snap.data().arrival.pickUpDate;
+            return `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}`;
         } else if (snap.data().journeyType === 1) {
-            return snap.data().arrival.pickUpDate;
+            return `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}`;
         } else {
-            return snap.data().departure.pickUpDate;
+            return `${snap.data().departure.pickUpDate} ${snap.data().departure.pickUpTime}`;
         }
     }
 }

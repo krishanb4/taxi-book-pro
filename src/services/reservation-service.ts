@@ -28,7 +28,8 @@ interface IReservationSubmissionData {
     created: any;
     recaptchaToken: string | null | undefined;
     personalDetails: IPersonData | null;
-    departure: IBookingInfo | null
+    departure: IBookingInfo | null;
+    cost: string;
 }
 
 @Service()
@@ -101,7 +102,8 @@ export class ReservationService extends StatefulService<IReservationServiceState
             recaptchaToken: this.recaptchaService?.getToken(),
             personalDetails: this.state.personalFormData,
             arrival: this.state.arrivalFromDetails,
-            departure: this.state.departureFormDetails
+            departure: this.state.departureFormDetails,
+            cost: this.secondPageTripPrice,
         };
         console.log(submissionData);
         if (AppConfig.isFakeSubmit) {
@@ -167,7 +169,7 @@ export class ReservationService extends StatefulService<IReservationServiceState
         }
     }
 
-    get secondPageTripPrice(): string | null {
+    get secondPageTripPrice(): string {
         let fetchedPrice: string | null = null;
         switch (this.state.journeyType) {
             case JourneyType.ARRIVAL_ONE_WAY:
