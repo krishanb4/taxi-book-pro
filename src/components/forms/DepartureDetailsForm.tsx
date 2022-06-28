@@ -49,7 +49,7 @@ export const DepartureDetailsForm = (params: any) => {
                        placeholder="Select Pickup Date..."  {...reservationService.departureFormHook.register("pickUpDate", {required: true})}/>
 
                 <label htmlFor="time" className="col-form-label">
-                    Pickup Time: *
+                    Pickup Time (CET): *
                 </label>
                 <input type="time" className="form-control"
                        id="time" {...reservationService.departureFormHook.register("pickUpTime", {required: true})} />

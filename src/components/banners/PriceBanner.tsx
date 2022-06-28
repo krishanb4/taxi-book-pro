@@ -1,12 +1,18 @@
 import "../../styles/booking-style.css"
-import React from "react";
+import React, {useCallback} from "react";
 import {useService} from "react-service-locator";
 import {RecaptchaService} from "../../services/recaptcha-service";
 import {ReservationService} from "../../services/reservation-service";
+import {useNavigate} from "react-router-dom";
 
 export const PriceBanner = (params: any) => {
     const recaptchaService = useService(RecaptchaService);
     const reservationService = useService(ReservationService);
+    const navigate = useNavigate();
+
+    const gotoHomePage = useCallback(() => navigate(`/reroutehome`, {
+        replace: true
+    }), [navigate]);
 
     return (
         <div className="price-info-bar">
@@ -19,9 +25,11 @@ export const PriceBanner = (params: any) => {
                         <span className="nighttime-charge">Night Time Charge (Between 22:00 and 06:00) : € 15</span>
                     </div>
                     <button type="button" className="btn btn-reservation-button"
-                            disabled={recaptchaService.isTokenExpired()} onClick={(e) => {
+                            disabled={recaptchaService.isTokenExpired()} onClick={async (e) => {
                         e.preventDefault();
-                        reservationService.onSecondPageSubmit();
+                        await reservationService.onSecondPageSubmit();
+                        gotoHomePage();
+
                     }}>Submit
                         Reservation
                     </button>

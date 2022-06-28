@@ -6,6 +6,10 @@ import {JourneyType} from "../enums/journey-type";
 import {IBookingInfo} from "../definitions/i-booking-info";
 import {FieldValue, UseFormReturn} from "react-hook-form";
 import {TripProcessor} from "../data/json/trip-processor";
+import {addDoc, collection, serverTimestamp} from "firebase/firestore";
+import {db} from "../config/firebase-config";
+import {AppConfig} from "../config/app-config";
+import Helpers from "../utils/helpers";
 
 export interface IReservationServiceState {
     homeFormData: IHomeData | null;
@@ -14,6 +18,16 @@ export interface IReservationServiceState {
     arrivalFromDetails: IBookingInfo | null;
     departureFormDetails: IBookingInfo | null;
     isFormsReady: boolean;
+    isSubmitting: boolean;
+}
+
+interface IReservationSubmissionData {
+    journeyType: JourneyType;
+    arrival: IBookingInfo | null;
+    created: any;
+    recaptchaToken: string | null | undefined;
+    personalDetails: IPersonData | null;
+    departure: IBookingInfo | null
 }
 
 @Service()
@@ -25,7 +39,8 @@ export class ReservationService extends StatefulService<IReservationServiceState
         journeyType: JourneyType.ARRIVAL_ONE_WAY,
         arrivalFromDetails: null,
         departureFormDetails: null,
-        isFormsReady: false
+        isFormsReady: false,
+        isSubmitting: false
     };
 
     @Inject(RecaptchaService)
@@ -59,8 +74,31 @@ export class ReservationService extends StatefulService<IReservationServiceState
         })
     }
 
-    public onSecondPageSubmit() {
+    public async onSecondPageSubmit() {
+        this.setState({
+            ...this.state,
+            isSubmitting: true
+        })
         console.log("On Second Page Submit")
+        const bookingRef = collection(db, 'bookings');
+        const submissionData: IReservationSubmissionData = {
+            created: serverTimestamp(),
+            journeyType: this.state.journeyType,
+            recaptchaToken: this.recaptchaService?.getToken(),
+            personalDetails: this.state.personalFormData,
+            arrival: this.state.arrivalFromDetails,
+            departure: this.state.departureFormDetails
+        };
+        console.log(submissionData);
+        if (AppConfig.isFakeSubmit) {
+            await Helpers.sleep(5000);
+        } else {
+            await addDoc(bookingRef, submissionData);
+        }
+        this.setState({
+            ...this.state,
+            isSubmitting: false
+        })
     }
 
     public setFormHooks(hooks: {
