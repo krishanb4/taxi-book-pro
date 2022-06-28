@@ -2,7 +2,7 @@ import {Service, StatefulService} from "react-service-locator";
 
 export interface IRecaptchaServiceState {
     isBusy: boolean;
-    token:string|null;
+    token: string | null;
 }
 
 @Service()
@@ -10,12 +10,12 @@ export class RecaptchaService extends StatefulService<IRecaptchaServiceState> {
 
     static readonly initialState: IRecaptchaServiceState = {
         isBusy: false,
-        token:null,
+        token: null,
     };
 
     private currentState: IRecaptchaServiceState = {
         isBusy: false,
-        token:null,
+        token: null,
     };
 
     constructor() {
@@ -31,9 +31,14 @@ export class RecaptchaService extends StatefulService<IRecaptchaServiceState> {
         this.setState(this.currentState);
     }
 
-    public isTokenExpired(){
+    public isTokenExpired() {
         return this.currentState.token === null;
     }
 
-
+    public clearToken(): void {
+        this.setState({
+            ...this.state,
+            token: null,
+        });
+    }
 }

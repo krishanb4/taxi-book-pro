@@ -27,9 +27,9 @@ export const PriceBanner = (params: any) => {
                     <button type="button" className="btn btn-reservation-button"
                             disabled={recaptchaService.isTokenExpired()} onClick={async (e) => {
                         e.preventDefault();
-                        await reservationService.onSecondPageSubmit();
+                        const success = await reservationService.onSecondPageSubmit();
+                        if (!success) return;
                         gotoHomePage();
-
                     }}>Submit
                         Reservation
                     </button>

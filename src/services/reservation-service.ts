@@ -10,6 +10,7 @@ import {addDoc, collection, serverTimestamp} from "firebase/firestore";
 import {db} from "../config/firebase-config";
 import {AppConfig} from "../config/app-config";
 import Helpers from "../utils/helpers";
+import {UiService} from "./ui-service";
 
 export interface IReservationServiceState {
     homeFormData: IHomeData | null;
@@ -45,6 +46,8 @@ export class ReservationService extends StatefulService<IReservationServiceState
 
     @Inject(RecaptchaService)
     private readonly recaptchaService?: RecaptchaService;
+    @Inject(UiService)
+    private readonly uiService?: UiService;
     private _homeFormHook: UseFormReturn<FieldValue<any>> | null = null;
     private _personalDetailFormHook: UseFormReturn<FieldValue<any>> | null = null;
     private _arrivalFormHook: UseFormReturn<FieldValue<any>> | null = null;
@@ -74,7 +77,18 @@ export class ReservationService extends StatefulService<IReservationServiceState
         })
     }
 
-    public async onSecondPageSubmit() {
+    public async onSecondPageSubmit(): Promise<boolean> {
+        this.syncSecondPageDataToHomePage();
+        if (!await this.personalDetailFormHook.trigger(undefined, {shouldFocus: true})
+            || !await this.arrivalFormHook.trigger(undefined, {shouldFocus: true})
+            || !await this.departureFormHook.trigger(undefined, {shouldFocus: true})) {
+            await this.uiService?.addMessageAlert({
+                title: 'Your reservation is incomplete.',
+                subtitle: 'Please fill out all the required fields.'
+            })
+            return false;
+        }
+
         this.setState({
             ...this.state,
             isSubmitting: true
@@ -97,8 +111,14 @@ export class ReservationService extends StatefulService<IReservationServiceState
         }
         this.setState({
             ...this.state,
-            isSubmitting: false
+            isSubmitting: false,
         })
+        this.recaptchaService!.clearToken();
+        await this.uiService?.addMessageAlert({
+            title: 'Reservation Submitted!',
+            subtitle: 'We will get back to you shortly. You will receive a mail with the details of the reservation.'
+        })
+        return true;
     }
 
     public setFormHooks(hooks: {

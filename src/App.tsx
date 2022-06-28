@@ -19,9 +19,11 @@ import {ReservationService} from "./services/reservation-service";
 import {IHomeData} from "./definitions/i-home-data";
 import {IPersonData} from "./definitions/i-person-data";
 import {IBookingInfo} from "./definitions/i-booking-info";
+import {UiService} from "./services/ui-service";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 export const App: React.FC = () => {
-
+    const uiService = useService(UiService, provider => [provider.state.alerts]);
     const homeFormHook: UseFormReturn<FieldValue<any>> = useForm();
     const personalDetailFormHook: UseFormReturn<FieldValue<any>> = useForm();
     const arrivalFormHook: UseFormReturn<FieldValue<any>> = useForm();
@@ -70,6 +72,12 @@ export const App: React.FC = () => {
         }
     }, [])
 
+    function buildAlerts() {
+        const currentAlert = uiService.getVisibleAlert();
+        if (!currentAlert) return null;
+        return <SweetAlert {...currentAlert}>{currentAlert.content}</SweetAlert>;
+    }
+
     return (
         <div className="App">
             {!reservationService.state.isFormsReady || <Routes>
@@ -85,6 +93,7 @@ export const App: React.FC = () => {
                 <Route path='/rerouteround-trip' element={<RoundTrip/>}/>
                 {!AppConfig.isDebug || <Route path='/lab' element={<LabPage/>}/>}
             </Routes>}
+            {buildAlerts()}
         </div>
     );
 }
