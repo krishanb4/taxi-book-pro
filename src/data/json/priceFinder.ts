@@ -9,6 +9,7 @@ function getPersonVerification(personalDetails: PersonalDetails) {
 }
 
 function findPrice(bookingDetails: BookingDetails, personalDetails: PersonalDetails, bookingService: BookingService): any {
+    console.log("find price" +bookingService.getJourneyType() + " " + bookingDetails.getPickUpPoint() +" to " +bookingDetails.getDropPoint())
     let trip: string;
     let selectedPrice:any;
     if (bookingService.getJourneyType() === JourneyType.ARRIVAL_ONE_WAY) {
@@ -39,6 +40,7 @@ function findPrice(bookingDetails: BookingDetails, personalDetails: PersonalDeta
         }
     }
 
+    console.log(trip)
     return selectedPrice;
 }
 

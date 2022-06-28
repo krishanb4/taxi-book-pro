@@ -1,12 +1,22 @@
 import data from "../../data/data.json";
-import React from "react";
+import React, {useState} from "react";
 import {useService} from "react-service-locator";
 import {BookingService} from "../../services/booking-service";
 import SectionFrame from "../frames/SectionFrame";
+import {JourneyType} from "../../enums/journey-type";
 
 const DepartureDetailsForm = (params: any) => {
     const bookingService = useService(BookingService);
-    return <SectionFrame title={'Hello World'}>
+    const [currentPickup, setCurrentPickup] = useState<string>();
+    const [currentDrop, setCurrentDrop] = useState<string>("€ 0");
+    // let currentPickup:string;
+    // let currentDrop:string;
+    function checkJourneyType() {
+        if(bookingService.getJourneyType()!==JourneyType.DEPARTURE){
+            // setCurrentPickup(bookingService.)
+        }
+    }
+    return <SectionFrame title={'Departure or Pickup Detail'}>
         <div className=" form-sub-title">
             <div className="py-2">
                 Pickup From:

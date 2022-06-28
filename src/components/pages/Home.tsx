@@ -53,6 +53,7 @@ const Home = () => {
             setPriceMessage(priceStr);
             setIsPriceLoading(false);
         }
+        console.log(priceStr);
     }
 
     async function onBookNowClick(e: any) {
@@ -77,8 +78,17 @@ const Home = () => {
     async function onModeSelect(mode: JourneyType) {
         setJourneyType(mode);
         bookingService.setJourneyType(mode);
-        bookingService.arrivalBookingDetails.setBookStatus(true);
-        bookingService.departureBookingDetails.setBookStatus(false);
+        if(mode===JourneyType.ARRIVAL_ONE_WAY){
+            bookingService.arrivalBookingDetails.setBookStatus(true);
+            bookingService.departureBookingDetails.setBookStatus(false);
+        }else if(mode===JourneyType.DEPARTURE){
+            bookingService.arrivalBookingDetails.setBookStatus(false);
+            bookingService.departureBookingDetails.setBookStatus(true);
+        }else{
+            bookingService.arrivalBookingDetails.setBookStatus(true);
+            bookingService.departureBookingDetails.setBookStatus(true);
+        }
+
         await fetchPrice();
     }
 
@@ -125,8 +135,11 @@ const Home = () => {
                                                 aria-label="Default select example" onChange={async (e) => {
                                             if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
                                                 bookingService.departureBookingDetails.setPickUpPoint(e.target.value);
-                                            } else {
+                                            } else if(bookingService.getJourneyType() === JourneyType.ARRIVAL_ONE_WAY){
                                                 bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
+                                            }else{
+                                                bookingService.arrivalBookingDetails.setPickUpPoint(e.target.value);
+                                                bookingService.departureBookingDetails.setDropPoint(e.target.value);
                                             }
                                             await fetchPrice();
                                         }}>
@@ -142,8 +155,11 @@ const Home = () => {
                                                 aria-label="Default select example" onChange={async (e) => {
                                             if (bookingService.getJourneyType() === JourneyType.DEPARTURE) {
                                                 bookingService.departureBookingDetails.setDropPoint(e.target.value);
-                                            } else {
+                                            } else if (bookingService.getJourneyType() === JourneyType.ARRIVAL_ONE_WAY){
                                                 bookingService.arrivalBookingDetails.setDropPoint(e.target.value);
+                                            }else{
+                                                bookingService.arrivalBookingDetails.setDropPoint(e.target.value);
+                                                bookingService.departureBookingDetails.setPickUpPoint(e.target.value);
                                             }
                                             await fetchPrice();
                                         }}>

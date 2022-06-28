@@ -7,7 +7,7 @@ import SectionFrame from "../frames/SectionFrame";
 
 const ArrivalDetailsForm = (params: any) => {
     const bookingService = useService(BookingService);
-    return <SectionFrame title={'Hello World'}>
+    return <SectionFrame title={'Arrival or Pickup Details'}>
         <div className="form-sub-title">
             <div className="py-2">
                 Pickup From:
