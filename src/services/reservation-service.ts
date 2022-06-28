@@ -100,16 +100,50 @@ export class ReservationService extends StatefulService<IReservationServiceState
         return this._departureFormHook;
     }
 
-    public submitReservation(): void {
-
-    }
-
-    get tripPrice(): string | null {
+    get homePageTripPrice(): string | null {
         let fetchPrice = TripProcessor.findPrice(this.state.homeFormData, this.state.journeyType);
         if (!fetchPrice) {
             return "N/A";
         } else {
             return fetchPrice;
+        }
+    }
+
+    get secondPageTripPrice(): string | null {
+        let fetchedPrice: string | null = null;
+        switch (this.state.journeyType) {
+            case JourneyType.ARRIVAL_ONE_WAY:
+                fetchedPrice = TripProcessor.findPrice({
+                    dropPoint: this.state.arrivalFromDetails?.dropPoint ?? "",
+                    pickUpPoint: this.state.arrivalFromDetails?.pickUpPoint ?? "",
+                    childCount: this.state.personalFormData?.childCount ?? "",
+                    adultCount: this.state.personalFormData?.adultCount ?? ""
+                }, this.state.journeyType);
+                break;
+            case JourneyType.DEPARTURE:
+                fetchedPrice = TripProcessor.findPrice({
+                    dropPoint: this.state.departureFormDetails?.dropPoint ?? "",
+                    pickUpPoint: this.state.departureFormDetails?.pickUpPoint ?? "",
+                    childCount: this.state.personalFormData?.childCount ?? "",
+                    adultCount: this.state.personalFormData?.adultCount ?? ""
+                }, this.state.journeyType);
+                break;
+            case JourneyType.ROUND_TRIP:
+                if (this.state.departureFormDetails?.dropPoint === this.state.arrivalFromDetails?.pickUpPoint && this.state.departureFormDetails?.pickUpPoint === this.state.arrivalFromDetails?.dropPoint) {
+                    fetchedPrice = TripProcessor.findPrice({
+                        dropPoint: this.state.arrivalFromDetails?.dropPoint ?? "",
+                        pickUpPoint: this.state.arrivalFromDetails?.pickUpPoint ?? "",
+                        childCount: this.state.personalFormData?.childCount ?? "",
+                        adultCount: this.state.personalFormData?.adultCount ?? ""
+                    }, this.state.journeyType);
+                }
+                break;
+        }
+
+        if (!fetchedPrice) {
+            return "N/A";
+        } else {
+            return fetchedPrice;
         }
     }
 

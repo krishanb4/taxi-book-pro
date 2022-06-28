@@ -141,7 +141,7 @@ export const HomePage = () => {
                                     <div className="home-form-footer-bar-inner">
                                         <div className={"text-center travel-fare-group"}>
                                             <div>Your Travel Fare - <span
-                                                className={"price"}> {reservationService.tripPrice} </span>
+                                                className={"price"}> {reservationService.homePageTripPrice} </span>
                                             </div>
                                         </div>
                                         <button type="button" className="btn booknow-btn" onClick={onBookNowClick}>

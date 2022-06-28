@@ -1,6 +1,5 @@
 import {JourneyType} from "../../enums/journey-type";
 import {allTrips} from "../../definitions/all-trip-data";
-import {IHomeData} from "../../definitions/i-home-data";
 
 export interface ITripDataUnit {
     "trip": string;
@@ -10,8 +9,15 @@ export interface ITripDataUnit {
     list: Record<string, any>;
 }
 
+export interface IPriceCalculation {
+    pickUpPoint: string;
+    dropPoint: string;
+    adultCount: string;
+    childCount: string;
+}
+
 export class TripProcessor {
-    public static findPrice(homeData: IHomeData | null, journeyType: JourneyType): string | null {
+    public static findPrice(homeData: IPriceCalculation | null, journeyType: JourneyType): string | null {
         if (!homeData) return null;
         let selectedPrice: any;
         const trip = this.getJourneyTypeString(journeyType);

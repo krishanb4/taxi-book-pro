@@ -54,8 +54,7 @@ export const SecondPage = (props: any) => {
 
             <section className="travel-fare-banner text-center fare-section">
                 <RecaptchaItem/>
-                <PriceBanner onClick={() => reservationService.submitReservation}
-                             formId={undefined}/>
+                <PriceBanner/>
             </section>
         </div>
     );
