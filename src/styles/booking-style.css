@@ -2,24 +2,6 @@
     background-color: #001841;
 }
 
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 20px;
-}
-
-.nav-link-ex {
-    color: white;
-    font-weight: 500;
-}
-
-.nav-item-custom {
-    padding-right: 50px;
-}
-
-.nav-link-ex:hover {
-    color: #f57d01;
-    font-weight: 500;
-}
-
 .signup-btn {
     background-image: linear-gradient(to bottom, #f37800, #fe9800);
     color: white;

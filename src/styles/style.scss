@@ -9,13 +9,10 @@ $breakpoint-xxl: 1400px;
   background-color: #001841;
 }
 
-.navbar-expand-lg .navbar-nav .nav-link {
-  padding-right: 20px;
-}
-
-.nav-link-ex {
-  color: white;
-  font-weight: 500;
+.navbar .nav-link {
+  padding-right: 30px!important;
+  color: white!important;
+  font-weight: 500!important;
 
   &:hover {
     color: #f57d01;

@@ -1,30 +1,38 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {Nav, Navbar} from "react-bootstrap";
 
 export function MainNavbar(props: { src: any }) {
+    const navigate = useNavigate();
     return <div className="container">
-        <div className="navbar navbar-expand-lg">
-            <Link className="navbar-brand" to={'/'}><img height={50} src={props.src}
-                                                         alt=""/></Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navmenu">
-                <span className="navbar-toggler-icon navbar-dark"/>
-            </button>
-            <div className="collapse navbar-collapse" id="navmenu">
-                <ul className="navbar-nav me-auto">
-                    <li className="nav-item nav-item-custom">
-                        <Link to={'/'} className="nav-link nav-link-ex">BOOK NOW</Link>
-                    </li>
-                    <li className="nav-item nav-item-custom">
-                        <Link to={'/rates'} className="nav-link nav-link-ex">RATES</Link>
-                    </li>
-                    <li className="nav-item nav-item-custom">
-                        <Link to={'/contact'} className="nav-link nav-link-ex">CONTACT</Link>
-                    </li>
-                </ul>
-            </div>
-            <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +3(360)
-                582-2259</a>
-        </div>
+        <Navbar variant={"dark"} expand="lg" className={'px-2'}>
+            <Navbar.Brand onClick={(e) => {
+                e.preventDefault();
+                navigate('/')
+            }}><img height={50} src={props.src} alt=""/></Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbarScroll"/>
+            <Navbar.Collapse id="navbarScroll">
+                <Nav
+                    className="me-auto my-2 my-lg-0"
+                    style={{maxHeight: '100px'}}
+                    navbarScroll
+                >
+                    <Nav.Link onClick={(e) => {
+                        e.preventDefault();
+                        navigate('/')
+                    }}>BOOK NOW</Nav.Link>
+                    <Nav.Link onClick={(e) => {
+                        e.preventDefault();
+                        navigate('/rates')
+                    }}>RATES</Nav.Link>
+                    <Nav.Link onClick={(e) => {
+                        e.preventDefault();
+                        navigate('/contact')
+                    }}>CONTACT</Nav.Link>
+                </Nav>
+                <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +3(360)
+                    582-2259</a>
+            </Navbar.Collapse>
+        </Navbar>
     </div>;
 }
