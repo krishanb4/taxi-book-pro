@@ -116,6 +116,23 @@ export class ReservationService extends StatefulService<IReservationServiceState
     public syncHomeDataToSecondPageData() {
         this.personalDetailFormHook.setValue("adultCount", this.state.homeFormData?.adultCount);
         this.personalDetailFormHook.setValue("childCount", this.state.homeFormData?.childCount);
+
+        switch (this.state.journeyType) {
+            case JourneyType.ARRIVAL_ONE_WAY:
+                this.arrivalFormHook.setValue("pickUpPoint", this.state.homeFormData?.pickUpPoint);
+                this.arrivalFormHook.setValue("dropPoint", this.state.homeFormData?.dropPoint);
+                break;
+            case JourneyType.DEPARTURE:
+                this.departureFormHook.setValue("pickUpPoint", this.state.homeFormData?.pickUpPoint);
+                this.departureFormHook.setValue("dropPoint", this.state.homeFormData?.dropPoint);
+                break;
+            case JourneyType.ROUND_TRIP:
+                this.arrivalFormHook.setValue("pickUpPoint", this.state.homeFormData?.pickUpPoint);
+                this.arrivalFormHook.setValue("dropPoint", this.state.homeFormData?.dropPoint);
+                this.departureFormHook.setValue("pickUpPoint", this.state.homeFormData?.dropPoint);
+                this.departureFormHook.setValue("dropPoint", this.state.homeFormData?.pickUpPoint);
+                break;
+        }
     }
 
     public syncSecondPageDataToHomePage() {
