@@ -3,7 +3,6 @@ import '../../styles/style.scss'
 import {MainNavbar} from "../banners/MainNavbar";
 
 import {useForm} from 'react-hook-form';
-import {HomeForm} from "../forms/HomeForm";
 import {Button} from "react-bootstrap";
 
 export const LabPage = () => {
@@ -45,7 +44,6 @@ export const LabPage = () => {
                 </div>
 
             </section>
-            <HomeForm/>
         </div>
     );
 }

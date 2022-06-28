@@ -5,7 +5,6 @@ import {JourneyType} from "../../enums/journey-type";
 import data from "../../data/data.json"
 import {MainNavbar} from "../banners/MainNavbar";
 import {ReservationService} from "../../services/reservation-service";
-import {useForm} from "react-hook-form";
 import {IHomeData} from "../../definitions/i-home-data";
 import {TripProcessor} from "../../data/json/trip-processor";
 import {useNavigate} from "react-router-dom";
@@ -31,12 +30,6 @@ export const HomePage = () => {
         replace: false
     }), [navigate]);
 
-    const {
-        register,
-        handleSubmit,
-        formState: {errors},
-        getValues
-    } = useForm();
 
     const onSubmit = (data: any) => {
         console.log(data);
@@ -44,7 +37,7 @@ export const HomePage = () => {
 
     const onChangeForm = () => {
         reservationService.setFormData({
-            homeFormData: getValues() as IHomeData,
+            homeFormData: reservationService.homeFormHook.getValues() as IHomeData,
         })
 
     };
@@ -99,7 +92,7 @@ export const HomePage = () => {
                         <img src={require("../../assets/logos/ppt-logo.png")} alt="pdtlogo"
                              className="pb-5 logo m-auto"/></div>
                     <br/><br/><br/><br/>
-                    <form onSubmit={handleSubmit(onSubmit)} onChange={onChangeForm}>
+                    <form onSubmit={reservationService.homeFormHook.handleSubmit(onSubmit)} onChange={onChangeForm}>
                         <div className="tab-content home-form">
                             <div className="home-form-outer">
                                 <div className={'home-form-header-bar'}>
@@ -114,7 +107,7 @@ export const HomePage = () => {
                                         <div className="col-md py-3">
                                             <p className="subTitles">Pickup Location</p>
                                             <select className="form-select"
-                                                    aria-label="Default select example" {...register('pickUpPoint')} >
+                                                    aria-label="Default select example" {...reservationService.homeFormHook.register('pickUpPoint')} >
                                                 <option disabled={true}>Select Drop Place...</option>
                                                 {data.locations.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
@@ -124,7 +117,7 @@ export const HomePage = () => {
                                         <div className="col-md py-3">
                                             <p className="subTitles">Drop-off Location</p>
                                             <select className="form-select"
-                                                    aria-label="Default select example" {...register('dropPoint')}>
+                                                    aria-label="Default select example" {...reservationService.homeFormHook.register('dropPoint')}>
                                                 <option disabled={true}>Select Drop Place...</option>
                                                 {data.locations.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
@@ -136,7 +129,7 @@ export const HomePage = () => {
                                         <div className="col-md py-3">
                                             <p className="subTitles">Adult Riders</p>
                                             <select className="form-select"
-                                                    aria-label="Default select example" {...register('adultCount')}>
+                                                    aria-label="Default select example" {...reservationService.homeFormHook.register('adultCount')}>
                                                 {data.adultCounts.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
                                                 })}
@@ -145,7 +138,7 @@ export const HomePage = () => {
                                         <div className="col-md py-3">
                                             <p className="subTitles">Child</p>
                                             <select className="form-select"
-                                                    aria-label="Default select example" {...register('childCount')}>
+                                                    aria-label="Default select example" {...reservationService.homeFormHook.register('childCount')}>
                                                 {data.kidCounts.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
                                                 })}
