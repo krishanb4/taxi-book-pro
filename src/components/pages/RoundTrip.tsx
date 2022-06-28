@@ -1,9 +1,9 @@
 import React from "react";
 import '../../styles/booking-style.css';
-import PersonalDetailsForm from "../forms/PersonalDetailsForm";
+import OldPersonalDetailsForm from "../forms/OldPersonalDetailsForm";
 import DepartureDetailsForm from "../forms/DepartureDetailsForm";
 import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
-import SecondPage from "./SecondPage";
+import OldSecondPage from "./OldSecondPage";
 import {useService} from "react-service-locator";
 import {BookingService} from "../../services/booking-service";
 
@@ -13,15 +13,15 @@ const RoundTrip = () => {
     // function priceFetch() {
     //     if(bookingService.arrivalBookingDetails.getPickUpPoint()==)
     // }
-    return <SecondPage>
+    return <OldSecondPage>
         <div className="row">
-            <PersonalDetailsForm/>
+            <OldPersonalDetailsForm/>
             <ArrivalDetailsForm/>
         </div>
         <div className="row row-cols-2">
             <DepartureDetailsForm/>
         </div>
-    </SecondPage>
+    </OldSecondPage>
 
 }
 

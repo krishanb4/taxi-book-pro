@@ -1,45 +1,33 @@
 import data from "../../data/data.json";
-import React, {FC} from "react";
+import React from "react";
 import {useService} from "react-service-locator";
+import {BookingService} from "../../services/booking-service";
 import SectionFrame from "../frames/SectionFrame";
-import {ReservationService} from "../../services/reservation-service";
-import {FieldValue, UseFormReturn} from "react-hook-form";
-import {IHomeData} from "../../definitions/i-home-data";
-import {IPersonData} from "../../definitions/i-person-data";
 
 
-export const PersonalDetailsForm: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (params) => {
-
-    const reservationService = useService(ReservationService);
-    // useEffect(() => {
-    //     console.log(reservationService.state);
-    //     console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
-    // }, [reservationService.state]);
-
-    const onChangeForm = () => {
-        reservationService.setFormData({
-            homeFormData: params.formHook.getValues() as IHomeData,
-            personalFormData: params.formHook.getValues() as IPersonData
-        })
-
-    };
-
+const OldPersonalDetailsForm = (params: any) => {
+    const bookingService = useService(BookingService);
     return <SectionFrame title={'Personal Details'}>
         <label htmlFor="name" className="mb-3 form-sub-title">
             Your Name:
         </label>
         <input type="text" required={true} className="form-control" id="name"
-               placeholder="Enter your name" {...params.formHook.register("name", {required: true})}/>
+               placeholder="Enter your name" onChange={(e) => {
+            bookingService.personalDetails.setName(e.target.value);
+        }}/>
         <label htmlFor="last-name" className="mb-3 form-sub-title">
             Phone:
         </label>
-        <input type="text" required={true} className="form-control"
-               id="phone" {...params.formHook.register("phone", {required: true})}/>
+        <input type="text" required={true} className="form-control" id="phone" onChange={(e) => {
+            bookingService.personalDetails.setPhone(e.target.value);
+        }}/>
         <label htmlFor="email" className="mb-3 form-sub-title">
             Email:
         </label>
         <input type="email" required={true} className="form-control" id="email"
-               placeholder="Your Email Address" {...params.formHook.register("email", {required: true})}/>
+               placeholder="Your Email Address" onChange={(e) => {
+            bookingService.personalDetails.setEmail(e.target.value);
+        }}/>
         <div className="py-3 mb-3 form-sub-title">
             Number of Passengers
         </div>
@@ -49,9 +37,12 @@ export const PersonalDetailsForm: FC<{ formHook: UseFormReturn<FieldValue<any>> 
             </div>
             <div className="col-md">
                 <select className="form-select" required={true}
+                        defaultValue={bookingService.personalDetails.getAdultCount()}
                         aria-label="Default select example"
-                        {...params.formHook.register("adultCount", {required: true})}
-                >
+                        onChange={async (e) => {
+                            bookingService.personalDetails.setAdultCount(parseInt(e.target.value));
+                            // await fetchPrice();
+                        }}>
                     {data.adultCounts.map((item, key) => {
                         return (<option value={item} key={item}>{item}</option>)
                     })}
@@ -62,9 +53,12 @@ export const PersonalDetailsForm: FC<{ formHook: UseFormReturn<FieldValue<any>> 
             </div>
             <div className="col-md">
                 <select className="form-select" required={true}
+                        defaultValue={bookingService.personalDetails.getChildCount()}
                         aria-label="Default select example"
-                        {...params.formHook.register("childCount", {required: true})}
-                >
+                        onChange={async (e) => {
+                            bookingService.personalDetails.setChildCount(parseInt(e.target.value));
+                            // await fetchPrice();
+                        }}>
                     {data.kidCounts.map((item, key) => {
                         return (<option value={item} key={item}>{item}</option>)
                     })}
@@ -75,8 +69,12 @@ export const PersonalDetailsForm: FC<{ formHook: UseFormReturn<FieldValue<any>> 
             <label htmlFor="additionalNote" className="form-label"> Additional
                 Notes:</label>
             <textarea className="form-control" id="additionalNote" rows={3}
-                      defaultValue={""} {...params.formHook.register("comment",)}/>
+                      defaultValue={""} onChange={(e) => {
+                bookingService.personalDetails.setComment(e.target.value);
+            }}/>
         </div>
     </SectionFrame>;
 }
+
+export default OldPersonalDetailsForm;
 

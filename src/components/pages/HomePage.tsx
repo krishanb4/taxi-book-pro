@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import '../../styles/style.scss'
 import {useService} from "react-service-locator";
 import {JourneyType} from "../../enums/journey-type";
@@ -8,14 +8,28 @@ import {ReservationService} from "../../services/reservation-service";
 import {useForm} from "react-hook-form";
 import {IHomeData} from "../../definitions/i-home-data";
 import {TripProcessor} from "../../data/json/trip-processor";
+import {useNavigate} from "react-router-dom";
+import {UiService} from "../../services/ui-service";
 
 export const HomePage = () => {
     const reservationService = useService(ReservationService);
+    const uiService = useService(UiService);
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log(reservationService.state);
         console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
     }, [reservationService.state]);
+
+    const gotoArrivalPage = useCallback(() => navigate(`/reroutearrival`, {
+        replace: false
+    }), [navigate]);
+    const gotoDeparturePage = useCallback(() => navigate(`/reroutedeparture`, {
+        replace: false
+    }), [navigate]);
+    const gotoRoundTripPage = useCallback(() => navigate(`/rerouteround-trip`, {
+        replace: false
+    }), [navigate]);
 
     const {
         register,
@@ -35,6 +49,26 @@ export const HomePage = () => {
 
     };
 
+    async function onBookNowClick(e: any) {
+        e.preventDefault();
+        if (reservationService.state.journeyType === JourneyType.DEPARTURE) {
+            gotoDeparturePage();
+        } else if (reservationService.state.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
+            gotoArrivalPage();
+        } else {
+            gotoRoundTripPage();
+        }
+    }
+
+    async function onModeSelect(mode: JourneyType) {
+        await TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType);
+    }
+
+    async function selectMode(mode: JourneyType) {
+        reservationService.setJourneyType(mode);
+        await onModeSelect(mode);
+    }
+
     function buildModeButton(mode: JourneyType, title: string, image: string) {
         let isActive = reservationService.state.journeyType === mode;
         return <button
@@ -42,7 +76,7 @@ export const HomePage = () => {
             data-bs-toggle="tab"
             onClick={async (e) => {
                 e.preventDefault();
-                reservationService.setJourneyType(mode);
+                await selectMode(mode);
             }}
             data-bs-target="#nav-arrival" type="button" role="tab" aria-controls="nav-home"
             aria-selected="true">
@@ -125,7 +159,7 @@ export const HomePage = () => {
                                         <div className={"text-center travel-fare-group"}>
                                             <div>Your Travel Fare - <span className={"price"}> {} </span></div>
                                         </div>
-                                        <button type="button" className="btn booknow-btn">
+                                        <button type="button" className="btn booknow-btn" onClick={onBookNowClick}>
                                             Book Now
                                         </button>
                                     </div>

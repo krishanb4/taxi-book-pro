@@ -1,25 +1,25 @@
-import React, {FC, useCallback} from "react";
+import React, {useCallback} from "react";
 import '../../styles/booking-style.css';
 import '../../styles/second-page.scss';
 import {collection} from 'firebase/firestore';
 import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../../config/firebase-config";
 import {useService} from "react-service-locator";
+import {BookingService} from "../../services/booking-service";
 import NoteBanner from "../banners/NoteBanner";
 import PriceBanner from "../banners/PriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
 import {useNavigate} from "react-router-dom";
 import {MainNavbar} from "../banners/MainNavbar";
-import {ReservationService} from "../../services/reservation-service";
-import {FieldValue, UseFormReturn} from "react-hook-form";
 
-export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (props) => {
+const OldSecondPage = (props: any) => {
 
-    const reservationService = useService(ReservationService);
     const navigate = useNavigate();
     const gotoHomePage = useCallback(() => navigate(`/`, {
         replace: false
     }), [navigate]);
+
+    const bookingService = useService(BookingService);
 
     const [value, loading, error] = useCollection(
         collection(db, 'bookings'),
@@ -34,7 +34,10 @@ export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (pro
     }
 
     function sendDoc() {
-        console.log("Submit booking..");
+        bookingService.createBooking().then(r => {
+            console.log("Submitted Booking..");
+            gotoHomePage();
+        });
     }
 
     return (
@@ -45,13 +48,19 @@ export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (pro
                 </section>
             </section>
 
-            <section className="forms-main">
-                {/* Note Banner */}
-                <NoteBanner/>
-                <div className="container">
-                    {props.children}
-                </div>
-            </section>
+            {/* Forms */}
+            <form id={"booking-details-arrival"} onSubmit={(e) => {
+                sendDoc();
+                clear(e);
+            }}>
+                <section className="forms-main">
+                    {/* Note Banner */}
+                    <NoteBanner/>
+                    <div className="container">
+                        {props.children}
+                    </div>
+                </section>
+            </form>
 
             <section className="travel-fare-banner text-center fare-section">
                 <RecaptchaItem/>
@@ -62,3 +71,4 @@ export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (pro
 
 }
 
+export default OldSecondPage;

@@ -5,5 +5,6 @@ export interface IPersonData {
     comments: string,
     adultCount: number,
     childCount: number,
+    comment: string,
     created: any
 }

@@ -1,16 +1,16 @@
 import React from "react";
 import '../../styles/booking-style.css';
 import OldPersonalDetailsForm from "../forms/OldPersonalDetailsForm";
-import DepartureDetailsForm from "../forms/DepartureDetailsForm";
+import ArrivalDetailsForm from "../forms/ArrivalDetailsForm";
 import OldSecondPage from "./OldSecondPage";
 
-const Departure = () => {
+const OldArrival = (params: any) => {
     return <OldSecondPage>
         <div className="row">
             <OldPersonalDetailsForm/>
-            <DepartureDetailsForm/>
+            <ArrivalDetailsForm/>
         </div>
     </OldSecondPage>
 }
 
-export default Departure;
+export default OldArrival;
