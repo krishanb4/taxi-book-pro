@@ -30,6 +30,9 @@ export class ReservationService extends StatefulService<IReservationServiceState
     @Inject(RecaptchaService)
     private readonly recaptchaService?: RecaptchaService;
     private _homeFormHook: UseFormReturn<FieldValue<any>> | null = null;
+    private _personalDetailFormHook: UseFormReturn<FieldValue<any>> | null = null;
+    private _arrivalFormHook: UseFormReturn<FieldValue<any>> | null = null;
+    private _departureFormHook: UseFormReturn<FieldValue<any>> | null = null;
 
     constructor() {
         super(ReservationService.initialState);
@@ -66,8 +69,16 @@ export class ReservationService extends StatefulService<IReservationServiceState
         console.log("On Second Page Submit")
     }
 
-    public setFormHooks(hooks: { homeFormHook: UseFormReturn<FieldValue<any>> }): void {
+    public setFormHooks(hooks: {
+        homeFormHook: UseFormReturn<FieldValue<any>>,
+        personalDetailFormHook: UseFormReturn<FieldValue<any>>,
+        arrivalFormHook: UseFormReturn<FieldValue<any>>,
+        departureFormHook: UseFormReturn<FieldValue<any>>,
+    }): void {
         this._homeFormHook = hooks.homeFormHook;
+        this._personalDetailFormHook = hooks.personalDetailFormHook;
+        this._arrivalFormHook = hooks.arrivalFormHook;
+        this._departureFormHook = hooks.departureFormHook;
         this.setState({
             ...this.state,
             isFormsReady: true
@@ -77,5 +88,24 @@ export class ReservationService extends StatefulService<IReservationServiceState
     get homeFormHook(): UseFormReturn<FieldValue<any>> {
         if (!this._homeFormHook) throw Error("Home Form Hook Not Found!.");
         return this._homeFormHook;
+    }
+
+    get personalDetailFormHook(): UseFormReturn<FieldValue<any>> {
+        if (!this._personalDetailFormHook) throw Error("Home Form Hook Not Found!.");
+        return this._personalDetailFormHook;
+    }
+
+    get arrivalFormHook(): UseFormReturn<FieldValue<any>> {
+        if (!this._arrivalFormHook) throw Error("Home Form Hook Not Found!.");
+        return this._arrivalFormHook;
+    }
+
+    get departureFormHook(): UseFormReturn<FieldValue<any>> {
+        if (!this._departureFormHook) throw Error("Home Form Hook Not Found!.");
+        return this._departureFormHook;
+    }
+
+    public submitReservation(): void {
+
     }
 }

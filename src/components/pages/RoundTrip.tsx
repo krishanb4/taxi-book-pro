@@ -8,8 +8,6 @@ import {DepartureDetailsForm} from "../forms/DepartureDetailsForm";
 import {FieldValue, useForm, UseFormReturn} from "react-hook-form";
 import {ReservationService} from "../../services/reservation-service";
 import {TripProcessor} from "../../data/json/trip-processor";
-import {IPersonData} from "../../definitions/i-person-data";
-import {IBookingInfo} from "../../definitions/i-booking-info";
 
 export const RoundTrip = () => {
 
@@ -21,26 +19,15 @@ export const RoundTrip = () => {
         console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
     }, [reservationService.state]);
 
-    const onChangeForm = () => {
-        reservationService.setFormData({
-            personalFormData: formHook.getValues() as IPersonData,
-            arrivalFromDetails: formHook.getValues() as IBookingInfo,
-            departureFormDetails: formHook.getValues() as IBookingInfo,
-        })
-
-    };
-
-    return <form id={"booking-details-departure"} onChange={onChangeForm}>
-        <SecondPage formHook={formHook}>
-            <div className="row">
-                <PersonalDetailsForm formHook={formHook}/>
-                <ArrivalDetailsForm formHook={formHook}/>
-            </div>
-            <div className="row row-cols-2">
-                <DepartureDetailsForm formHook={formHook}/>
-            </div>
-        </SecondPage>
-    </form>
+    return <SecondPage formHook={formHook}>
+        <div className="row">
+            <PersonalDetailsForm formHook={formHook}/>
+            <ArrivalDetailsForm formHook={formHook}/>
+        </div>
+        <div className="row row-cols-2">
+            <DepartureDetailsForm formHook={formHook}/>
+        </div>
+    </SecondPage>
 
 }
 

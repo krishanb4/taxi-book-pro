@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from "react";
+import React, {useCallback} from "react";
 import '../../styles/booking-style.css';
 import '../../styles/second-page.scss';
 import {collection} from 'firebase/firestore';
@@ -10,10 +10,9 @@ import RecaptchaItem from "../items/RecaptchaItem";
 import {useNavigate} from "react-router-dom";
 import {MainNavbar} from "../banners/MainNavbar";
 import {ReservationService} from "../../services/reservation-service";
-import {FieldValue, UseFormReturn} from "react-hook-form";
 import {PriceBanner} from "../banners/PriceBanner";
 
-export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (props) => {
+export const SecondPage = (props: any) => {
 
     const reservationService = useService(ReservationService);
     const navigate = useNavigate();
@@ -55,7 +54,7 @@ export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (pro
 
             <section className="travel-fare-banner text-center fare-section">
                 <RecaptchaItem/>
-                <PriceBanner onClick={() => props.formHook.handleSubmit(reservationService.onSecondPageSubmit)()}
+                <PriceBanner onClick={() => reservationService.submitReservation}
                              formId={undefined}/>
             </section>
         </div>

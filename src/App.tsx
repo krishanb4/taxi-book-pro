@@ -20,11 +20,19 @@ import {ReservationService} from "./services/reservation-service";
 export const App: React.FC = () => {
 
     const homeFormHook: UseFormReturn<FieldValue<any>> = useForm();
+    const personalDetailFormHook: UseFormReturn<FieldValue<any>> = useForm();
+    const arrivalFormHook: UseFormReturn<FieldValue<any>> = useForm();
+    const departureFormHook: UseFormReturn<FieldValue<any>> = useForm();
     const reservationService = useService(ReservationService);
 
     useEffect(() => {
-        reservationService.setFormHooks({homeFormHook: homeFormHook});
-    }, [reservationService.state.isFormsReady]);
+        reservationService.setFormHooks({
+            homeFormHook: homeFormHook,
+            personalDetailFormHook: personalDetailFormHook,
+            arrivalFormHook: arrivalFormHook,
+            departureFormHook: departureFormHook
+        });
+    }, [reservationService.state.isFormsReady, homeFormHook, personalDetailFormHook, arrivalFormHook, departureFormHook]);
 
     useEffect(() => {
         console.log(reservationService.state);
