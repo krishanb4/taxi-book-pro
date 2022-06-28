@@ -28,10 +28,6 @@ export function MainNavbar(props: { src: any }) {
                     }}>RATES</Nav.Link>
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
-                        navigate('/')
-                    }}>NEW HOME</Nav.Link>
-                    <Nav.Link onClick={(e) => {
-                        e.preventDefault();
                         navigate('/contact')
                     }}>CONTACT</Nav.Link>
                     {
