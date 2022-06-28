@@ -21,19 +21,25 @@ export const Contact = () => {
                         <div className="contact-sub-title">
                             Call us:
                             <div className="contact-details">
-                                041 - 22 555 22
+                                <a href="tel:+33605822259">+33 605 822 259</a>
                             </div>
                         </div>
                         <div className="py-5 contact-sub-title">
                             Email:
                             <div className="contact-details">
-                                metaroon@gmail.com
+                                <a href="mailto:bookings@prestigeparistransfers.com">bookings@prestigeparistransfers.com</a>
                             </div>
                         </div>
                         <div className="pb-5 contact-sub-title">
-                            Visit us:
+                            Website:
                             <div className="contact-details">
-                                www.metaroon.com
+                                <a href="https://prestigeparistransfers.com">https://prestigeparistransfers.com</a>
+                            </div>
+                        </div>
+                        <div className="pb-5 contact-sub-title">
+                            Powered by:
+                            <div className="contact-details">
+                                <a href="https://plebs.studio/">Pleb Studio (https://plebs.studio)</a>
                             </div>
                         </div>
                     </div>

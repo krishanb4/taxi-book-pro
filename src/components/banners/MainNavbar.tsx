@@ -41,8 +41,7 @@ export function MainNavbar(props: { src: any }) {
                         }}>LabPage</Nav.Link>
                     }
                 </Nav>
-                <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +3(360)
-                    582-2259</a>
+                <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +33 605 822 259</a>
             </Navbar.Collapse>
         </Navbar>
     </div>;
