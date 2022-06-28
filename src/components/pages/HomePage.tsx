@@ -25,18 +25,14 @@ export const HomePage = () => {
     }), [navigate]);
 
     useEffect(() => {
-        if (reservationService.state.personalFormData?.adultCount) reservationService.homeFormHook.setValue("adultCount", reservationService.state.personalFormData.adultCount);
-        if (reservationService.state.personalFormData?.childCount) reservationService.homeFormHook.setValue("childCount", reservationService.state.personalFormData.childCount);
+        reservationService.syncSecondPageDataToHomePage();
     }, [])
 
     async function onBookNowClick(e: any) {
         e.preventDefault();
 
         await reservationService.homeFormHook.handleSubmit((data) => {
-
-            reservationService.personalDetailFormHook.setValue("adultCount", reservationService.state.homeFormData?.adultCount);
-            reservationService.personalDetailFormHook.setValue("childCount", reservationService.state.homeFormData?.childCount);
-
+            reservationService.syncHomeDataToSecondPageData();
             if (reservationService.state.journeyType === JourneyType.DEPARTURE) {
                 gotoDeparturePage();
             } else if (reservationService.state.journeyType === JourneyType.ARRIVAL_ONE_WAY) {

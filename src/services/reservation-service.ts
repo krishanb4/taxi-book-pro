@@ -112,4 +112,14 @@ export class ReservationService extends StatefulService<IReservationServiceState
             return fetchPrice;
         }
     }
+
+    public syncHomeDataToSecondPageData() {
+        this.personalDetailFormHook.setValue("adultCount", this.state.homeFormData?.adultCount);
+        this.personalDetailFormHook.setValue("childCount", this.state.homeFormData?.childCount);
+    }
+
+    public syncSecondPageDataToHomePage() {
+        if (this.state.personalFormData?.adultCount) this.homeFormHook.setValue("adultCount", this.state.personalFormData.adultCount);
+        if (this.state.personalFormData?.childCount) this.homeFormHook.setValue("childCount", this.state.personalFormData.childCount);
+    }
 }
