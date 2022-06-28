@@ -16,6 +16,7 @@ import {RoundTrip} from "./components/pages/RoundTrip";
 import {FieldValue, useForm, UseFormReturn} from "react-hook-form";
 import {useService} from "react-service-locator";
 import {ReservationService} from "./services/reservation-service";
+import {TripProcessor} from "./data/json/trip-processor";
 
 export const App: React.FC = () => {
 
@@ -36,6 +37,7 @@ export const App: React.FC = () => {
 
     useEffect(() => {
         console.log(reservationService.state);
+        console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
     }, [reservationService.state]);
 
     return (

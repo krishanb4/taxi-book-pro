@@ -42,6 +42,9 @@ export const LabPage = () => {
                     <Button onClick={() => handleSubmit(onSubmit)()}>Submit</Button>
 
                 </div>
+                {/*<button onClick={}>*/}
+                {/*    test name*/}
+                {/*</button>*/}
 
             </section>
         </div>
