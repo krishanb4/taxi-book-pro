@@ -1,7 +1,7 @@
 import React from "react";
 import '../../styles/booking-style.css';
 import OldPersonalDetailsForm from "../forms/OldPersonalDetailsForm";
-import DepartureDetailsForm from "../forms/DepartureDetailsForm";
+import OldDepartureDetailsForm from "../forms/OldDepartureDetailsForm";
 import OldArrivalDetailsForm from "../forms/OldArrivalDetailsForm";
 import OldSecondPage from "./OldSecondPage";
 import {useService} from "react-service-locator";
@@ -19,7 +19,7 @@ const RoundTrip = () => {
             <OldArrivalDetailsForm/>
         </div>
         <div className="row row-cols-2">
-            <DepartureDetailsForm/>
+            <OldDepartureDetailsForm/>
         </div>
     </OldSecondPage>
 

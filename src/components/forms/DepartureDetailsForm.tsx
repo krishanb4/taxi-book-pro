@@ -1,79 +1,69 @@
 import data from "../../data/data.json";
-import React, {useState} from "react";
+import React, {FC} from "react";
 import {useService} from "react-service-locator";
-import {BookingService} from "../../services/booking-service";
 import SectionFrame from "../frames/SectionFrame";
-import {JourneyType} from "../../enums/journey-type";
+import {FieldValue, UseFormReturn} from "react-hook-form";
+import {ReservationService} from "../../services/reservation-service";
+import {IHomeData} from "../../definitions/i-home-data";
+import {IPersonData} from "../../definitions/i-person-data";
 
-const DepartureDetailsForm = (params: any) => {
-    const bookingService = useService(BookingService);
-    const [currentPickup, setCurrentPickup] = useState<string>();
-    const [currentDrop, setCurrentDrop] = useState<string>("€ 0");
-    // let currentPickup:string;
-    // let currentDrop:string;
-    function checkJourneyType() {
-        if(bookingService.getJourneyType()!==JourneyType.DEPARTURE){
-            // setCurrentPickup(bookingService.)
-        }
-    }
+export const DepartureDetailsForm: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (params: any) => {
+    const reservationService = useService(ReservationService);
+
+    const onChangeForm = () => {
+        reservationService.setFormData({
+            homeFormData: params.formHook.getValues() as IHomeData,
+            personalFormData: params.formHook.getValues() as IPersonData
+        })
+    };
+
     return <SectionFrame title={'Departure or Pickup Detail'}>
         <div className=" form-sub-title">
             <div className="py-2">
                 Pickup From:
             </div>
             <select className="form-select" required={true}
-                    defaultValue={bookingService.departureBookingDetails.getPickUpPoint() ?? "SELECTED"}
-                    aria-label="Default select example" onChange={async (e) => {
-                bookingService.departureBookingDetails.setPickUpPoint(e.target.value);
-            }}>
-                <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
+                    aria-label="Default select example" {...params.formHook.register("pickUpPoint", {required: true})}>
                 {data.locations.map((item, key) => {
                     return (<option value={item} key={item}>{item}</option>)
                 })}
             </select>
+
             <div className="mb-3 pt-3">
                 <textarea className="form-control" id="pickup-address"
                           placeholder="Type your pickup address (Optional)" rows={3}
-                          defaultValue={""} onChange={(e) => {
-                    bookingService.departureBookingDetails.setPickUpPointOptionalAddress(e.target.value);
-                }}/>
+                          defaultValue={""} {...params.formHook.register("pickUpPointOptionalAddress")}/>
             </div>
+
             <div className="py-2">
                 Drop To:
             </div>
             <select className="form-select" required={true}
-                    defaultValue={bookingService.departureBookingDetails.getDropPoint() ?? "SELECTED"}
-                    aria-label="Default select example" onChange={async (e) => {
-                bookingService.departureBookingDetails.setDropPoint(e.target.value);
-            }}>
-                <option value={"SELECTED"} disabled={true}>Select Drop Place...</option>
+                    aria-label="Default select example" {...params.formHook.register("dropPoint", {required: true})}>
                 {data.locations.map((item, key) => {
                     return (<option value={item} key={key}>{item}</option>)
                 })}
             </select>
+
             <div className="mb-3 pt-3">
                                             <textarea className="form-control" id="destination-address"
                                                       placeholder="Type your destination address (Optional)" rows={3}
-                                                      defaultValue={""} onChange={(e) => {
-                                                bookingService.departureBookingDetails.setDropPointOptionalAddress(e.target.value);
-                                            }}/>
+                                                      defaultValue={""} {...params.formHook.register("dropPointOptionalAddress")}/>
             </div>
+
             <label htmlFor="date" className="col-form-label">
                 Pickup Date:
             </label>
-            <input type="date" className="form-control" id="date" required={true}
-                   placeholder="Select Pickup Date..." onChange={(e) => {
-                bookingService.departureBookingDetails.setPickUpDate(new Date(e.target.value));
-            }}/>
+            <input type="date" className="form-control" id="date"
+                   placeholder="Select Pickup Date..."  {...params.formHook.register("pickUpDate", {required: true})}/>
+
             <label htmlFor="time" className="col-form-label">
                 Pickup Time: *
             </label>
-            <input type="time" className="form-control" id="time" required={true} onChange={(e) => {
-                let time = e.target.value.split(":");
-                bookingService.departureBookingDetails.setPickUpTime(parseInt(time[0]), parseInt(time[1]));
-            }}/>
+            <input type="time" className="form-control"
+                   id="time" {...params.formHook.register("pickUpTime", {required: true})} />
+
         </div>
     </SectionFrame>
 }
 
-export default DepartureDetailsForm;
