@@ -2,6 +2,6 @@ export class AppConfig {
     public static recaptchaSiteKey = "6Ld7B5wgAAAAANF5s1Z4tJfhWPhEoDNSyM7bOfNO";
     public static isEmulatorMode = false;
     public static isDebug = false;
-    public static isFakeSubmit = true;
+    public static isFakeSubmit = false;
 }
 
