@@ -16,15 +16,15 @@ $breakpoint-xxl: 1400px;
 .nav-link-ex {
   color: white;
   font-weight: 500;
+
+  &:hover {
+    color: #f57d01;
+    font-weight: 500;
+  }
 }
 
 .nav-item-custom {
   padding-right: 50px;
-}
-
-.nav-link-ex:hover {
-  color: #f57d01;
-  font-weight: 500;
 }
 
 .signup-btn {
@@ -98,8 +98,8 @@ button.nav-link.active {
 }
 
 .home-form {
-  background-color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
   border: 1px solid white;
   border-radius: 30px;
 
@@ -113,9 +113,33 @@ button.nav-link.active {
 
       .nav {
         max-width: 600px;
-        background-color: #e2e1e5;
+        background-color: rgb(189, 189, 189);
         border-radius: 5px;
         margin: 0 auto;
+
+        .nav-mode-tab {
+          padding: 15px;
+          background-color: rgba(0, 0, 0, 0);
+
+          &:hover {
+            background-color: #ffffff;
+            color: black;
+          }
+
+          &.active {
+            background-color: #ffffff;
+            color: black;
+            font-weight: bold;
+            border-bottom: 3px solid #ff7700;
+          }
+
+          .nav-mode-img {
+            margin-bottom: 10px;
+          }
+
+          .nav-mode-label {
+          }
+        }
       }
     }
 
@@ -123,15 +147,6 @@ button.nav-link.active {
       padding-left: 60px;
       padding-right: 60px;
       padding-bottom: 60px;
-
-      .nav-mode-tab {
-        .nav-mode-img {
-          margin-bottom: 10px;
-        }
-
-        .nav-mode-label {
-        }
-      }
     }
 
     .home-form-footer-bar {
@@ -158,7 +173,7 @@ button.nav-link.active {
 
 
 .travel-fare-group {
-  background-color: #00ff85;
+  background-color: #4fffb0;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -192,9 +207,9 @@ h4 {
     border-radius: 0 10px 10px 0;
     border: none;
     font-size: 26px;
-
+    background-image: linear-gradient(to bottom, #f37800, #fe9800);
     &:hover {
-      background-image: linear-gradient(to bottom, #f37800, #fe9800);
+      background-image: linear-gradient(to bottom, #f38f2d, #ffc26a);
     }
   }
 

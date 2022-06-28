@@ -9,7 +9,7 @@ export const Contact = () => {
                 <MainNavbar src={require('../../assets/logos/ppt-mini-logo.png')}/>
             </section>
 
-            <section className="p-5">
+            <section className="py-5 px-3">
                 <div className="container text-center contact-main">
                     <div className="p-2 contact-main-title">
                         Contact us
