@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 import {MainNavbar} from "../banners/MainNavbar";
 import {UiService} from "../../services/ui-service";
 
-const Home = () => {
+const OldHomePage = () => {
     const navigate = useNavigate();
     const bookingService = useService(BookingService);
     const uiService = useService(UiService);
@@ -221,4 +221,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default OldHomePage;

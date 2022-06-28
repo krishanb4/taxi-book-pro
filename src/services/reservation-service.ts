@@ -2,10 +2,12 @@ import {Inject, Service, StatefulService} from "react-service-locator";
 import {RecaptchaService} from "./recaptcha-service";
 import {IHomeData} from "../definitions/i-home-data";
 import {IPersonData} from "../definitions/i-person-data";
+import {JourneyType} from "../enums/journey-type";
 
 export interface IReservationServiceState {
     homeFormData: IHomeData | null;
     personalFormData: IPersonData | null;
+    journeyType: JourneyType;
 }
 
 @Service()
@@ -14,7 +16,8 @@ export class ReservationService extends StatefulService<IReservationServiceState
 
     static readonly initialState: IReservationServiceState = {
         homeFormData: null,
-        personalFormData: null
+        personalFormData: null,
+        journeyType: JourneyType.ARRIVAL_ONE_WAY
     };
 
     @Inject(RecaptchaService)
@@ -34,4 +37,10 @@ export class ReservationService extends StatefulService<IReservationServiceState
         this.setState({homeFormData: homeData, personalFormData: personalData})
     }
 
+    public setJourneyType(mode: JourneyType): void {
+        this.setState({
+            ...this.state,
+            journeyType: mode
+        })
+    }
 }
