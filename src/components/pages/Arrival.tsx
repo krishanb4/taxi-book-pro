@@ -7,6 +7,8 @@ import {useService} from "react-service-locator";
 import {ReservationService} from "../../services/reservation-service";
 import {TripProcessor} from "../../data/json/trip-processor";
 import {IPersonData} from "../../definitions/i-person-data";
+import {ArrivalDetailsForm} from "../forms/ArrivalDetailsForm";
+import {IBookingInfo} from "../../definitions/i-booking-info";
 
 export const Arrival = (params: any) => {
     const formHook: UseFormReturn<FieldValue<any>> = useForm();
@@ -19,7 +21,8 @@ export const Arrival = (params: any) => {
 
     const onChangeForm = () => {
         reservationService.setFormData({
-            personalFormData: formHook.getValues() as IPersonData
+            personalFormData: formHook.getValues() as IPersonData,
+            arrivalFromDetails: formHook.getValues() as IBookingInfo
         })
 
     };
@@ -32,7 +35,7 @@ export const Arrival = (params: any) => {
         <SecondPage formHook={formHook}>
             <div className="row">
                 <PersonalDetailsForm formHook={formHook}/>
-                {/*<ArrivalDetailsForm/>*/}
+                <ArrivalDetailsForm formHook={formHook}/>
             </div>
         </SecondPage>
     </form>

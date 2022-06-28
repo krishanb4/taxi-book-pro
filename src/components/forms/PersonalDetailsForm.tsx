@@ -21,7 +21,6 @@ export const PersonalDetailsForm: FC<{ formHook: UseFormReturn<FieldValue<any>> 
             homeFormData: params.formHook.getValues() as IHomeData,
             personalFormData: params.formHook.getValues() as IPersonData
         })
-
     };
 
     return <SectionFrame title={'Personal Details'}>
