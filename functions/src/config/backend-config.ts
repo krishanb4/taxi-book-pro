@@ -1,7 +1,7 @@
 export class BackendConfig {
     public static readonly emailCredentials = {
         username: 'bookings@prestigeparistransfers.com',
-        password: 'xfid-ptar-frtc-zstm',
+        password: 'Book@PresTrans',
         host: 'mail.privateemail.com'
     };
     public static readonly recaptchaConfig = {
