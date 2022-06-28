@@ -1,6 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {Nav, Navbar} from "react-bootstrap";
+import {AppConfig} from "../../config/app-config";
 
 export function MainNavbar(props: { src: any }) {
     const navigate = useNavigate();
@@ -29,6 +30,12 @@ export function MainNavbar(props: { src: any }) {
                         e.preventDefault();
                         navigate('/contact')
                     }}>CONTACT</Nav.Link>
+                    {
+                        !AppConfig.isDebug || <Nav.Link onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/lab')
+                        }}>LabPage</Nav.Link>
+                    }
                 </Nav>
                 <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +3(360)
                     582-2259</a>

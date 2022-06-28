@@ -7,6 +7,8 @@ import RoundTrip from "./components/pages/RoundTrip";
 import {Route, Routes} from "react-router-dom";
 import {Rates} from "./components/pages/Rates";
 import {Contact} from "./components/pages/Contact";
+import {LabPage} from "./components/pages/LabPage";
+import {AppConfig} from "./config/app-config";
 
 export const App: React.FC = () => {
     return (
@@ -18,6 +20,7 @@ export const App: React.FC = () => {
                 <Route path='/round-trip' element={<RoundTrip/>}/>
                 <Route path='/rates' element={<Rates/>}/>
                 <Route path='/contact' element={<Contact/>}/>
+                {!AppConfig.isDebug || <Route path='/lab' element={<LabPage/>}/>}
             </Routes>
         </div>
     );
