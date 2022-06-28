@@ -7,12 +7,14 @@ import {MainNavbar} from "../banners/MainNavbar";
 import {ReservationService} from "../../services/reservation-service";
 import {useForm} from "react-hook-form";
 import {IHomeData} from "../../definitions/i-home-data";
+import {TripProcessor} from "../../data/json/trip-processor";
 
 export const HomePage = () => {
     const reservationService = useService(ReservationService);
 
     useEffect(() => {
         console.log(reservationService.state);
+        console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
     }, [reservationService.state]);
 
     const {
@@ -109,7 +111,7 @@ export const HomePage = () => {
                                         <div className="col-md py-3">
                                             <p className="subTitles">Child</p>
                                             <select className="form-select"
-                                                    aria-label="Default select example" {...register('kidsCount')}>
+                                                    aria-label="Default select example" {...register('childCount')}>
                                                 {data.kidCounts.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
                                                 })}

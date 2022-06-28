@@ -1,6 +1,6 @@
 import {BookingDetails, PersonalDetails} from "../models/booking-details";
-import {findPrice} from "../data/json/priceFinder";
 import {BookingService} from "../services/booking-service";
+import {findPrice} from "../data/json/priceFinder";
 
 class Helpers {
     public static validationBeforeFetchPrice(bookingDetails: BookingDetails, personalDetails: PersonalDetails): boolean {
