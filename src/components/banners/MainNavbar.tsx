@@ -28,7 +28,7 @@ export function MainNavbar(props: { src: any }) {
                     }}>RATES</Nav.Link>
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
-                        navigate('/reroutehome')
+                        navigate('/')
                     }}>NEW HOME</Nav.Link>
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();

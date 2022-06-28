@@ -14,13 +14,13 @@ export const HomePage = () => {
     const uiService = useService(UiService);
     const navigate = useNavigate();
 
-    const gotoArrivalPage = useCallback(() => navigate(`/reroutearrival`, {
+    const gotoArrivalPage = useCallback(() => navigate(`/arrival`, {
         replace: false
     }), [navigate]);
-    const gotoDeparturePage = useCallback(() => navigate(`/reroutedeparture`, {
+    const gotoDeparturePage = useCallback(() => navigate(`/departure`, {
         replace: false
     }), [navigate]);
-    const gotoRoundTripPage = useCallback(() => navigate(`/rerouteround-trip`, {
+    const gotoRoundTripPage = useCallback(() => navigate(`/round-trip`, {
         replace: false
     }), [navigate]);
 

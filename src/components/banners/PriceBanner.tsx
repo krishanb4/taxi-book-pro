@@ -10,7 +10,7 @@ export const PriceBanner = (params: any) => {
     const reservationService = useService(ReservationService);
     const navigate = useNavigate();
 
-    const gotoHomePage = useCallback(() => navigate(`/reroutehome`, {
+    const gotoHomePage = useCallback(() => navigate(`/`, {
         replace: true
     }), [navigate]);
 
