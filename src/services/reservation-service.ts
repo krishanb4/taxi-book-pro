@@ -5,6 +5,7 @@ import {IPersonData} from "../definitions/i-person-data";
 import {JourneyType} from "../enums/journey-type";
 import {IBookingInfo} from "../definitions/i-booking-info";
 import {FieldValue, UseFormReturn} from "react-hook-form";
+import {TripProcessor} from "../data/json/trip-processor";
 
 export interface IReservationServiceState {
     homeFormData: IHomeData | null;
@@ -107,5 +108,14 @@ export class ReservationService extends StatefulService<IReservationServiceState
 
     public submitReservation(): void {
 
+    }
+
+    get tripPrice(): string | null {
+        let fetchPrice = TripProcessor.findPrice(this.state.homeFormData, this.state.journeyType);
+        if (!fetchPrice) {
+            return "N/A";
+        } else {
+            return fetchPrice;
+        }
     }
 }

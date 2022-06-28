@@ -5,7 +5,6 @@ import {JourneyType} from "../../enums/journey-type";
 import data from "../../data/data.json"
 import {MainNavbar} from "../banners/MainNavbar";
 import {ReservationService} from "../../services/reservation-service";
-import {IHomeData} from "../../definitions/i-home-data";
 import {TripProcessor} from "../../data/json/trip-processor";
 import {useNavigate} from "react-router-dom";
 import {UiService} from "../../services/ui-service";
@@ -31,26 +30,18 @@ export const HomePage = () => {
     }), [navigate]);
 
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-    };
-
-    const onChangeForm = () => {
-        reservationService.setFormData({
-            homeFormData: reservationService.homeFormHook.getValues() as IHomeData,
-        })
-
-    };
-
     async function onBookNowClick(e: any) {
         e.preventDefault();
-        if (reservationService.state.journeyType === JourneyType.DEPARTURE) {
-            gotoDeparturePage();
-        } else if (reservationService.state.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
-            gotoArrivalPage();
-        } else {
-            gotoRoundTripPage();
-        }
+
+        reservationService.homeFormHook.handleSubmit(() => {
+            if (reservationService.state.journeyType === JourneyType.DEPARTURE) {
+                gotoDeparturePage();
+            } else if (reservationService.state.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
+                gotoArrivalPage();
+            } else {
+                gotoRoundTripPage();
+            }
+        })
     }
 
     async function onModeSelect(mode: JourneyType) {
@@ -92,7 +83,7 @@ export const HomePage = () => {
                         <img src={require("../../assets/logos/ppt-logo.png")} alt="pdtlogo"
                              className="pb-5 logo m-auto"/></div>
                     <br/><br/><br/><br/>
-                    <form onSubmit={reservationService.homeFormHook.handleSubmit(onSubmit)} onChange={onChangeForm}>
+                    <form>
                         <div className="tab-content home-form">
                             <div className="home-form-outer">
                                 <div className={'home-form-header-bar'}>
@@ -150,7 +141,9 @@ export const HomePage = () => {
                                 <div className="home-form-footer-bar">
                                     <div className="home-form-footer-bar-inner">
                                         <div className={"text-center travel-fare-group"}>
-                                            <div>Your Travel Fare - <span className={"price"}> {} </span></div>
+                                            <div>Your Travel Fare - <span
+                                                className={"price"}> {reservationService.tripPrice} </span>
+                                            </div>
                                         </div>
                                         <button type="button" className="btn booknow-btn" onClick={onBookNowClick}>
                                             Book Now

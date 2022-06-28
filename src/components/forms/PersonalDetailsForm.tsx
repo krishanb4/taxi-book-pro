@@ -3,24 +3,13 @@ import React from "react";
 import {useService} from "react-service-locator";
 import SectionFrame from "../frames/SectionFrame";
 import {ReservationService} from "../../services/reservation-service";
-import {IPersonData} from "../../definitions/i-person-data";
 
 
 export const PersonalDetailsForm = (params: any) => {
 
     const reservationService = useService(ReservationService);
-    // useEffect(() => {
-    //     console.log(reservationService.state);
-    //     console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
-    // }, [reservationService.state]);
 
-    const onChangeForm = () => {
-        reservationService.setFormData({
-            personalFormData: reservationService.personalDetailFormHook.getValues() as IPersonData
-        })
-    };
-
-    return <form onChange={onChangeForm}>
+    return <form>
         <SectionFrame title={'Personal Details'}>
             <label htmlFor="name" className="mb-3 form-sub-title">
                 Your Name:

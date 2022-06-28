@@ -3,18 +3,11 @@ import React from "react";
 import {useService} from "react-service-locator";
 import SectionFrame from "../frames/SectionFrame";
 import {ReservationService} from "../../services/reservation-service";
-import {IBookingInfo} from "../../definitions/i-booking-info";
 
 export const DepartureDetailsForm = (params: any) => {
     const reservationService = useService(ReservationService);
 
-    const onChangeForm = () => {
-        reservationService.setFormData({
-            departureFormDetails: reservationService.departureFormHook.getValues() as IBookingInfo
-        })
-    };
-
-    return <form onChange={onChangeForm}>
+    return <form>
         <SectionFrame title={'Departure or Pickup Detail'}>
             <div className=" form-sub-title">
                 <div className="py-2">

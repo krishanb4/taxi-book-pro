@@ -1,4 +1,4 @@
-import React, {FormEvent} from "react";
+import React, {useEffect} from "react";
 import '../../styles/style.scss'
 import {MainNavbar} from "../banners/MainNavbar";
 
@@ -12,16 +12,22 @@ export const LabPage = () => {
         handleSubmit,
         formState: {errors},
         reset,
-        getValues
-    } = useForm();
+        getValues,
+        setValue,
+        trigger,
+        watch
+
+    } = useForm({mode: "all", reValidateMode: "onChange"});
     const onSubmit = (data: any) => {
         console.log(data);
     };
 
-    const onChangeForm = (data: FormEvent) => {
-        console.log(getValues());
+    const onChangeForm = (data: any) => {
+        console.log(data);
     };
-
+    useEffect(() => {
+        watch(onChangeForm)
+    }, [])
     return (
         <div>
             <section className="nav-bar-main">
@@ -30,7 +36,7 @@ export const LabPage = () => {
 
             <section className="py-5 px-3">
                 <div className="container text-center">
-                    <form onChange={onChangeForm}>
+                    <form>
                         <input {...register('firstName')} />
                         <input {...register('lastName', {required: true,})} />
                         {errors.lastName && <p>Last name is required.</p>}`
@@ -42,9 +48,15 @@ export const LabPage = () => {
                     <Button onClick={() => handleSubmit(onSubmit)()}>Submit</Button>
 
                 </div>
-                {/*<button onClick={}>*/}
-                {/*    test name*/}
-                {/*</button>*/}
+                <button onClick={() => {
+                    setValue("firstName", "hello", {
+                        shouldDirty: true, shouldTouch: true
+                    });
+                    handleSubmit(() => {
+                    })()
+                }}>
+                    test name
+                </button>
 
             </section>
         </div>
