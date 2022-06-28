@@ -7,7 +7,7 @@ import {db} from "../../config/firebase-config";
 import {useService} from "react-service-locator";
 import {BookingService} from "../../services/booking-service";
 import NoteBanner from "../banners/NoteBanner";
-import PriceBanner from "../banners/PriceBanner";
+import OldPriceBanner from "../banners/OldPriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
 import {useNavigate} from "react-router-dom";
 import {MainNavbar} from "../banners/MainNavbar";
@@ -64,7 +64,7 @@ const OldSecondPage = (props: any) => {
 
             <section className="travel-fare-banner text-center fare-section">
                 <RecaptchaItem/>
-                <PriceBanner formId={"booking-details-arrival"}/>
+                <OldPriceBanner formId={"booking-details-arrival"}/>
             </section>
         </div>
     );

@@ -43,4 +43,7 @@ export class ReservationService extends StatefulService<IReservationServiceState
             journeyType: mode
         })
     }
+
+    public onSecondPageSubmit() {
+    }
 }

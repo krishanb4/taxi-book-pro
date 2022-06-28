@@ -24,6 +24,10 @@ export const Arrival = (params: any) => {
 
     };
 
+    const onSubmitForm = () => {
+
+    }
+
     return <form id={"booking-details-arrival"} onChange={onChangeForm}>
         <SecondPage formHook={formHook}>
             <div className="row">

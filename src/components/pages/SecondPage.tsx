@@ -6,12 +6,12 @@ import {useCollection,} from 'react-firebase-hooks/firestore';
 import {db} from "../../config/firebase-config";
 import {useService} from "react-service-locator";
 import NoteBanner from "../banners/NoteBanner";
-import PriceBanner from "../banners/PriceBanner";
 import RecaptchaItem from "../items/RecaptchaItem";
 import {useNavigate} from "react-router-dom";
 import {MainNavbar} from "../banners/MainNavbar";
 import {ReservationService} from "../../services/reservation-service";
 import {FieldValue, UseFormReturn} from "react-hook-form";
+import {PriceBanner} from "../banners/PriceBanner";
 
 export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (props) => {
 
@@ -55,7 +55,8 @@ export const SecondPage: FC<{ formHook: UseFormReturn<FieldValue<any>> }> = (pro
 
             <section className="travel-fare-banner text-center fare-section">
                 <RecaptchaItem/>
-                <PriceBanner formId={"booking-details-arrival"}/>
+                <PriceBanner onClick={() => props.formHook.handleSubmit(reservationService.onSecondPageSubmit)()}
+                             formId={undefined}/>
             </section>
         </div>
     );

@@ -1,11 +1,10 @@
 import "../../styles/booking-style.css"
 import React from "react";
 import {useService} from "react-service-locator";
-import {BookingService} from "../../services/booking-service";
-import ReservationButton from "../items/ReservationButton";
+import {RecaptchaService} from "../../services/recaptcha-service";
 
-const PriceBanner = (params: { formId: string | undefined; }) => {
-    const bookingService = useService(BookingService);
+export const PriceBanner = (params: { formId: string | undefined; onClick: () => {} }) => {
+    const recaptchaService = useService(RecaptchaService);
 
     return (
         <div className="price-info-bar">
@@ -13,14 +12,18 @@ const PriceBanner = (params: { formId: string | undefined; }) => {
                 <div className="row g-4">
                     <div className="col-md">
                         <span className="your-travel-fare">Your Travel Fare is <span
-                            className="fare">{bookingService.arrivalBookingDetails.isBooked() ? bookingService.arrivalBookingDetails.getCost() : bookingService.departureBookingDetails.getCost()}</span></span><br/>
+                            className="fare">{}</span></span><br/>
                         <span className="nighttime-charge">Night Time Charge (Between 22:00 and 06:00) : € 15</span>
                     </div>
-                    <ReservationButton formId={params.formId}/>
+                    <button type="button" form={params.formId} className="btn btn-reservation-button"
+                            disabled={recaptchaService.isTokenExpired()} onClick={(e) => {
+                        e.preventDefault();
+                        params.onClick();
+                    }}>Submit
+                        Reservation
+                    </button>
                 </div>
             </div>
         </div>
     );
 }
-
-export default PriceBanner;
