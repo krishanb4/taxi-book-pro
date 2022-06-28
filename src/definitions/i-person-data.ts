@@ -3,8 +3,8 @@ export interface IPersonData {
     email: string,
     phone: string,
     comments: string,
-    adultCount: number,
-    childCount: number,
+    adultCount: string,
+    childCount: string,
     comment: string,
     created: any
 }

@@ -16,7 +16,6 @@ import {RoundTrip} from "./components/pages/RoundTrip";
 import {FieldValue, useForm, UseFormReturn} from "react-hook-form";
 import {useService} from "react-service-locator";
 import {ReservationService} from "./services/reservation-service";
-import {TripProcessor} from "./data/json/trip-processor";
 import {IHomeData} from "./definitions/i-home-data";
 import {IPersonData} from "./definitions/i-person-data";
 import {IBookingInfo} from "./definitions/i-booking-info";
@@ -38,33 +37,29 @@ export const App: React.FC = () => {
         });
     }, [reservationService.state.isFormsReady, homeFormHook, personalDetailFormHook, arrivalFormHook, departureFormHook]);
 
-    useEffect(() => {
-        console.log(reservationService.state);
-        console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
-    }, [reservationService.state]);
 
     useEffect(() => {
-        const homeFormUnsub = homeFormHook.watch(() => {
+        const homeFormUnsub = homeFormHook.watch((data: IHomeData) => {
             reservationService.setFormData({
-                homeFormData: reservationService.homeFormHook.getValues() as IHomeData,
+                homeFormData: data,
             })
         }).unsubscribe;
 
-        const personalFormUnsub = personalDetailFormHook.watch(() => {
+        const personalFormUnsub = personalDetailFormHook.watch((data: IPersonData) => {
             reservationService.setFormData({
-                personalFormData: reservationService.personalDetailFormHook.getValues() as IPersonData,
+                personalFormData: data,
             })
         }).unsubscribe;
 
-        const arrivalFormUnsub = arrivalFormHook.watch(() => {
+        const arrivalFormUnsub = arrivalFormHook.watch((data: IBookingInfo) => {
             reservationService.setFormData({
-                arrivalFromDetails: reservationService.arrivalFormHook.getValues() as IBookingInfo,
+                arrivalFromDetails: data,
             })
         }).unsubscribe;
 
-        const departureFormUnsub = departureFormHook.watch(() => {
+        const departureFormUnsub = departureFormHook.watch((data: IBookingInfo) => {
             reservationService.setFormData({
-                departureFormDetails: reservationService.departureFormHook.getValues() as IBookingInfo,
+                departureFormDetails: data,
             })
         }).unsubscribe;
         return () => {

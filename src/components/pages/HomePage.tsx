@@ -14,11 +14,6 @@ export const HomePage = () => {
     const uiService = useService(UiService);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log(reservationService.state);
-        console.log(TripProcessor.findPrice(reservationService.state.homeFormData, reservationService.state.journeyType))
-    }, [reservationService.state]);
-
     const gotoArrivalPage = useCallback(() => navigate(`/reroutearrival`, {
         replace: false
     }), [navigate]);
@@ -29,11 +24,19 @@ export const HomePage = () => {
         replace: false
     }), [navigate]);
 
+    useEffect(() => {
+        if (reservationService.state.personalFormData?.adultCount) reservationService.homeFormHook.setValue("adultCount", reservationService.state.personalFormData.adultCount);
+        if (reservationService.state.personalFormData?.childCount) reservationService.homeFormHook.setValue("childCount", reservationService.state.personalFormData.childCount);
+    }, [])
 
     async function onBookNowClick(e: any) {
         e.preventDefault();
 
-        reservationService.homeFormHook.handleSubmit(() => {
+        await reservationService.homeFormHook.handleSubmit((data) => {
+
+            reservationService.personalDetailFormHook.setValue("adultCount", reservationService.state.homeFormData?.adultCount);
+            reservationService.personalDetailFormHook.setValue("childCount", reservationService.state.homeFormData?.childCount);
+
             if (reservationService.state.journeyType === JourneyType.DEPARTURE) {
                 gotoDeparturePage();
             } else if (reservationService.state.journeyType === JourneyType.ARRIVAL_ONE_WAY) {
@@ -41,7 +44,7 @@ export const HomePage = () => {
             } else {
                 gotoRoundTripPage();
             }
-        })
+        })();
     }
 
     async function onModeSelect(mode: JourneyType) {

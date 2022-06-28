@@ -46,16 +46,9 @@ export class ReservationService extends StatefulService<IReservationServiceState
         departureFormDetails?: IBookingInfo
 
     }): void {
-        const homeData = data.homeFormData ?? this.state.homeFormData;
-        const personalData = data.personalFormData ?? this.state.personalFormData;
-        const arrivalDetails = data.arrivalFromDetails ?? this.state.arrivalFromDetails;
-        const departureDetails = data.departureFormDetails ?? this.state.departureFormDetails;
-
         this.setState({
-            homeFormData: homeData,
-            personalFormData: personalData,
-            arrivalFromDetails: arrivalDetails,
-            departureFormDetails: departureDetails
+            ...this.state,
+            ...data,
         })
     }
 
@@ -80,6 +73,7 @@ export class ReservationService extends StatefulService<IReservationServiceState
         this._personalDetailFormHook = hooks.personalDetailFormHook;
         this._arrivalFormHook = hooks.arrivalFormHook;
         this._departureFormHook = hooks.departureFormHook;
+
         this.setState({
             ...this.state,
             isFormsReady: true
