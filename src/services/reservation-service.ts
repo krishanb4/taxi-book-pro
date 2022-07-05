@@ -233,4 +233,10 @@ export class ReservationService extends StatefulService<IReservationServiceState
         if (this.state.personalFormData?.adultCount) this.homeFormHook.setValue("adultCount", this.state.personalFormData.adultCount);
         if (this.state.personalFormData?.childCount) this.homeFormHook.setValue("childCount", this.state.personalFormData.childCount);
     }
+
+    public validateHomeForm(): boolean {
+        const pickup = this.homeFormHook.getValues('pickUpPoint');
+        const drop = this.homeFormHook.getValues('dropPoint');
+        return pickup !== 'NONE' && drop !== 'NONE' && pickup !== drop;
+    }
 }

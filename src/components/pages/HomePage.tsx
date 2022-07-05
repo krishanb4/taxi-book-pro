@@ -32,6 +32,14 @@ export const HomePage = () => {
         e.preventDefault();
 
         await reservationService.homeFormHook.handleSubmit((data) => {
+            const isValid = reservationService.validateHomeForm();
+            if (!isValid) {
+                uiService.addMessageAlert({
+                    title: 'Invalid Trip Information',
+                    subtitle: 'Please correctly fill the trip details before continuing.',
+                })
+                return;
+            }
             reservationService.syncHomeDataToSecondPageData();
             if (reservationService.state.journeyType === JourneyType.DEPARTURE) {
                 gotoDeparturePage();
@@ -98,7 +106,7 @@ export const HomePage = () => {
                                             <p className="subTitles">Pickup Location</p>
                                             <select className="form-select"
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('pickUpPoint')} >
-                                                <option disabled={true}>Select Drop Place...</option>
+                                                <option value={'NONE'}>Select Pickup Place...</option>
                                                 {data.locations.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
                                                 })}
@@ -108,7 +116,7 @@ export const HomePage = () => {
                                             <p className="subTitles">Drop-off Location</p>
                                             <select className="form-select"
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('dropPoint')}>
-                                                <option disabled={true}>Select Drop Place...</option>
+                                                <option value={'NONE'}>Select Drop Place...</option>
                                                 {data.locations.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
                                                 })}
