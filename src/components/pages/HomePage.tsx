@@ -92,15 +92,20 @@ export const HomePage = () => {
         </Col>;
     }
 
-    function buildPackageItem() {
-        return <Col lg={4} md={4} xs={6}>
+    function buildPackageItem(params: {
+        image: string,
+        title: string,
+        subtitle: string,
+        price: string,
+    }) {
+        return <Col xl={3} lg={4} md={6} xs={12}>
             <div className={'package-item'}>
-                <Image src={require('../../assets/thumbnails/package-thumb-1.png')}></Image>
+                <Image src={params.image}></Image>
                 <div className="content-box">
-                    <h5 className={'item-title'}>Efficient</h5>
-                    <p>Our service is highly focused on your satisfaction thus we provide flawless journey.</p>
+                    <h5 className={'item-title'}>{params.title}</h5>
+                    <p>{params.subtitle}</p>
                     <div className="price-box">
-                        50$
+                        {params.price}
                     </div>
                 </div>
             </div>
@@ -236,12 +241,42 @@ export const HomePage = () => {
                     <Row className={'pt-5'}>
                         <h3 className={'pb-4'}>Special Packages</h3>
                         <Row>
-                            {buildPackageItem()}
-                            {buildPackageItem()}
-                            {buildPackageItem()}
-                            {buildPackageItem()}
-                            {buildPackageItem()}
-                            {buildPackageItem()}
+                            {buildPackageItem({
+                                image: require('../../assets/thumbnails/package-thumb-1.png'),
+                                title: 'CDG TO PARIS',
+                                subtitle: 'Need a fast, reliable and economical transfer between Roissy-Charles de Gaulle Airport and Paris? Paris Disney Best Transfer offers you a priority journey with no extra charge for luggage, in our comfortable luxury vehicles. You can choose either single or round trip transfers between CDG and Paris. Look no more! Book your transfer now!',
+                                price: '€80',
+                            })}
+                            {buildPackageItem({
+                                image: require('../../assets/thumbnails/package-thumb-2.png'),
+                                title: 'CDG TO DISNEYLAND',
+                                subtitle: 'You are coming to visit the magical world of Disneyland? Paris Disney Best Transfer offers you an exclusive service with a priority journey with no extra charge for luggage, in our luxury vehicles. We offer cost saving offers for single and round trips between the CDG and Disneyland Paris. Don\'t waste your time and money, book your transfer now.',
+                                price: '€70',
+                            })}
+                            {buildPackageItem({
+                                image: require('../../assets/thumbnails/package-thumb-3.png'),
+                                title: 'ORLY TO PARIS',
+                                subtitle: 'Paris Disney Best Transfer offers you an exclusive private transport service between Orly Airport and Paris. We ensure you a fast, economical and reliable transfer with no extra charge for luggage. You can choose either single or round trip transfers between ORLY Airport and Paris. To book your transfer click on the button below. No credit card is required for booking!',
+                                price: '€65',
+                            })}
+                            {buildPackageItem({
+                                image: require('../../assets/thumbnails/package-thumb-4.png'),
+                                title: 'ORLY TO DISNEYLAND',
+                                subtitle: 'You are in Paris to discover the magical world of Disneyland? No need to waste your time and money to find your way to Disneyland! Paris Disney Best Transfer offers you an exclusive 5-star service with a priority journey with no extra charge for luggage, in our luxury comfortable vehicles. We offer affordable prices for single and round trips between the ORLY Airport and Disneyland Paris.',
+                                price: '€80',
+                            })}
+                            {buildPackageItem({
+                                image: require('../../assets/thumbnails/package-thumb-5.png'),
+                                title: 'BEAUVAIS TO PARIS',
+                                subtitle: 'Paris Disney Best Transfer offers you an exclusive private transfer service between Beauvais Airport and Paris, with no extra charge for luggage. You can choose either single or round trip transfers between Beauvais Airport and Paris in our luxury comfortable vehicles. Our transfers are much more economical and faster than a regular taxi service. Why waste your time? Book your private transfer now!',
+                                price: '€150',
+                            })}
+                            {buildPackageItem({
+                                image: require('../../assets/thumbnails/package-thumb-6.png'),
+                                title: 'BEAUVAIS TO DISNEYLAND',
+                                subtitle: 'You are landing at Beauvais Airport to come and discover the magical world of Disneyland? Paris Disney Best Transfer offers you an exclusive private transfer service with no extra charge for luggage, in our luxury comfortable vehicles. We offer cost saving offers for single and round trips between the Beauvais Airport and Disneyland Paris. Don\'t waste your time and money, book your transfer now.',
+                                price: '€150',
+                            })}
                         </Row>
                     </Row>
                 </Container>
