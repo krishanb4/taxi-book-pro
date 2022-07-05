@@ -1,5 +1,5 @@
 import React from "react";
-import {EnvelopeFill, Facebook, PhoneFill, Twitter} from "react-bootstrap-icons";
+import {EnvelopeFill, PhoneFill} from "react-bootstrap-icons";
 import {Container, Image, Nav} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 
@@ -7,30 +7,8 @@ export const Footer = () => {
     const navigate = useNavigate();
     return (<footer className="text-center text-lg-start text-white mt-5 page-footer">
             <Container>
-                {/* Section: Social media */}
-                <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                    {/* Left */}
-                    <div className="me-5 d-none d-lg-block">
-                        <span>Get in touch with us via:</span>
-                    </div>
-                    {/* Left */}
-                    {/* Right */}
-                    <div>
-                        <a href={'#'} className="me-4 text-reset">
-                            <Facebook/>
-                        </a>
-                        <a href={'#'} className="me-4 text-reset">
-                            <Twitter/>
-                        </a>
-                        <a href={'#'} className="me-4 text-reset">
-                            <EnvelopeFill/>
-                        </a>
-                    </div>
-                    {/* Right */}
-                </section>
-                {/* Section: Social media */}
                 {/* Section: Links  */}
-                <section>
+                <section className={'pt-3'}>
                     <div className="container text-center text-md-start mt-5">
                         {/* Grid row */}
                         <div className="row mt-3">
