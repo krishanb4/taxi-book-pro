@@ -19,6 +19,7 @@ specifiers:
   prop-types: ^15.8.1
   react: ^17.0.2
   react-bootstrap: ^2.1.2
+  react-bootstrap-icons: ^1.8.4
   react-bootstrap-sweetalert: ^5.2.0
   react-dom: ^17.0.2
   react-firebase-hooks: ^5.0.3
@@ -52,6 +53,7 @@ dependencies:
   prop-types: 15.8.1
   react: 17.0.2
   react-bootstrap: 2.4.0_nn45z5sr7igu7sfun6tiae5hx4
+  react-bootstrap-icons: 1.8.4_react@17.0.2
   react-bootstrap-sweetalert: 5.2.0_at7mkepldmzoo6silmqc5bca74
   react-dom: 17.0.2_react@17.0.2
   react-firebase-hooks: 5.0.3_i5umbfltnylwxgediwjiumrrwm
@@ -9257,6 +9259,15 @@ packages:
       react: '>=16.4.1'
     dependencies:
       hoist-non-react-statics: 3.3.2
+      prop-types: 15.8.1
+      react: 17.0.2
+    dev: false
+
+  /react-bootstrap-icons/1.8.4_react@17.0.2:
+    resolution: {integrity: sha512-PTCQqTLn0AdCy622reNmV+b4PwCPIOA0PFYT3CSfiqw5nwDPGntOm3Pr+ZsMxXD655QAs1nrMm7u0t3+HVxhtQ==}
+    peerDependencies:
+      react: '>=16.8.6'
+    dependencies:
       prop-types: 15.8.1
       react: 17.0.2
     dev: false

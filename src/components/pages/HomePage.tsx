@@ -9,6 +9,7 @@ import {TripProcessor} from "../../data/json/trip-processor";
 import {useNavigate} from "react-router-dom";
 import {UiService} from "../../services/ui-service";
 import {Col, Container, Image, Row} from "react-bootstrap";
+import {Footer} from "../Footer";
 
 export const HomePage = () => {
     const reservationService = useService(ReservationService);
@@ -117,7 +118,7 @@ export const HomePage = () => {
                     <p className={'text-white'} style={{
                         paddingBottom: 120
                     }}>
-                        'Disney Paris Transfer' is a private transfer service approved by the French Government. It
+                        'Prestige Paris Transfer' is a private transfer service approved by the French Government. It
                         is renowned for being one of the friendliest and most cost-effective airport shuttle around.
                         We provide transport services to and from Charles de Gaulle Roissy (CDG), Orly (ORY), le
                         Bourget (LBG), Beauvals Airport (BVA), Disneyland and from your hotel, office or house in
@@ -221,6 +222,7 @@ export const HomePage = () => {
                     </Row>
                 </Container>
             </section>
+            <Footer/>
         </div>
     );
 }
