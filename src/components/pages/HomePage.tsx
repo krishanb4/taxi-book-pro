@@ -214,27 +214,27 @@ export const HomePage = () => {
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-1.png'),
                                 title: 'Efficient',
-                                subtitle: 'Our service is Highly focused on your satisfaction thus we provide flawless journey.',
+                                subtitle: 'You will be provided with a faster, comfortable and reliable journey.',
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-2.png'),
                                 title: 'Worthy',
-                                subtitle: 'We provide very optimized budget friendly travel service',
+                                subtitle: 'Best services with affordable prices.',
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-3.png'),
                                 title: 'Safe Travel',
-                                subtitle: 'Journey is safe for adults as well as for little ones.',
+                                subtitle: 'Safe journey for you and your family.',
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-4.png'),
                                 title: 'Professional Drivers',
-                                subtitle: 'Our Drivers are well trained to provide excellent service',
+                                subtitle: 'Excellent service with well trained professionals.',
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-5.png'),
                                 title: 'Customer Support',
-                                subtitle: 'Well trained customer support staff is ready to attend all your requirements',
+                                subtitle: 'Best customer service with well trained customer support staff.',
                             })}
                         </Row>
                     </Row>
@@ -242,39 +242,39 @@ export const HomePage = () => {
                         <h3 className={'pb-4'}>Special Packages</h3>
                         <Row>
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-1.png'),
-                                title: 'CDG TO PARIS',
-                                subtitle: 'Need a fast, reliable and economical transfer between Roissy-Charles de Gaulle Airport and Paris? Paris Disney Best Transfer offers you a priority journey with no extra charge for luggage, in our comfortable luxury vehicles. You can choose either single or round trip transfers between CDG and Paris. Look no more! Book your transfer now!',
-                                price: '€80',
-                            })}
-                            {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-2.png'),
                                 title: 'CDG TO DISNEYLAND',
-                                subtitle: 'You are coming to visit the magical world of Disneyland? Paris Disney Best Transfer offers you an exclusive service with a priority journey with no extra charge for luggage, in our luxury vehicles. We offer cost saving offers for single and round trips between the CDG and Disneyland Paris. Don\'t waste your time and money, book your transfer now.',
+                                subtitle: 'Book Paris Disney Best Transfer for a comfortable trip from CDG to Disneyland Paris. Amazing offers for single and round trips and you are facilitated with no extra charges for your luggage. Need a visit to Disneyland? Book now!',
                                 price: '€70',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-3.png'),
                                 title: 'ORLY TO PARIS',
-                                subtitle: 'Paris Disney Best Transfer offers you an exclusive private transport service between Orly Airport and Paris. We ensure you a fast, economical and reliable transfer with no extra charge for luggage. You can choose either single or round trip transfers between ORLY Airport and Paris. To book your transfer click on the button below. No credit card is required for booking!',
+                                subtitle: 'For reliable travel between Orly Airport and Paris, book us now! Paris Disney Best Transfer offers you the best service. No extra charges for luggage and no credit cards are required for the booking. You are privileged with the best cost saving offers for single and round trip transfers.',
                                 price: '€65',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-4.png'),
                                 title: 'ORLY TO DISNEYLAND',
-                                subtitle: 'You are in Paris to discover the magical world of Disneyland? No need to waste your time and money to find your way to Disneyland! Paris Disney Best Transfer offers you an exclusive 5-star service with a priority journey with no extra charge for luggage, in our luxury comfortable vehicles. We offer affordable prices for single and round trips between the ORLY Airport and Disneyland Paris.',
+                                subtitle: 'Want a comfortable journey in luxury vehicles? Paris Disney Best Transfer is your choice. We ensure a comfortable travel between the ORLY Airport and Disneyland Paris. No extra charges for luggage and you can choose single or round trip transfers. Want to visit Disneyland? Book us now!',
                                 price: '€80',
                             })}
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-5.png'),
-                                title: 'BEAUVAIS TO PARIS',
-                                subtitle: 'Paris Disney Best Transfer offers you an exclusive private transfer service between Beauvais Airport and Paris, with no extra charge for luggage. You can choose either single or round trip transfers between Beauvais Airport and Paris in our luxury comfortable vehicles. Our transfers are much more economical and faster than a regular taxi service. Why waste your time? Book your private transfer now!',
-                                price: '€150',
+                                image: require('../../assets/thumbnails/package-thumb-1.png'),
+                                title: 'CDG TO PARIS',
+                                subtitle: 'For a fast, reliable journey between CDG and Paris, book Paris Disney Best Transfer. You can comfortably travel in our luxury vehicles and you can have your luggage without any extra charges. We will give you the best offers for single and round trips. Want to transfer from Roissy-Charles de Gaulle Airport to Paris? Book Paris Disney Best Transfer!',
+                                price: '€80',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-6.png'),
                                 title: 'BEAUVAIS TO DISNEYLAND',
-                                subtitle: 'You are landing at Beauvais Airport to come and discover the magical world of Disneyland? Paris Disney Best Transfer offers you an exclusive private transfer service with no extra charge for luggage, in our luxury comfortable vehicles. We offer cost saving offers for single and round trips between the Beauvais Airport and Disneyland Paris. Don\'t waste your time and money, book your transfer now.',
+                                subtitle: 'Need to visit Disneyland? Book Paris Disney Best Transfer for your transfers between the Beauvais Airport and Disneyland Paris. No need to pay extra for your luggage and you can choose either single or round trip transfers. We provide toy faster and reliable transfers in our luxury vehicles. Book us now!',
+                                price: '€150',
+                            })}
+                            {buildPackageItem({
+                                image: require('../../assets/thumbnails/package-thumb-5.png'),
+                                title: 'BEAUVAIS TO PARIS',
+                                subtitle: 'For affordable travel between Beauvais Airport and Paris, book Paris Disney Best Transfer now! Best offers for your single and round trips. No extra charges for luggage and we provide you a better service than a regular taxi service. Save your time. Book us now!',
                                 price: '€150',
                             })}
                         </Row>
