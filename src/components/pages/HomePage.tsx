@@ -80,7 +80,7 @@ export const HomePage = () => {
 
 
     function buildServiceItem() {
-        return <Col className={'service-item'}>
+        return <Col lg={2} md={4} xs={6} className={'service-item'}>
             <Image src={require('../../assets/icons/service-icon-1.png')}></Image>
             <h5>Efficient</h5>
             <p>Our service is highly focused on your satisfaction thus we provide flawless journey.</p>
@@ -88,7 +88,7 @@ export const HomePage = () => {
     }
 
     function buildPackageItem() {
-        return <Col>
+        return <Col lg={4} md={4} xs={6}>
             <div className={'package-item'}>
                 <Image src={require('../../assets/thumbnails/package-thumb-1.png')}></Image>
                 <div className="content-box">
@@ -200,7 +200,7 @@ export const HomePage = () => {
                 <Container>
                     <Row>
                         <h3 className={'pb-4'}>OUR SERVICE</h3>
-                        <Row>
+                        <Row className={'justify-content-md-center'}>
                             {buildServiceItem()}
                             {buildServiceItem()}
                             {buildServiceItem()}
@@ -216,13 +216,12 @@ export const HomePage = () => {
                             {buildPackageItem()}
                             {buildPackageItem()}
                             {buildPackageItem()}
+                            {buildPackageItem()}
                         </Row>
                     </Row>
                 </Container>
             </section>
         </div>
-
-
     );
 }
 
