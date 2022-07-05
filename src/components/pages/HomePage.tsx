@@ -80,11 +80,15 @@ export const HomePage = () => {
     }
 
 
-    function buildServiceItem() {
+    function buildServiceItem(params: {
+        image: string,
+        title: string,
+        subtitle: string,
+    }) {
         return <Col lg={2} md={4} xs={6} className={'service-item'}>
-            <Image src={require('../../assets/icons/service-icon-1.png')}></Image>
-            <h5>Efficient</h5>
-            <p>Our service is highly focused on your satisfaction thus we provide flawless journey.</p>
+            <Image src={params.image}></Image>
+            <h5>{params.title}</h5>
+            <p>{params.subtitle}</p>
         </Col>;
     }
 
@@ -202,11 +206,31 @@ export const HomePage = () => {
                     <Row>
                         <h3 className={'pb-4'}>OUR SERVICE</h3>
                         <Row className={'justify-content-md-center'}>
-                            {buildServiceItem()}
-                            {buildServiceItem()}
-                            {buildServiceItem()}
-                            {buildServiceItem()}
-                            {buildServiceItem()}
+                            {buildServiceItem({
+                                image: require('../../assets/icons/service-icon-1.png'),
+                                title: 'Efficient',
+                                subtitle: 'Our service is Highly focused on your satisfaction thus we provide flawless journey.',
+                            })}
+                            {buildServiceItem({
+                                image: require('../../assets/icons/service-icon-2.png'),
+                                title: 'Worthy',
+                                subtitle: 'We provide very optimized budget friendly travel service',
+                            })}
+                            {buildServiceItem({
+                                image: require('../../assets/icons/service-icon-3.png'),
+                                title: 'Safe Travel',
+                                subtitle: 'Journey is safe for adults as well as for little ones.',
+                            })}
+                            {buildServiceItem({
+                                image: require('../../assets/icons/service-icon-4.png'),
+                                title: 'Professional Drivers',
+                                subtitle: 'Our Drivers are well trained to provide excellent service',
+                            })}
+                            {buildServiceItem({
+                                image: require('../../assets/icons/service-icon-5.png'),
+                                title: 'Customer Support',
+                                subtitle: 'Well trained customer support staff is ready to attend all your requirements',
+                            })}
                         </Row>
                     </Row>
                     <Row className={'pt-5'}>
