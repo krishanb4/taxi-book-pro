@@ -98,12 +98,14 @@ export const HomePage = () => {
         subtitle: string,
         price: string,
     }) {
-        return <Col xl={3} lg={4} md={6} xs={12}>
+        return <Col className={'package-item-col'} xl={3} lg={4} md={6} xs={12}>
             <div className={'package-item'}>
                 <Image src={params.image}></Image>
                 <div className="content-box">
                     <h5 className={'item-title'}>{params.title}</h5>
                     <p>{params.subtitle}</p>
+                </div>
+                <div className="price-box-wrapper w-100">
                     <div className="price-box">
                         {params.price}
                     </div>
@@ -244,37 +246,37 @@ export const HomePage = () => {
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-2.png'),
                                 title: 'CDG TO DISNEYLAND',
-                                subtitle: 'Book Paris Disney Best Transfer for a comfortable trip from CDG to Disneyland Paris. Amazing offers for single and round trips and you are facilitated with no extra charges for your luggage. Need a visit to Disneyland? Book now!',
+                                subtitle: 'Book Prestige Paris Transfer for a comfortable trip from CDG to Disneyland Paris. Amazing offers for single and round trips and you are facilitated with no extra charges for your luggage. Need a visit to Disneyland? Book now!',
                                 price: '€70',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-3.png'),
                                 title: 'ORLY TO PARIS',
-                                subtitle: 'For reliable travel between Orly Airport and Paris, book us now! Paris Disney Best Transfer offers you the best service. No extra charges for luggage and no credit cards are required for the booking. You are privileged with the best cost saving offers for single and round trip transfers.',
+                                subtitle: 'For reliable travel between Orly Airport and Paris, book us now! Prestige Paris Transfer offers you the best service. No extra charges for luggage and no credit cards are required for the booking. You are privileged with the best cost saving offers for single and round trip transfers.',
                                 price: '€65',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-4.png'),
                                 title: 'ORLY TO DISNEYLAND',
-                                subtitle: 'Want a comfortable journey in luxury vehicles? Paris Disney Best Transfer is your choice. We ensure a comfortable travel between the ORLY Airport and Disneyland Paris. No extra charges for luggage and you can choose single or round trip transfers. Want to visit Disneyland? Book us now!',
+                                subtitle: 'Want a comfortable journey in luxury vehicles? Prestige Paris Transfer is your choice. We ensure a comfortable travel between the ORLY Airport and Disneyland Paris. No extra charges for luggage and you can choose single or round trip transfers. Want to visit Disneyland? Book us now!',
                                 price: '€80',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-1.png'),
                                 title: 'CDG TO PARIS',
-                                subtitle: 'For a fast, reliable journey between CDG and Paris, book Paris Disney Best Transfer. You can comfortably travel in our luxury vehicles and you can have your luggage without any extra charges. We will give you the best offers for single and round trips. Want to transfer from Roissy-Charles de Gaulle Airport to Paris? Book Paris Disney Best Transfer!',
+                                subtitle: 'For a fast, reliable journey between CDG and Paris, book Prestige Paris Transfer. You can comfortably travel in our luxury vehicles and you can have your luggage without any extra charges. We will give you the best offers for single and round trips. Want to transfer from Roissy-Charles de Gaulle Airport to Paris? Book Prestige Paris Transfer!',
                                 price: '€80',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-6.png'),
                                 title: 'BEAUVAIS TO DISNEYLAND',
-                                subtitle: 'Need to visit Disneyland? Book Paris Disney Best Transfer for your transfers between the Beauvais Airport and Disneyland Paris. No need to pay extra for your luggage and you can choose either single or round trip transfers. We provide toy faster and reliable transfers in our luxury vehicles. Book us now!',
+                                subtitle: 'Need to visit Disneyland? Book Prestige Paris Transfer for your transfers between the Beauvais Airport and Disneyland Paris. No need to pay extra for your luggage and you can choose either single or round trip transfers. We provide toy faster and reliable transfers in our luxury vehicles. Book us now!',
                                 price: '€150',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-5.png'),
                                 title: 'BEAUVAIS TO PARIS',
-                                subtitle: 'For affordable travel between Beauvais Airport and Paris, book Paris Disney Best Transfer now! Best offers for your single and round trips. No extra charges for luggage and we provide you a better service than a regular taxi service. Save your time. Book us now!',
+                                subtitle: 'For affordable travel between Beauvais Airport and Paris, book Prestige Paris Transfer now! Best offers for your single and round trips. No extra charges for luggage and we provide you a better service than a regular taxi service. Save your time. Book us now!',
                                 price: '€150',
                             })}
                         </Row>

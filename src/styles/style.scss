@@ -177,42 +177,53 @@ button.nav-link.active {
     }
   }
 
-  .package-item {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-    border: 1px solid #f18902;
-    border-radius: 30px;
-    color: black;
-    margin-bottom: 60px;
+  .package-item-col {
+    padding-bottom: 50px;
 
-    img {
-      width: 100%;
-      padding-bottom: 20px;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-    }
+    .package-item {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.4);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      border: 1px solid #f18902;
+      border-radius: 30px;
+      color: black;
+      height: 100%;
 
-    .content-box {
-      .item-title {
-        font-weight: bold;
-        color: #021941;
+      img {
+        width: 100%;
+        padding-bottom: 20px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
       }
 
-      padding: 0 20px;
-    }
-
-    .price-box {
-      margin: auto;
-      font-size: 24px;
-      width: 50%;
-      background-image: linear-gradient(to bottom, #fe9800, #f37800);
       position: relative;
-      bottom: -18px;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
+
+      .content-box {
+        padding: 0 20px;
+        margin-bottom: 20px;
+
+        .item-title {
+          font-weight: bold;
+          color: #021941;
+        }
+      }
+
+      .price-box-wrapper {
+        text-align: center;
+
+        .price-box {
+          font-size: 24px;
+          background-image: linear-gradient(to bottom, #fe9800, #f37800);
+          position: absolute;
+          bottom: -18px;
+          left: 20%;
+          right: 20%;
+          border-radius: 25px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
