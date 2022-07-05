@@ -3,13 +3,13 @@
 }
 
 .signup-btn {
-    background-image: linear-gradient(to bottom, #f37800, #fe9800);
+    background-image: linear-gradient(to bottom, #fe9800, #f37800);
     color: white;
     font-weight: 500;
 }
 
 .signup-btn:hover {
-    background-image: linear-gradient(to bottom, #f37800, #fe9800);
+    background-image: linear-gradient(to bottom, #ffc26a, #f38f2d);
     color: white;
     font-weight: 500;
     border: none;
@@ -83,7 +83,7 @@
 }
 
 .btn-reservation-button {
-    background-image: linear-gradient(to bottom, #f37800, #fe9800);
+    background-image: linear-gradient(to bottom, #fe9800, #f37800);
     color: white;
     font-weight: 500;
     height: 30%;
@@ -93,6 +93,6 @@
 .btn-reservation-button:hover {
     color: white;
     border: none;
-    background-image: linear-gradient(to bottom, #f37800, #fe9800);
+    background-image: linear-gradient(to bottom, #ffc26a, #f38f2d);
     box-shadow: #1e2329 0px 2px 8px 0px;
 }

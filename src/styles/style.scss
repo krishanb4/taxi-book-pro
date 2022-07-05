@@ -10,9 +10,9 @@ $breakpoint-xxl: 1400px;
 }
 
 .navbar .nav-link {
-  padding-right: 30px!important;
-  color: white!important;
-  font-weight: 500!important;
+  padding-right: 30px !important;
+  color: white !important;
+  font-weight: 500 !important;
 
   &:hover {
     color: #f57d01;
@@ -25,16 +25,15 @@ $breakpoint-xxl: 1400px;
 }
 
 .signup-btn {
-  background-image: linear-gradient(to bottom, #f37800, #fe9800);
+  background-image: linear-gradient(to bottom, #fe9800, #f37800);
   color: white;
   font-weight: 500;
 }
 
 .signup-btn:hover {
-  background-image: linear-gradient(to bottom, #f37800, #fe9800);
+  background-image: linear-gradient(to bottom, #ffc26a, #f38f2d);
   color: white;
   font-weight: 500;
-  border: none;
 }
 
 .navbar-toggler {
@@ -50,10 +49,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding-bottom: 200px;
-}
-
-.form {
-  height: calc(100vh - 56px);
 }
 
 .logo {
@@ -159,6 +154,60 @@ button.nav-link.active {
   }
 }
 
+.home-content {
+  padding-top: 80px;
+  text-align: center;
+  color: white;
+
+  .service-item {
+    text-align: center;
+    padding-top: 20px;
+
+    img {
+      max-width: 80px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .package-item {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 1px solid #f18902;
+    border-radius: 30px;
+    color: black;
+
+    img {
+      width: 100%;
+      padding-bottom: 20px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+
+    .content-box {
+      .item-title {
+        font-weight: bold;
+        color: #021941;
+      }
+
+      padding: 0 20px;
+    }
+
+    .price-box {
+      margin: auto;
+      font-size: 24px;
+      width: 50%;
+      background-image: linear-gradient(to bottom, #fe9800, #f37800);
+      position: relative;
+      bottom: -18px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
 .form-select {
   border-radius: 10px;
 }
@@ -204,9 +253,10 @@ h4 {
     border-radius: 0 10px 10px 0;
     border: none;
     font-size: 26px;
-    background-image: linear-gradient(to bottom, #f37800, #fe9800);
+    background-image: linear-gradient(to bottom, #fe9800, #f37800);
+
     &:hover {
-      background-image: linear-gradient(to bottom, #f38f2d, #ffc26a);
+      background-image: linear-gradient(to bottom, #ffc26a, #f38f2d);
     }
   }
 
@@ -239,3 +289,4 @@ h4 {
     }
   }
 }
+

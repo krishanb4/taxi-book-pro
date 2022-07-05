@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import './App.scss';
 import {Route, Routes} from "react-router-dom";
 import {Rates} from "./components/pages/Rates";
 import {Contact} from "./components/pages/Contact";

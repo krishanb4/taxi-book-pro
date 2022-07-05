@@ -8,6 +8,7 @@ import {ReservationService} from "../../services/reservation-service";
 import {TripProcessor} from "../../data/json/trip-processor";
 import {useNavigate} from "react-router-dom";
 import {UiService} from "../../services/ui-service";
+import {Col, Container, Image, Row} from "react-bootstrap";
 
 export const HomePage = () => {
     const reservationService = useService(ReservationService);
@@ -78,6 +79,29 @@ export const HomePage = () => {
     }
 
 
+    function buildServiceItem() {
+        return <Col className={'service-item'}>
+            <Image src={require('../../assets/icons/service-icon-1.png')}></Image>
+            <h5>Efficient</h5>
+            <p>Our service is highly focused on your satisfaction thus we provide flawless journey.</p>
+        </Col>;
+    }
+
+    function buildPackageItem() {
+        return <Col>
+            <div className={'package-item'}>
+                <Image src={require('../../assets/thumbnails/package-thumb-1.png')}></Image>
+                <div className="content-box">
+                    <h5 className={'item-title'}>Efficient</h5>
+                    <p>Our service is highly focused on your satisfaction thus we provide flawless journey.</p>
+                    <div className="price-box">
+                        50$
+                    </div>
+                </div>
+            </div>
+        </Col>;
+    }
+
     return (
         <div>
             <section className="nav-bar-main">
@@ -88,8 +112,17 @@ export const HomePage = () => {
                 <div className="container py-5">
                     <div className={'d-flex'}>
                         <img src={require("../../assets/logos/ppt-logo.png")} alt="pdtlogo"
-                             className="pb-5 logo m-auto"/></div>
-                    <br/><br/><br/><br/>
+                             className="pb-5 logo m-auto"/>
+                    </div>
+                    <p className={'text-white'} style={{
+                        paddingBottom: 120
+                    }}>
+                        'Disney Paris Transfer' is a private transfer service approved by the French Government. It
+                        is renowned for being one of the friendliest and most cost-effective airport shuttle around.
+                        We provide transport services to and from Charles de Gaulle Roissy (CDG), Orly (ORY), le
+                        Bourget (LBG), Beauvals Airport (BVA), Disneyland and from your hotel, office or house in
+                        France.
+                    </p>
                     <form>
                         <div className="tab-content home-form">
                             <div className="home-form-outer">
@@ -162,6 +195,30 @@ export const HomePage = () => {
 
                     </form>
                 </div>
+            </section>
+            <section className={'home-content'}>
+                <Container>
+                    <Row>
+                        <h3 className={'pb-4'}>OUR SERVICE</h3>
+                        <Row>
+                            {buildServiceItem()}
+                            {buildServiceItem()}
+                            {buildServiceItem()}
+                            {buildServiceItem()}
+                            {buildServiceItem()}
+                        </Row>
+                    </Row>
+                    <Row className={'pt-5'}>
+                        <h3 className={'pb-4'}>Special Packages</h3>
+                        <Row>
+                            {buildPackageItem()}
+                            {buildPackageItem()}
+                            {buildPackageItem()}
+                            {buildPackageItem()}
+                            {buildPackageItem()}
+                        </Row>
+                    </Row>
+                </Container>
             </section>
         </div>
 
