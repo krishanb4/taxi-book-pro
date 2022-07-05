@@ -11,6 +11,7 @@ import {db} from "../config/firebase-config";
 import {AppConfig} from "../config/app-config";
 import Helpers from "../utils/helpers";
 import {UiService} from "./ui-service";
+import _ from "lodash";
 
 export interface IReservationServiceState {
     homeFormData: IHomeData | null;
@@ -56,6 +57,10 @@ export class ReservationService extends StatefulService<IReservationServiceState
 
     constructor() {
         super(ReservationService.initialState);
+    }
+
+    public get hasHomeData(): boolean {
+        return !_.isEmpty(this.state.homeFormData);
     }
 
     public setFormData(data: {
@@ -235,8 +240,9 @@ export class ReservationService extends StatefulService<IReservationServiceState
     }
 
     public validateHomeForm(): boolean {
-        const pickup = this.homeFormHook.getValues('pickUpPoint');
-        const drop = this.homeFormHook.getValues('dropPoint');
+        const pickup = this.state.homeFormData?.pickUpPoint;
+        const drop = this.state.homeFormData?.dropPoint;
+        if (!pickup || !drop) return false;
         return pickup !== 'NONE' && drop !== 'NONE' && pickup !== drop;
     }
 }

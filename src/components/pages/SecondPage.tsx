@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import '../../styles/booking-style.css';
 import '../../styles/second-page.scss';
 import NoteBanner from "../banners/NoteBanner";
@@ -8,9 +8,16 @@ import {PriceBanner} from "../banners/PriceBanner";
 import {BusyOverlay} from "../BusyOverlay";
 import {useService} from "react-service-locator";
 import {ReservationService} from "../../services/reservation-service";
+import {useNavigate} from "react-router-dom";
 
 export const SecondPage = (props: any) => {
     const reservationService = useService(ReservationService);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!reservationService.hasHomeData) {
+            navigate('/');
+        }
+    }, [])
     return (
         <div className={'second-page'}>
             <section className="nav-bar-main">
