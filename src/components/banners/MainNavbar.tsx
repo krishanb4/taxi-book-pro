@@ -1,10 +1,19 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {Nav, Navbar} from "react-bootstrap";
+import {Dropdown, DropdownButton, Nav, Navbar} from "react-bootstrap";
 import {AppConfig} from "../../config/app-config";
+import i18next from "i18next";
+import {useTranslation} from "react-i18next";
 
 export function MainNavbar(props: { src: any }) {
     const navigate = useNavigate();
+    const {t} = useTranslation();
+
+
+    async function changeLang(lang: string) {
+        await i18next.changeLanguage(lang)
+    }
+
     return <div className="container">
         <Navbar variant={"dark"} expand="lg" className={'px-2'}>
             <Navbar.Brand onClick={(e) => {
@@ -13,6 +22,8 @@ export function MainNavbar(props: { src: any }) {
             }}><img height={50} src={props.src} alt=""/></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
+                await changeLang'
+
                 <Nav
                     className="me-auto my-2 my-lg-0"
                     style={{maxHeight: '100px'}}
@@ -36,6 +47,25 @@ export function MainNavbar(props: { src: any }) {
                             navigate('/lab')
                         }}>LabPage</Nav.Link>
                     }
+
+                    <DropdownButton id="dropdown-basic-button signup-btn" title={"Select Language"}>
+                        <Dropdown.Item onClick={async () => {
+                            console.log("English")
+                            await changeLang('en')
+                        }}>English</Dropdown.Item>
+                        <Dropdown.Item onClick={async () => {
+                            console.log("Italy")
+                            await changeLang('italy')
+                        }}>Italy</Dropdown.Item>
+                        <Dropdown.Item onClick={async () => {
+                            console.log("French")
+                            await changeLang('french')
+                        }}>French</Dropdown.Item>
+                        <Dropdown.Item onClick={async () => {
+                            console.log("Spanish")
+                            await changeLang('span')
+                        }}>Spanish</Dropdown.Item>
+                    </DropdownButton>
                 </Nav>
                 <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +33 605 822 259</a>
             </Navbar.Collapse>

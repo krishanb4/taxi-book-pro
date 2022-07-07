@@ -10,11 +10,13 @@ import {useNavigate} from "react-router-dom";
 import {UiService} from "../../services/ui-service";
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Footer} from "../Footer";
+import {useTranslation} from "react-i18next";
 
 export const HomePage = () => {
     const reservationService = useService(ReservationService);
     const uiService = useService(UiService);
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const gotoArrivalPage = useCallback(() => navigate(`/arrival`, {
         replace: false
@@ -129,18 +131,16 @@ export const HomePage = () => {
                     <p className={'text-white'} style={{
                         paddingBottom: 120
                     }}>
-                        'Prestige Paris Transfer' is a private shuttle transfer company approved by the French government.
-                        It is reputed to be one of the most user-friendly and cost-effective shuttle transfer services.
-                        We provide transport services to and from Charles de Gaulle Roissy (CDG), Orly (ORY), Le Bourget (LBG), Beauvais Airport (BVA), Disneyland and from any where in France.
+                        {t('main-content.1')}
                     </p>
                     <form>
                         <div className="tab-content home-form">
                             <div className="home-form-outer">
                                 <div className={'home-form-header-bar'}>
                                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                                        {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, 'Arrival', '/assets/road.svg')}
-                                        {buildModeButton(JourneyType.DEPARTURE, 'Departure', '/assets/plane.svg')}
-                                        {buildModeButton(JourneyType.ROUND_TRIP, 'Round Trip', '/assets/van.svg')}
+                                        {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, t('arrival.1'), '/assets/road.svg')}
+                                        {buildModeButton(JourneyType.DEPARTURE, t('departure.1'), '/assets/plane.svg')}
+                                        {buildModeButton(JourneyType.ROUND_TRIP, t('round-trip.1'), '/assets/van.svg')}
                                     </div>
                                 </div>
                                 <div className={'home-form-inner'}>

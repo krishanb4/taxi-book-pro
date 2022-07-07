@@ -17,6 +17,8 @@ import {IPersonData} from "./definitions/i-person-data";
 import {IBookingInfo} from "./definitions/i-booking-info";
 import {UiService} from "./services/ui-service";
 import SweetAlert from "react-bootstrap-sweetalert";
+import {useTranslation} from 'react-i18next';
+import i18next from "i18next";
 
 export const App: React.FC = () => {
     const uiService = useService(UiService, provider => [provider.state.alerts]);
@@ -25,6 +27,7 @@ export const App: React.FC = () => {
     const arrivalFormHook: UseFormReturn<FieldValue<any>> = useForm();
     const departureFormHook: UseFormReturn<FieldValue<any>> = useForm();
     const reservationService = useService(ReservationService);
+    const {t} = useTranslation();
 
     useEffect(() => {
         reservationService.setFormHooks({
@@ -72,6 +75,10 @@ export const App: React.FC = () => {
         const currentAlert = uiService.getVisibleAlert();
         if (!currentAlert) return null;
         return <SweetAlert {...currentAlert}>{currentAlert.content}</SweetAlert>;
+    }
+
+    async function changeLang(lang: string) {
+        await i18next.changeLanguage(lang)
     }
 
     return (
