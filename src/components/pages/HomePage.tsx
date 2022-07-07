@@ -131,35 +131,35 @@ export const HomePage = () => {
                     <p className={'text-white'} style={{
                         paddingBottom: 120
                     }}>
-                        {t('main-content.1')}
+                        {t('main-content')}
                     </p>
                     <form>
                         <div className="tab-content home-form">
                             <div className="home-form-outer">
                                 <div className={'home-form-header-bar'}>
                                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                                        {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, t('arrival.1'), '/assets/road.svg')}
-                                        {buildModeButton(JourneyType.DEPARTURE, t('departure.1'), '/assets/plane.svg')}
-                                        {buildModeButton(JourneyType.ROUND_TRIP, t('round-trip.1'), '/assets/van.svg')}
+                                        {buildModeButton(JourneyType.ARRIVAL_ONE_WAY, t('arrival'), '/assets/road.svg')}
+                                        {buildModeButton(JourneyType.DEPARTURE, t('departure'), '/assets/plane.svg')}
+                                        {buildModeButton(JourneyType.ROUND_TRIP, t('round-trip'), '/assets/van.svg')}
                                     </div>
                                 </div>
                                 <div className={'home-form-inner'}>
                                     <div className="row g-4 mt-2">
                                         <div className="col-md py-3">
-                                            <p className="subTitles">Pickup Location</p>
+                                            <p className="subTitles">{t('pickup-location')}</p>
                                             <select className="form-select"
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('pickUpPoint')} >
-                                                <option value={'NONE'}>Select Pickup Place...</option>
+                                                <option value={'NONE'}>{t('select-pickup-location')}</option>
                                                 {data.locations.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
                                                 })}
                                             </select>
                                         </div>
                                         <div className="col-md py-3">
-                                            <p className="subTitles">Drop-off Location</p>
+                                            <p className="subTitles">{t('drop-location')}</p>
                                             <select className="form-select"
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('dropPoint')}>
-                                                <option value={'NONE'}>Select Drop Place...</option>
+                                                <option value={'NONE'}>{t('select-drop-location')}</option>
                                                 {data.locations.map((item, key) => {
                                                     return (<option value={item} key={item}>{item}</option>)
                                                 })}
@@ -168,7 +168,7 @@ export const HomePage = () => {
                                     </div>
                                     <div className="row g-4">
                                         <div className="col-md py-3">
-                                            <p className="subTitles">Adult Riders</p>
+                                            <p className="subTitles">{t('adult-riders')}</p>
                                             <select className="form-select"
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('adultCount')}>
                                                 {data.adultCounts.map((item, key) => {
@@ -177,7 +177,7 @@ export const HomePage = () => {
                                             </select>
                                         </div>
                                         <div className="col-md py-3">
-                                            <p className="subTitles">Child</p>
+                                            <p className="subTitles">{t('child-riders')}</p>
                                             <select className="form-select"
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('childCount')}>
                                                 {data.kidCounts.map((item, key) => {
@@ -191,12 +191,12 @@ export const HomePage = () => {
                                 <div className="home-form-footer-bar">
                                     <div className="home-form-footer-bar-inner">
                                         <div className={"text-center travel-fare-group"}>
-                                            <div>Your Travel Fare - <span
+                                            <div>{t('your-travel-fare')} - <span
                                                 className={"price"}> {reservationService.homePageTripPrice} </span>
                                             </div>
                                         </div>
                                         <button type="button" className="btn booknow-btn" onClick={onBookNowClick}>
-                                            Book Now
+                                            {t('book-now')}
                                         </button>
                                     </div>
                                 </div>
@@ -209,72 +209,72 @@ export const HomePage = () => {
             <section className={'home-content'}>
                 <Container>
                     <Row>
-                        <h3 className={'pb-4'}>OUR SERVICE</h3>
+                        <h3 className={'pb-4'}>{t('our-service')}</h3>
                         <Row className={'justify-content-md-center'}>
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-1.png'),
-                                title: 'Efficient',
-                                subtitle: 'You will be provided with a faster, comfortable and reliable journey.',
+                                title: t('efficient'),
+                                subtitle: t('efficient-desc'),
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-2.png'),
-                                title: 'Worthy',
-                                subtitle: 'Best services with affordable prices.',
+                                title: t('worthy'),
+                                subtitle: t('worthy-desc'),
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-3.png'),
-                                title: 'Safe Travel',
-                                subtitle: 'Safe journey for you and your family.',
+                                title: t('safe'),
+                                subtitle: t('safe-desc'),
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-4.png'),
-                                title: 'Professional Drivers',
-                                subtitle: 'Excellent service with well trained professionals.',
+                                title: t('professional'),
+                                subtitle: t('professional-desc'),
                             })}
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-5.png'),
-                                title: 'Customer Support',
-                                subtitle: 'Best customer service with well trained customer support staff.',
+                                title: t('support'),
+                                subtitle: t('support-desc'),
                             })}
                         </Row>
                     </Row>
                     <Row className={'pt-5'}>
-                        <h3 className={'pb-4'}>Special Packages</h3>
+                        <h3 className={'pb-4'}>{t('special-packages')}</h3>
                         <Row>
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-2.png'),
                                 title: 'CDG TO DISNEYLAND',
-                                subtitle: 'Book Prestige Paris Transfer for a comfortable trip from CDG to Disneyland Paris. Amazing offers for single and round trips and you are facilitated with no extra charges for your luggage. Need a visit to Disneyland? Book now!',
+                                subtitle: t('package-1'),
                                 price: '€70',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-3.png'),
                                 title: 'ORLY TO PARIS',
-                                subtitle: 'For reliable travel between Orly Airport and Paris, book us now! Prestige Paris Transfer offers you the best service. No extra charges for luggage and no credit cards are required for the booking. You are privileged with the best cost saving offers for single and round trip transfers.',
+                                subtitle: t('package-2'),
                                 price: '€65',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-4.png'),
                                 title: 'ORLY TO DISNEYLAND',
-                                subtitle: 'Want a comfortable journey in luxury vehicles? Prestige Paris Transfer is your choice. We ensure a comfortable travel between the ORLY Airport and Disneyland Paris. No extra charges for luggage and you can choose single or round trip transfers. Want to visit Disneyland? Book us now!',
+                                subtitle: t('package-3'),
                                 price: '€80',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-1.png'),
                                 title: 'CDG TO PARIS',
-                                subtitle: 'For a fast, reliable journey between CDG and Paris, book Prestige Paris Transfer. You can comfortably travel in our luxury vehicles and you can have your luggage without any extra charges. We will give you the best offers for single and round trips. Want to transfer from Roissy-Charles de Gaulle Airport to Paris? Book Prestige Paris Transfer!',
+                                subtitle: t('package-4'),
                                 price: '€80',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-6.png'),
                                 title: 'BEAUVAIS TO DISNEYLAND',
-                                subtitle: 'Need to visit Disneyland? Book Prestige Paris Transfer for your transfers between the Beauvais Airport and Disneyland Paris. No need to pay extra for your luggage and you can choose either single or round trip transfers. We provide toy faster and reliable transfers in our luxury vehicles. Book us now!',
+                                subtitle: t('package-5'),
                                 price: '€150',
                             })}
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-5.png'),
                                 title: 'BEAUVAIS TO PARIS',
-                                subtitle: 'For affordable travel between Beauvais Airport and Paris, book Prestige Paris Transfer now! Best offers for your single and round trips. No extra charges for luggage and we provide you a better service than a regular taxi service. Save your time. Book us now!',
+                                subtitle: t('package-6'),
                                 price: '€150',
                             })}
                         </Row>

@@ -2,9 +2,12 @@ import React from "react";
 import {EnvelopeFill, PhoneFill} from "react-bootstrap-icons";
 import {Container, Image, Nav} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const Footer = () => {
     const navigate = useNavigate();
+    const {t} = useTranslation();
+
     return (<footer className="text-center text-lg-start text-white mt-5 page-footer">
             <Container>
                 {/* Section: Links  */}
@@ -17,34 +20,30 @@ export const Footer = () => {
                                 {/* Content */}
                                 <Image src={require('../assets/logos/ppt-hor-logo.png')} width={'100%'}
                                        style={{maxWidth: 200}}/>
-                                <p className={'pt-4'}>'Prestige Paris Transfer' is a private transfer service renowned
-                                    for being one of the friendliest and most
-                                    cost-effective airport shuttle around.</p>
+                                <p className={'pt-4'}>{t('footer-desc')}</p>
                             </div>
                             {/* Grid column */}
                             {/* Grid column */}
                             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
                                 {/* Links */}
-                                <h6 className="text-uppercase fw-bold mb-4">
-                                    Quick Links
-                                </h6>
+                                <h6 className="text-uppercase fw-bold mb-4">{t('quick-links')}</h6>
                                 <p>
                                     <Nav.Link onClick={(e) => {
                                         e.preventDefault();
                                         navigate('/')
-                                    }}>Book Now</Nav.Link>
+                                    }}>{t('book-now')}</Nav.Link>
                                 </p>
                                 <p>
                                     <Nav.Link onClick={(e) => {
                                         e.preventDefault();
                                         navigate('/rates')
-                                    }}>Rates</Nav.Link>
+                                    }}>{t('rates')}</Nav.Link>
                                 </p>
                                 <p>
                                     <Nav.Link onClick={(e) => {
                                         e.preventDefault();
                                         navigate('/contact')
-                                    }}>Contact</Nav.Link>
+                                    }}>{t('contact')}</Nav.Link>
                                 </p>
                             </div>
                             {/* Grid column */}
@@ -54,7 +53,7 @@ export const Footer = () => {
                             <div className="col-md-5 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">
                                 {/* Links */}
                                 <h6 className="text-uppercase fw-bold mb-4">
-                                    Contact
+                                    {t('contact')}
                                 </h6>
                                 {/*<p><PinMapFill/> &nbsp; New York, NY 10012, US</p>*/}
                                 <p>

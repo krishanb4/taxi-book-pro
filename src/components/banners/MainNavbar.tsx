@@ -30,15 +30,15 @@ export function MainNavbar(props: { src: any }) {
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         navigate('/')
-                    }}>{t('book-now.1')}</Nav.Link>
+                    }}>{t('book-now')}</Nav.Link>
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         navigate('/rates')
-                    }}>{t('rates.1')}</Nav.Link>
+                    }}>{t('rates')}</Nav.Link>
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         navigate('/contact')
-                    }}>{t('contact.1')}</Nav.Link>
+                    }}>{t('contact')}</Nav.Link>
                     {
                         !AppConfig.isDebug || <Nav.Link onClick={(e) => {
                             e.preventDefault();
@@ -47,8 +47,8 @@ export function MainNavbar(props: { src: any }) {
                     }
 
                 </Nav>
-                <a className="btn signup-btn me-2" href="tel:+33605822259" type="submit">{t('call.1')} +33 605 822 259</a>
-                <DropdownButton id="dropdown-basic-button signup-btn" title={`🌐 ${t('language.1')}`}>
+                <a className="btn signup-btn me-2" href="tel:+33605822259" type="submit">{t('call')} +33 605 822 259</a>
+                <DropdownButton id="dropdown-basic-button signup-btn" title={`🌐 ${t('language')}`}>
                     <Dropdown.Item onClick={async () => {
                         console.log("English")
                         await changeLang('en')
