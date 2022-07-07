@@ -22,8 +22,6 @@ export function MainNavbar(props: { src: any }) {
             }}><img height={50} src={props.src} alt=""/></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
-                await changeLang'
-
                 <Nav
                     className="me-auto my-2 my-lg-0"
                     style={{maxHeight: '100px'}}
@@ -32,15 +30,15 @@ export function MainNavbar(props: { src: any }) {
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         navigate('/')
-                    }}>BOOK NOW</Nav.Link>
+                    }}>{t('book-now.1')}</Nav.Link>
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         navigate('/rates')
-                    }}>RATES</Nav.Link>
+                    }}>{t('rates.1')}</Nav.Link>
                     <Nav.Link onClick={(e) => {
                         e.preventDefault();
                         navigate('/contact')
-                    }}>CONTACT</Nav.Link>
+                    }}>{t('contact.1')}</Nav.Link>
                     {
                         !AppConfig.isDebug || <Nav.Link onClick={(e) => {
                             e.preventDefault();
@@ -48,26 +46,26 @@ export function MainNavbar(props: { src: any }) {
                         }}>LabPage</Nav.Link>
                     }
 
-                    <DropdownButton id="dropdown-basic-button signup-btn" title={"Select Language"}>
-                        <Dropdown.Item onClick={async () => {
-                            console.log("English")
-                            await changeLang('en')
-                        }}>English</Dropdown.Item>
-                        <Dropdown.Item onClick={async () => {
-                            console.log("Italy")
-                            await changeLang('italy')
-                        }}>Italy</Dropdown.Item>
-                        <Dropdown.Item onClick={async () => {
-                            console.log("French")
-                            await changeLang('french')
-                        }}>French</Dropdown.Item>
-                        <Dropdown.Item onClick={async () => {
-                            console.log("Spanish")
-                            await changeLang('span')
-                        }}>Spanish</Dropdown.Item>
-                    </DropdownButton>
                 </Nav>
-                <a className="btn signup-btn" href="tel:+33605822259" type="submit">CALL +33 605 822 259</a>
+                <a className="btn signup-btn me-2" href="tel:+33605822259" type="submit">{t('call.1')} +33 605 822 259</a>
+                <DropdownButton id="dropdown-basic-button signup-btn" title={`🌐 ${t('language.1')}`}>
+                    <Dropdown.Item onClick={async () => {
+                        console.log("English")
+                        await changeLang('en')
+                    }}>English</Dropdown.Item>
+                    <Dropdown.Item onClick={async () => {
+                        console.log("Italy")
+                        await changeLang('italy')
+                    }}>Italian</Dropdown.Item>
+                    <Dropdown.Item onClick={async () => {
+                        console.log("French")
+                        await changeLang('french')
+                    }}>French</Dropdown.Item>
+                    <Dropdown.Item onClick={async () => {
+                        console.log("Spanish")
+                        await changeLang('span')
+                    }}>Spanish</Dropdown.Item>
+                </DropdownButton>
             </Navbar.Collapse>
         </Navbar>
     </div>;
