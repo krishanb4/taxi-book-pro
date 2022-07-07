@@ -129,11 +129,9 @@ export const HomePage = () => {
                     <p className={'text-white'} style={{
                         paddingBottom: 120
                     }}>
-                        'Prestige Paris Transfer' is a private transfer service approved by the French Government. It
-                        is renowned for being one of the friendliest and most cost-effective airport shuttle around.
-                        We provide transport services to and from Charles de Gaulle Roissy (CDG), Orly (ORY), le
-                        Bourget (LBG), Beauvals Airport (BVA), Disneyland and from your hotel, office or house in
-                        France.
+                        'Prestige Paris Transfer' is a private shuttle transfer company approved by the French government.
+                        It is reputed to be one of the most user-friendly and cost-effective shuttle transfer services.
+                        We provide transport services to and from Charles de Gaulle Roissy (CDG), Orly (ORY), Le Bourget (LBG), Beauvais Airport (BVA), Disneyland and from any where in France.
                     </p>
                     <form>
                         <div className="tab-content home-form">
