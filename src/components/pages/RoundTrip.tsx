@@ -10,10 +10,10 @@ export const RoundTrip = () => {
     return <SecondPage>
         <div className="row">
             <PersonalDetailsForm/>
-            <ArrivalDetailsForm/>
         </div>
-        <div className="row row-cols-2">
+        <div className="row row-cols-md-2">
             <DepartureDetailsForm/>
+            <ArrivalDetailsForm/>
         </div>
     </SecondPage>
 
