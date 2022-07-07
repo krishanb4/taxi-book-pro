@@ -4,11 +4,13 @@ import {useService} from "react-service-locator";
 import {RecaptchaService} from "../../services/recaptcha-service";
 import {ReservationService} from "../../services/reservation-service";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const PriceBanner = (params: any) => {
     const recaptchaService = useService(RecaptchaService);
     const reservationService = useService(ReservationService);
     const navigate = useNavigate();
+    const {t} = useTranslation();
 
     const gotoHomePage = useCallback(() => navigate(`/`, {
         replace: true
@@ -20,9 +22,9 @@ export const PriceBanner = (params: any) => {
                 <div className="row g-4">
                     <div className="col-md">
                         <span
-                            className="your-travel-fare">Your Travel Fare is - {reservationService.secondPageTripPrice}<span
+                            className="your-travel-fare">{t('travel-fare-is')} - {reservationService.secondPageTripPrice}<span
                             className="fare">{}</span></span><br/>
-                        <span className="nighttime-charge">Night Time Charge (Between 22:00 and 06:00) : € 15</span>
+                        <span className="nighttime-charge">{t('night-charge-notice')}</span>
                     </div>
                     <button type="button" className="btn btn-reservation-button"
                             disabled={recaptchaService.isTokenExpired()} onClick={async (e) => {
@@ -30,9 +32,7 @@ export const PriceBanner = (params: any) => {
                         const success = await reservationService.onSecondPageSubmit();
                         if (!success) return;
                         gotoHomePage();
-                    }}>Submit
-                        Reservation
-                    </button>
+                    }}>{t('submit-reservation')}</button>
                 </div>
             </div>
         </div>

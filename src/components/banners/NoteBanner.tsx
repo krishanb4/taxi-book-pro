@@ -1,12 +1,14 @@
+import {useTranslation} from "react-i18next";
+
 const NoteBanner = () => {
-  return(
-      <div className="note">
-          <div className="container text-center">
-              <p className="lead text-light p-1">NOTE: The booking must be done minimum before 3 hours through online
-                  booking.</p>
-          </div>
-      </div>
-  );
+    const {t} = useTranslation();
+    return (
+        <div className="note">
+            <div className="container text-center">
+                <p className="lead text-light p-1">{t('booking-note')}</p>
+            </div>
+        </div>
+    );
 }
 
 export default NoteBanner;

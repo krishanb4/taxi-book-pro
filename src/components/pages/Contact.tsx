@@ -1,8 +1,11 @@
 import React from "react";
 import '../../styles/contact-style.scss';
 import {MainNavbar} from "../banners/MainNavbar";
+import {useTranslation} from "react-i18next";
 
 export const Contact = () => {
+    const {t} = useTranslation();
+
     return (
         <div>
             <section className="nav-bar-main">
@@ -11,33 +14,29 @@ export const Contact = () => {
 
             <section className="py-5 px-3">
                 <div className="container text-center contact-main">
-                    <div className="p-2 contact-main-title">
-                        Contact us
-                    </div>
-                    <div className="pb-5 contact-title">
-                        Get in touch with us
-                    </div>
+                    <div className="p-2 contact-main-title">{t('contact-us')}</div>
+                    <div className="pb-5 contact-title">{t('get-in-touch')}</div>
                     <div className="contact-details-main">
                         <div className="contact-sub-title">
-                            Call us:
+                            {t('call-us')}
                             <div className="contact-details">
                                 <a href="tel:+33605822259">+33 605 822 259</a>
                             </div>
                         </div>
                         <div className="py-5 contact-sub-title">
-                            Email:
+                            {t('email')}
                             <div className="contact-details">
                                 <a href="mailto:bookings@prestigeparistransfers.com">bookings@prestigeparistransfers.com</a>
                             </div>
                         </div>
                         <div className="pb-5 contact-sub-title">
-                            Website:
+                            {t('website')}
                             <div className="contact-details">
                                 <a href="https://prestigeparistransfers.com">https://prestigeparistransfers.com</a>
                             </div>
                         </div>
                         <div className="pb-5 contact-sub-title">
-                            Powered by:
+                            {t('powered-by')}
                             <div className="contact-details">
                                 <a href="https://plebs.studio/">Pleb Studio (https://plebs.studio)</a>
                             </div>

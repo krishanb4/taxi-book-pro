@@ -3,39 +3,31 @@ import React from "react";
 import {useService} from "react-service-locator";
 import SectionFrame from "../frames/SectionFrame";
 import {ReservationService} from "../../services/reservation-service";
+import {useTranslation} from "react-i18next";
 
 
 export const PersonalDetailsForm = (params: any) => {
-
     const reservationService = useService(ReservationService);
+    const {t} = useTranslation();
 
     return <form>
-        <SectionFrame title={'Personal Details'}>
-            <label htmlFor="name" className="mb-3 form-sub-title">
-                Your Name:
-            </label>
+        <SectionFrame title={t('personal-details')}>
+            <label htmlFor="name" className="mb-3 form-sub-title">{t('your-name')}</label>
             <input type="text" required={true} className="form-control" id="name"
-                   placeholder="Enter your name" {...reservationService.personalDetailFormHook.register("name", {required: true})}/>
-            <label htmlFor="last-name" className="mb-3 form-sub-title">
-                Phone:
-            </label>
+                   placeholder={t('your-name-ph')} {...reservationService.personalDetailFormHook.register("name", {required: true})}/>
+            <label htmlFor="last-name" className="mb-3 form-sub-title">{t('phone')}</label>
             <input type="text" required={true} className="form-control"
                    id="phone" {...reservationService.personalDetailFormHook.register("phone", {required: true})}/>
-            <label htmlFor="email" className="mb-3 form-sub-title">
-                Email:
-            </label>
+            <label htmlFor="email" className="mb-3 form-sub-title">{t('email')}</label>
             <input type="email" required={true} className="form-control" id="email"
-                   placeholder="Your Email Address" {...reservationService.personalDetailFormHook.register("email", {required: true})}/>
-            <div className="py-3 mb-3 form-sub-title">
-                Number of Passengers
-            </div>
+                   placeholder={t('email-ph')} {...reservationService.personalDetailFormHook.register("email", {required: true})}/>
+            <div className="py-3 mb-3 form-sub-title">{t('number-of-passengers')}</div>
             <div className="row g-4 mb-3 form-sub-title">
                 <div className="col-md">
-                    Adults
+                    {t('adult-riders')}
                 </div>
                 <div className="col-md">
                     <select className="form-select" required={true}
-                            aria-label="Default select example"
                             {...reservationService.personalDetailFormHook.register("adultCount", {required: true})}
                     >
                         {data.adultCounts.map((item, key) => {
@@ -43,9 +35,7 @@ export const PersonalDetailsForm = (params: any) => {
                         })}
                     </select>
                 </div>
-                <div className="col-md">
-                    Kids
-                </div>
+                <div className="col-md"> {t('child-riders')}</div>
                 <div className="col-md">
                     <select className="form-select" required={true}
                             aria-label="Default select example"
@@ -58,8 +48,7 @@ export const PersonalDetailsForm = (params: any) => {
                 </div>
             </div>
             <div className="mb-3 py-3 mb-3 form-sub-title">
-                <label htmlFor="additionalNote" className="form-label"> Additional
-                    Notes:</label>
+                <label htmlFor="additionalNote" className="form-label">{t('additional-notes')}</label>
                 <textarea className="form-control" id="additionalNote" rows={3}
                           defaultValue={""} {...reservationService.personalDetailFormHook.register("comment",)}/>
             </div>

@@ -14,8 +14,8 @@
   "select-pickup-location": "Select Pickup Place...",
   "drop-location": "Drop-off Location",
   "select-drop-location": "Select Drop Place...",
-  "adult-riders": "Adult Riders",
-  "child-riders": "Child",
+  "adult-riders": "Adult Passengers",
+  "child-riders": "Child Passengers",
   "your-travel-fare": "Your Travel Fare",
   "our-service": "OUR SERVICE",
   "efficient": "Efficient",
@@ -34,5 +34,46 @@
   "package-3": "Want a comfortable journey in luxury vehicles? Prestige Paris Transfer is your choice. We ensure a comfortable travel between the ORLY Airport and Disneyland Paris. No extra charges for luggage and you can choose single or round trip transfers. Want to visit Disneyland? Book us now!",
   "package-4": "For a fast, reliable journey between CDG and Paris, book Prestige Paris Transfer. You can comfortably travel in our luxury vehicles and you can have your luggage without any extra charges. We will give you the best offers for single and round trips. Want to transfer from Roissy-Charles de Gaulle Airport to Paris? Book Prestige Paris Transfer!",
   "package-5": "Need to visit Disneyland? Book Prestige Paris Transfer for your transfers between the Beauvais Airport and Disneyland Paris. No need to pay extra for your luggage and you can choose either single or round trip transfers. We provide toy faster and reliable transfers in our luxury vehicles. Book us now!",
-  "package-6": "For affordable travel between Beauvais Airport and Paris, book Prestige Paris Transfer now! Best offers for your single and round trips. No extra charges for luggage and we provide you a better service than a regular taxi service. Save your time. Book us now!"
+  "package-6": "For affordable travel between Beauvais Airport and Paris, book Prestige Paris Transfer now! Best offers for your single and round trips. No extra charges for luggage and we provide you a better service than a regular taxi service. Save your time. Book us now!",
+  "arrival-or-pickup": "Arrival or Pickup Details",
+  "pickup-from": "Pickup From:",
+  "pickup-from-ph": "Type your pickup address (Optional)",
+  "drop-to": "Drop To:",
+  "drop-to-ph": "Type your destination address (Optional)",
+  "pickup-date": "Pickup Date:",
+  "pickup-date-ph": "Select Pickup Date...",
+  "pickup-time": "Pickup Time (CET): *",
+  "flight-arrival-date": "Flight/Train Arrival Date:",
+  "flight-arrival-date-ph": "Select Pickup Date...",
+  "flight-arrival-time": "Flight/Train Arrival Time (CET): *",
+  "flight-from": "Flight/Train Coming From:",
+  "flight-from-ph": "From where your Flight/ Train is coming?",
+  "flight-number": "Flight/Train Number:",
+  "flight-number-ph": "Number of your Flight or Train",
+  "contact-us": "Contact us",
+  "get-in-touch": "Get in touch with us",
+  "call-us": "Call us:",
+  "email": "Email:",
+  "website": "Website:",
+  "powered-by": "Powered by:",
+  "departure-or-pickup": "Departure or Pickup Detail",
+  "booking-note": "NOTE: The booking must be done minimum before 3 hours through online booking.",
+  "personal-details": "Personal Details",
+  "your-name": "Your Name:",
+  "your-name-ph": "Enter your name",
+  "phone": "Phone:",
+  "email-ph": "Your Email Address",
+  "number-of-passengers": "Number of Passengers",
+  "travel-fare-is": "Your Travel Fare is",
+  "night-charge-notice": "Night Time Charge (Between 22:00 and 06:00) : € 15",
+  "submit-reservation": "Submit Reservation",
+  "additional-notes": "Additional Notes:"
 }
+
+
+
+
+
+
+
+
