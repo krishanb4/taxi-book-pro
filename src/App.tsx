@@ -19,8 +19,11 @@ import {UiService} from "./services/ui-service";
 import SweetAlert from "react-bootstrap-sweetalert";
 import {useTranslation} from 'react-i18next';
 import i18next from "i18next";
+import ReactGA from 'react-ga';
+
 
 export const App: React.FC = () => {
+
     const uiService = useService(UiService, provider => [provider.state.alerts]);
     const homeFormHook: UseFormReturn<FieldValue<any>> = useForm();
     const personalDetailFormHook: UseFormReturn<FieldValue<any>> = useForm();
@@ -40,6 +43,10 @@ export const App: React.FC = () => {
 
 
     useEffect(() => {
+        
+        ReactGA.initialize(AppConfig.GoogleAnalyticsTrackingID);
+        ReactGA.pageview(window.location.pathname + window.location.search);
+
         const homeFormUnsub = homeFormHook.watch((data: IHomeData) => {
             reservationService.setFormData({
                 homeFormData: data,
