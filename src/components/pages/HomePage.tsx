@@ -242,37 +242,37 @@ export const HomePage = () => {
                         <h3 className={'pb-4'}>{t('special-packages')}</h3>
                         <Row>
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-2.png'),
+                                image: require('../../assets/thumbnails/package-thumb-2.jpg'),
                                 title: 'CDG TO DISNEYLAND',
                                 subtitle: t('package-1'),
                                 price: '€70',
                             })}
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-3.png'),
+                                image: require('../../assets/thumbnails/package-thumb-3.jpg'),
                                 title: 'ORLY TO PARIS',
                                 subtitle: t('package-2'),
                                 price: '€65',
                             })}
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-4.png'),
+                                image: require('../../assets/thumbnails/package-thumb-4.jpg'),
                                 title: 'ORLY TO DISNEYLAND',
                                 subtitle: t('package-3'),
                                 price: '€80',
                             })}
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-1.png'),
+                                image: require('../../assets/thumbnails/package-thumb-1.jpg'),
                                 title: 'CDG TO PARIS',
                                 subtitle: t('package-4'),
                                 price: '€80',
                             })}
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-6.png'),
+                                image: require('../../assets/thumbnails/package-thumb-6.jpg'),
                                 title: 'BEAUVAIS TO DISNEYLAND',
                                 subtitle: t('package-5'),
                                 price: '€150',
                             })}
                             {buildPackageItem({
-                                image: require('../../assets/thumbnails/package-thumb-5.png'),
+                                image: require('../../assets/thumbnails/package-thumb-5.jpg'),
                                 title: 'BEAUVAIS TO PARIS',
                                 subtitle: t('package-6'),
                                 price: '€150',
