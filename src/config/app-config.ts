@@ -3,6 +3,6 @@ export class AppConfig {
     public static isEmulatorMode = false;
     public static isDebug = false;
     public static isFakeSubmit = false;
-    public static GoogleAnalyticsTrackingID = "UA-233959965-1";
+    public static GoogleAnalyticsTrackingID = "UA-234220107-1";
 }
 
