@@ -11,6 +11,7 @@ import {UiService} from "../../services/ui-service";
 import {Col, Container, Image, Row} from "react-bootstrap";
 import {Footer} from "../Footer";
 import {useTranslation} from "react-i18next";
+import {FeaturesSection} from "../FeaturesSection";
 
 export const HomePage = () => {
     const reservationService = useService(ReservationService);
@@ -283,6 +284,7 @@ export const HomePage = () => {
                     </Row>
                 </Container>
             </section>
+            <FeaturesSection/>
             <Footer/>
         </div>
     );
