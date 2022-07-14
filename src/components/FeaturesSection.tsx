@@ -1,4 +1,4 @@
-import {Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import "./FeaturesSection.scss";
 
 export function FeaturesSection() {
@@ -18,6 +18,10 @@ export function FeaturesSection() {
                                 <div className="feature-card-content">
                                     <div className="py-3">
                                         <div>
+                                            <div className={"py-4"}>
+                                                <Button className={"px-5 py-2 features-book-btn"} href={"#book-now"}>BOOK
+                                                    NOW</Button>
+                                            </div>
                                             <Row className={'pt-3'}>
                                                 <Col xs={2}>
                                                     <img
@@ -91,6 +95,11 @@ export function FeaturesSection() {
                                 <div className="feature-card-content">
                                     <div className="py-3">
                                         <div>
+                                            <div className={"py-4"}>
+                                                <Button className={"px-5 py-2 features-book-btn"}
+                                                        href={"mailto:bookings@prestigeparistransfers.com"}>ENQUIRE
+                                                    NOW</Button>
+                                            </div>
                                             <Row className={'pt-3'}>
                                                 <Col xs={2}>
                                                     <img
@@ -156,6 +165,11 @@ export function FeaturesSection() {
                                 <div className="feature-card-content">
                                     <div className="py-3">
                                         <div>
+                                            <div className={"py-4"}>
+                                                <Button className={"px-5 py-2 features-book-btn"}
+                                                        href={"mailto:bookings@prestigeparistransfers.com"}>ENQUIRE
+                                                    NOW</Button>
+                                            </div>
                                             <Row className={'pt-3'}>
                                                 <Col xs={2}>
                                                     <img
@@ -222,6 +236,11 @@ export function FeaturesSection() {
                                 <div className="feature-card-content">
                                     <div className="py-3">
                                         <div>
+                                            <div className={"py-4"}>
+                                                <Button className={"px-5 py-2 features-book-btn"}
+                                                        href={"mailto:bookings@prestigeparistransfers.com"}>ENQUIRE
+                                                    NOW</Button>
+                                            </div>
                                             <Row className={'pt-3'}>
                                                 <Col xs={2}>
                                                     <img

@@ -123,7 +123,7 @@ export const HomePage = () => {
                 <MainNavbar src={require('../../assets/logos/ppt-mini-logo.png')}/>
             </section>
 
-            <section className="form">
+            <section className="form" id={"book-now"}>
                 <div className="container py-5">
                     <div className={'d-flex'}>
                         <img src={require("../../assets/logos/ppt-logo.png")} alt="pdtlogo"
