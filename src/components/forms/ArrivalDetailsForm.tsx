@@ -17,7 +17,7 @@ export const ArrivalDetailsForm = (params: any) => {
                 <select className="form-select" required={true}
                         {...reservationService.arrivalFormHook.register("pickUpPoint", {required: true})}>
                     {data.locations.map((item, key) => {
-                        return (<option value={item} key={item}>{item}</option>)
+                        return (<option value={item.value} key={item.value}>{item.display}</option>)
                     })}
                 </select>
                 <div className="mb-3 pt-3">
@@ -29,7 +29,7 @@ export const ArrivalDetailsForm = (params: any) => {
                 <select className="form-select" required={true}
                         {...reservationService.arrivalFormHook.register("dropPoint", {required: true})}>
                     {data.locations.map((item, key) => {
-                        return (<option value={item} key={key}>{item}</option>)
+                        return (<option value={item.value} key={item.value}>{item.display}</option>)
                     })}
                 </select>
 

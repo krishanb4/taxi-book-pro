@@ -151,7 +151,8 @@ export const HomePage = () => {
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('pickUpPoint')} >
                                                 <option value={'NONE'}>{t('select-pickup-location')}</option>
                                                 {data.locations.map((item, key) => {
-                                                    return (<option value={item} key={item}>{item}</option>)
+                                                    return (<option value={item.value}
+                                                                    key={item.value}>{item.display}</option>)
                                                 })}
                                             </select>
                                         </div>
@@ -161,7 +162,8 @@ export const HomePage = () => {
                                                     aria-label="Default select example" {...reservationService.homeFormHook.register('dropPoint')}>
                                                 <option value={'NONE'}>{t('select-drop-location')}</option>
                                                 {data.locations.map((item, key) => {
-                                                    return (<option value={item} key={item}>{item}</option>)
+                                                    return (<option value={item.value}
+                                                                    key={item.value}>{item.display}</option>)
                                                 })}
                                             </select>
                                         </div>
