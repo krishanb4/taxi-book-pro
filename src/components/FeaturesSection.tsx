@@ -216,7 +216,7 @@ export function FeaturesSection() {
                              className={"features-main-icon"} alt=""/>
                         <div className="py-4 feature-card-main">
                             <div className={"text-center feature-card-title"}>
-                                <div className={'py-3 text-light '}>VIP AND CUSTOMIZED TRANSFERS</div>
+                                <div className={'py-3 text-light '}>VIP TRANSFERS</div>
                             </div>
                             <div className="feature-card-content-main pb-3">
                                 <div className="feature-card-content">
