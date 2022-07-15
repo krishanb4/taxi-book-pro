@@ -73,7 +73,7 @@ export const Footer = () => {
                                     height: 18,
                                     width: 18
                                 }}/>  &nbsp; Prestige Paris Transfer</p>
-                                <p><GeoAltFill/> &nbsp; 225 Rue de Vaugirard, Paris</p>
+                                <p><GeoAltFill/> &nbsp; 8 Parc des Courtilières, 93500 Pantin, France</p>
                             </div>
                             {/* Grid column */}
                         </div>
