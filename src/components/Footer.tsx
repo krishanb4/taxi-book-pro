@@ -1,8 +1,9 @@
 import React from "react";
-import {EnvelopeFill, PhoneFill} from "react-bootstrap-icons";
-import {Container, Image, Nav} from "react-bootstrap";
+import {EnvelopeFill, GeoAltFill, PhoneFill} from "react-bootstrap-icons";
+import {Container, Image} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {SocialIcon} from 'react-social-icons';
 
 export const Footer = () => {
     const navigate = useNavigate();
@@ -25,7 +26,14 @@ export const Footer = () => {
                             {/* Grid column */}
                             {/* Grid column */}
                             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
-                                {/* Links */}
+                                <h6 className={"text-uppercase fw-bold mb-4"}>
+                                    OFFICIALLY APPROVED BY TRANSPORTATION IN FRANCE
+                                </h6>
+                                <img src={require('../assets/images/license.png')} alt={""}
+                                     className={"footer-license-img"}/>
+                                <p className={"pt-4"}>Our SIRET No: &nbsp; 83834195600012</p>
+
+                                {/* Links
                                 <h6 className="text-uppercase fw-bold mb-4">{t('quick-links')}</h6>
                                 <p>
                                     <Nav.Link onClick={(e) => {
@@ -44,7 +52,8 @@ export const Footer = () => {
                                         e.preventDefault();
                                         navigate('/contact')
                                     }}>{t('contact')}</Nav.Link>
-                                </p>
+                                </p>*/}
+
                             </div>
                             {/* Grid column */}
                             {/* Grid column */}
@@ -60,6 +69,11 @@ export const Footer = () => {
                                     <EnvelopeFill/> &nbsp; bookings@prestigeparistransfers.com
                                 </p>
                                 <p><PhoneFill/> &nbsp; +33 605 822 259</p>
+                                <p><SocialIcon network="facebook" bgColor="#ffffff" style={{
+                                    height: 18,
+                                    width: 18
+                                }}/>  &nbsp; Prestige Paris Transfer</p>
+                                <p><GeoAltFill/> &nbsp; 225 Rue de Vaugirard, Paris</p>
                             </div>
                             {/* Grid column */}
                         </div>
@@ -68,7 +82,7 @@ export const Footer = () => {
                 </section>
                 {/* Section: Links  */}
                 {/* Copyright */}
-                <div className="text-center p-4" style={{backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
+                <div className="text-center p-4">
                     © 2022 Copyright Prestige Paris Transfer
                 </div>
                 {/* Copyright */}

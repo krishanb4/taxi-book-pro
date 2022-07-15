@@ -35,6 +35,7 @@ specifiers:
   react-router-dom: ^6.3.0
   react-scripts: 5.0.1
   react-service-locator: ^1.4.3
+  react-social-icons: ^5.14.0
   reflect-metadata: ^0.1.13
   sass: ^1.53.0
   typed-ts-events: ^1.2.1
@@ -75,6 +76,7 @@ dependencies:
   react-router-dom: 6.3.0_sfoxds7t5ydpegc3knd667wn6m
   react-scripts: 5.0.1_kuc7zemgh7cagu2e3xpuzj4tuq
   react-service-locator: 1.4.3_zey75xtp5fxdctxkodviqp6z6y
+  react-social-icons: 5.14.0_react@17.0.2
   reflect-metadata: 0.1.13
   sass: 1.53.0
   typed-ts-events: 1.2.1
@@ -9630,7 +9632,7 @@ packages:
 
   /react-service-locator/1.4.3_zey75xtp5fxdctxkodviqp6z6y:
     resolution: {integrity: sha512-EHpj0lhcrTtxboOu7RGtJOMiPmxdS9Szctmb4EbOZlHADWVEWtGUXs6RLJXsjCbjQtp74r+NkgyXhsRlvkjI3w==}
-    engines: {node: '>=10'}
+    engines: { node: '>=10' }
     peerDependencies:
       react: '>=16.13 || >=17'
       reflect-metadata: ^0.1.13
@@ -9641,8 +9643,17 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
+  /react-social-icons/5.14.0_react@17.0.2:
+    resolution: { integrity: sha512-E5pR2pIJM0vW1BhX7LdMlQS6MD2qOF8wdIm+PEfqFpW3Pn/VwLtbrjywE3/DG+rZ1YYM0GM8M11jaBxelbz/yQ== }
+    peerDependencies:
+      react: 15.x.x || 16.x.x || 17.x.x || 18.x.x
+    dependencies:
+      prop-types: 15.8.1
+      react: 17.0.2
+    dev: false
+
   /react-transition-group/4.4.2_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==}
+    resolution: { integrity: sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg== }
     peerDependencies:
       react: '>=16.6.0'
       react-dom: '>=16.6.0'
