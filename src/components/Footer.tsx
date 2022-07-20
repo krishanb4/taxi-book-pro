@@ -65,15 +65,18 @@ export const Footer = () => {
                                     {t('contact')}
                                 </h6>
                                 {/*<p><PinMapFill/> &nbsp; New York, NY 10012, US</p>*/}
-                                <p>
+                                <div className={'pb-2'}>
                                     <EnvelopeFill/> &nbsp; bookings@prestigeparistransfers.com
-                                </p>
-                                <p><PhoneFill/> &nbsp; +33 605 822 259</p>
-                                <p><SocialIcon network="facebook" bgColor="#ffffff" style={{
+                                </div>
+                                <div className={'pb-2'}><PhoneFill/> &nbsp; +33 605 822 259</div>
+                                <div className={'pb-2'}><SocialIcon network="facebook" bgColor="#ffffff" style={{
                                     height: 18,
                                     width: 18
-                                }}/>  &nbsp; Prestige Paris Transfer</p>
-                                <p><GeoAltFill/> &nbsp; 8 Parc des Courtilières, 93500 Pantin, France</p>
+                                }}/>  &nbsp; Prestige Paris Transfer
+                                </div>
+                                <div className={'pb-2'}><GeoAltFill/> &nbsp; 8 Parc des Courtilières, 93500 Pantin,
+                                    France
+                                </div>
                             </div>
                             {/* Grid column */}
                         </div>
