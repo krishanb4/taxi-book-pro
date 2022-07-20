@@ -5,5 +5,6 @@ export class AppConfig {
     public static isFakeSubmit = false;
     public static GoogleAnalyticsTrackingID = "UA-234220107-1";
     public static hostAddress = "https://www.prestigeparistransfers.com/";
+    public static facebookPage = "https://www.facebook.com/Prestige-Paris-Transfer-103291185784885";
 }
 

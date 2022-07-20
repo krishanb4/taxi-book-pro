@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {SocialIcon} from 'react-social-icons';
 import {SocialShare} from "./items/SocialShare";
+import {AppConfig} from "../config/app-config";
 
 export const Footer = () => {
     const navigate = useNavigate();
@@ -74,7 +75,9 @@ export const Footer = () => {
                                 <div className={'pb-2'}><SocialIcon network="facebook" bgColor="#ffffff" style={{
                                     height: 18,
                                     width: 18
-                                }}/>  &nbsp; Prestige Paris Transfer
+                                }}/>  &nbsp; <a href={AppConfig.facebookPage}
+                                                style={{textDecoration: "none", color: "inherit"}}>Prestige Paris
+                                    Transfer</a>
                                 </div>
                                 <div className={'pb-2'}><GeoAltFill/> &nbsp; 8 Parc des Courtilières, 93500 Pantin,
                                     France
