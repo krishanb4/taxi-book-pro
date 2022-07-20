@@ -36,6 +36,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-service-locator": "^1.4.3",
+    "react-share": "^4.4.0",
     "react-social-icons": "^5.14.0",
     "reflect-metadata": "^0.1.13",
     "sass": "^1.53.0",

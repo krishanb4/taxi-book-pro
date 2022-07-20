@@ -4,6 +4,7 @@ import {Container, Image} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {SocialIcon} from 'react-social-icons';
+import {SocialShare} from "./items/SocialShare";
 
 export const Footer = () => {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ export const Footer = () => {
                                 <Image src={require('../assets/logos/ppt-hor-logo.png')} width={'100%'}
                                        style={{maxWidth: 200}}/>
                                 <p className={'pt-4'}>{t('footer-desc')}</p>
+                                <SocialShare/>
                             </div>
                             {/* Grid column */}
                             {/* Grid column */}
