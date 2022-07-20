@@ -212,7 +212,7 @@ export const HomePage = () => {
             <section className={'home-content'}>
                 <Container>
                     <Row>
-                        <h3 className={'pb-4'}>{t('our-service')}</h3>
+                        <h1 className={'pb-4 h3'}>{t('our-service')}</h1>
                         <Row className={'justify-content-md-center'}>
                             {buildServiceItem({
                                 image: require('../../assets/icons/service-icon-1.png'),
@@ -242,7 +242,7 @@ export const HomePage = () => {
                         </Row>
                     </Row>
                     <Row className={'pt-5'}>
-                        <h3 className={'pb-4'}>{t('special-packages')}</h3>
+                        <h1 className={'pb-4 h3'}>{t('special-packages')}</h1>
                         <Row>
                             {buildPackageItem({
                                 image: require('../../assets/thumbnails/package-thumb-2.jpg'),

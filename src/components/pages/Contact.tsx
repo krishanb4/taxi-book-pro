@@ -25,7 +25,7 @@ export const Contact = () => {
                             <Col md={1}></Col>
                             <Col md={5} sm={12}>
                                 <div className={"pt-3"}>
-                                    <div className="pb-5 contact-title">{t('get-in-touch')}</div>
+                                    <h1 className="pb-5 contact-title">{t('get-in-touch')}</h1>
                                     <div className="contact-details-main">
                                         <div className="contact-sub-title">
                                             <TelephoneFill/> &nbsp; <a href="tel:+33605822259">+33 605 822 259</a>
