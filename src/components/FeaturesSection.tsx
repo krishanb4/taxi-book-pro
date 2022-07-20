@@ -9,7 +9,7 @@ export function FeaturesSection() {
                 <Row>
                     <Col md={6} lg={3}>
                         <img src={require("../assets/icons/features-section/castle.png")} width={70}
-                             className={"features-main-icon"} alt=""/>
+                             className={"features-main-icon"} alt="Castle"/>
                         <div className="py-4 feature-card-main">
                             <div className={"text-center feature-card-title"}>
                                 <div className={'py-3 text-light '}>DISNEYLAND TRANSFER</div>
@@ -26,7 +26,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/payment.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="payment"/>
                                                 </Col>
                                                 <Col xs={10}>Reserve now pay later</Col>
                                             </Row>
@@ -34,7 +34,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/baggage.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="baggage"/>
                                                 </Col>
                                                 <Col xs={10}>Free of extra luggage charges</Col>
                                             </Row>
@@ -42,7 +42,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/airplane.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="airplane"/>
                                                 </Col>
                                                 <Col xs={10}>Can transfer from all main airports in Paris</Col>
                                             </Row>
@@ -50,7 +50,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/baby-boy.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="baby-boy"/>
                                                 </Col>
                                                 <Col xs={10}>Free booster seats and baby car seats</Col>
                                             </Row>
@@ -58,7 +58,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/delay.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="delay"/>
                                                 </Col>
                                                 <Col xs={10}>Free of flight delay charges</Col>
                                             </Row>
@@ -66,7 +66,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/cart.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="cart"/>
                                                 </Col>
                                                 <Col xs={10}>Animal transport</Col>
                                             </Row>
@@ -74,7 +74,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/music-notes.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="music-notes"/>
                                                 </Col>
                                                 <Col xs={10}>Can select your own in-car entertainment system</Col>
                                             </Row>
@@ -86,7 +86,7 @@ export function FeaturesSection() {
                     </Col>
                     <Col md={6} lg={3}>
                         <img src={require("../assets/icons/features-section/paris.png")} width={70}
-                             className={"features-main-icon"} alt=""/>
+                             className={"features-main-icon"} alt="paris"/>
                         <div className="py-4 feature-card-main">
                             <div className={"text-center feature-card-title"}>
                                 <div className={'py-3 text-light '}>CITY TOUR</div>
@@ -104,7 +104,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/payment.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="payment"/>
                                                 </Col>
                                                 <Col xs={10}>Book now pay later</Col>
                                             </Row>
@@ -112,7 +112,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/translate.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="translate"/>
                                                 </Col>
                                                 <Col xs={10}>Chauffeurs with a fine English proficiency</Col>
                                             </Row>
@@ -120,7 +120,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/repeat.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="repeat"/>
                                                 </Col>
                                                 <Col xs={10}>From three hours up-to whole day tour duration</Col>
                                             </Row>
@@ -128,7 +128,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/tour-guide.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="tour-guide"/>
                                                 </Col>
                                                 <Col xs={10}>Discounts for school groups and other</Col>
                                             </Row>
@@ -136,7 +136,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/mini-van.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="mini-van"/>
                                                 </Col>
                                                 <Col xs={10}>Can request guides tours</Col>
                                             </Row>
@@ -144,7 +144,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/baby-boy.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="mini-van"/>
                                                 </Col>
                                                 <Col xs={10}>Free booster seats and baby seats</Col>
                                             </Row>
@@ -156,7 +156,7 @@ export function FeaturesSection() {
                     </Col>
                     <Col md={6} lg={3}>
                         <img src={require("../assets/icons/features-section/globe.png")} width={70}
-                             className={"features-main-icon"} alt=""/>
+                             className={"features-main-icon"} alt="globe"/>
                         <div className="py-4 feature-card-main">
                             <div className={"text-center feature-card-title"}>
                                 <div className={'py-3 text-light '}>LONG DISTANCE JOURNEY</div>
@@ -174,7 +174,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/globe.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="globe"/>
                                                 </Col>
                                                 <Col xs={10}>Private transfer facilities across the European union,
                                                     France, Switzerland and The United Kingdom </Col>
@@ -183,7 +183,8 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/different-currencies.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"}
+                                                        alt="different-currencies"/>
                                                 </Col>
                                                 <Col xs={10}>Acknowledgement of the price in advance</Col>
                                             </Row>
@@ -191,7 +192,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/debit-card.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="debit-card"/>
                                                 </Col>
                                                 <Col xs={10}>Accept both cash and card payments</Col>
                                             </Row>
@@ -199,7 +200,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/clock.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="clock"/>
                                                 </Col>
                                                 <Col xs={10}>Free short stops</Col>
                                             </Row>
@@ -207,7 +208,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/taxi-stop.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="taxi-stop"/>
                                                 </Col>
                                                 <Col xs={10}>One way and return transfers</Col>
                                             </Row>
@@ -215,7 +216,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/payment.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="payment"/>
                                                 </Col>
                                                 <Col xs={10}>Book now pay later</Col>
                                             </Row>
@@ -227,7 +228,7 @@ export function FeaturesSection() {
                     </Col>
                     <Col md={6} lg={3}>
                         <img src={require("../assets/icons/features-section/vip.png")} width={70}
-                             className={"features-main-icon"} alt=""/>
+                             className={"features-main-icon"} alt="vip"/>
                         <div className="py-4 feature-card-main">
                             <div className={"text-center feature-card-title"}>
                                 <div className={'py-3 text-light '}>VIP TRANSFERS</div>
@@ -245,7 +246,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/interview.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="interview"/>
                                                 </Col>
                                                 <Col xs={10}>Customized arrangements for special occasions (on
                                                     request)</Col>
@@ -254,7 +255,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/flower.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="flower"/>
                                                 </Col>
                                                 <Col xs={10}>Arranging flowers, Magazines, newspapers, champagne and
                                                     other beverages (on request)</Col>
@@ -263,7 +264,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/car.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="car"/>
                                                 </Col>
                                                 <Col xs={10}>Mercedes Benz vehicles</Col>
                                             </Row>
@@ -271,7 +272,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/driver.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="driver"/>
                                                 </Col>
                                                 <Col xs={10}>Experienced drivers</Col>
                                             </Row>
@@ -279,7 +280,8 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/multiple-users-silhouette.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"}
+                                                        alt="multiple-users-silhouette"/>
                                                 </Col>
                                                 <Col xs={10}>Individuals, couples and group transfers</Col>
                                             </Row>
@@ -287,7 +289,7 @@ export function FeaturesSection() {
                                                 <Col xs={2}>
                                                     <img
                                                         src={require("../assets/icons/features-section/sub-icons/payment.png")}
-                                                        width={25} className={"features-main-icon"} alt=""/>
+                                                        width={25} className={"features-main-icon"} alt="payment"/>
                                                 </Col>
                                                 <Col xs={10}>Reserve now and pay later</Col>
                                             </Row>

@@ -77,7 +77,7 @@ export const HomePage = () => {
             data-bs-target="#nav-arrival" type="button" role="tab" aria-controls="nav-home"
             aria-selected="true">
             <div className="col-md nav-mode-img"><img className={"form-btn-svg"} src={image}
-                                                      alt=""/></div>
+                                                      alt="Ride-Mode"/></div>
             <div className="col-md nav-mode-label">{title}</div>
         </button>;
     }
