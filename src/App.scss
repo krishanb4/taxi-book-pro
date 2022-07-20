@@ -73,3 +73,21 @@
   background-image: linear-gradient(to bottom, #fe9800, #f37800);
   border: none;
 }
+
+.page-not-found .img-fluid {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.page-not-found {
+  padding-top: 20%;
+}
+
+.go-home-btn {
+  border-radius: 50px;
+  background-image: linear-gradient(to bottom, #fe9800, #f37800);
+  border: none;
+  font-weight: bold;
+}

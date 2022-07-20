@@ -20,6 +20,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import {useTranslation} from 'react-i18next';
 import i18next from "i18next";
 import ReactGA from 'react-ga';
+import {NotFoundPage} from "./components/pages/NotFoundPage";
 
 
 export const App: React.FC = () => {
@@ -97,6 +98,7 @@ export const App: React.FC = () => {
                 <Route path='/round-trip' element={<RoundTrip/>}/>
                 <Route path='/rates' element={<Rates/>}/>
                 <Route path='/contact' element={<Contact/>}/>
+                <Route path='*' element={<NotFoundPage/>}/>
                 {!AppConfig.isDebug || <Route path='/lab' element={<LabPage/>}/>}
             </Routes>}
             {buildAlerts()}
