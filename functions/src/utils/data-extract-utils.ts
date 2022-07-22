@@ -80,136 +80,52 @@ export class DataExtractUtils {
         }
     }
 
-    public static getArrivalDropPoint(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.dropPoint;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.dropPoint;
-        // } else {
-        //     return snap.data().departure.dropPoint;
-        // }
-        return snap.data().arrival.dropPoint;
+    static getArrivalDropPoint(snap: QueryDocumentSnapshot) {
+        return snap.data().arrival?.dropPoint ? snap.data().arrival.dropPoint : "";
     }
 
-    public static getArrivalDropPointAddress(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.dropPointOptionalAddress;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.dropPointOptionalAddress;
-        // } else {
-        //     return snap.data().departure.dropPointOptionalAddress;
-        // }
-        return snap.data().arrival.dropPointOptionalAddress;
+    static getArrivalDropPointAddress(snap: QueryDocumentSnapshot) {
+        return snap.data().arrival?.dropPointOptionalAddress ? snap.data().arrival.dropPointOptionalAddress : "";
     }
 
-    public static getFlightArrivalDate(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return `${snap.data().arrival.flightArrivalDate} ${snap.data().arrival.flightArrivalTime}`;
-        // } else if (snap.data().journeyType === 1) {
-        //     return `${snap.data().arrival.flightArrivalDate} ${snap.data().arrival.flightArrivalTime}`;
-        // } else {
-        //     return "";
-        // }
-        return `${snap.data().arrival.flightArrivalDate} ${snap.data().arrival.flightArrivalTime}`;
+    static getFlightArrivalDate(snap: QueryDocumentSnapshot) {
+        return snap.data().arrival?.flightArrivalDate ? `${snap.data().arrival.flightArrivalDate} ${snap.data().arrival.flightArrivalTime}` : "";
     }
 
-    public static getArrivalFlightComeFrom(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.flightComeFrom;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.flightComeFrom;
-        // } else {
-        //     return "";
-        // }
-        return snap.data().arrival.flightComeFrom;
+    static getArrivalFlightComeFrom(snap: QueryDocumentSnapshot) {
+        return snap.data().arrival?.flightComeFrom ? snap.data().arrival.flightComeFrom : "";
     }
 
-    public static getArrivalFlightNumber(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.flightNumber;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.flightNumber;
-        // } else {
-        //     return "";
-        // }
-        return snap.data().arrival.flightNumber;
+    static getArrivalFlightNumber(snap: QueryDocumentSnapshot) {
+        return snap.data().arrival?.flightNumber ? snap.data().arrival.flightNumber : "";
     }
 
-    public static getArrivalPickupPointAddress(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.pickUpPointOptionalAddress;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.pickUpPointOptionalAddress;
-        // } else {
-        //     return "";
-        // }
-        return snap.data().arrival.pickUpPointOptionalAddress;
+    static getArrivalPickupPointAddress(snap: QueryDocumentSnapshot) {
+        return snap.data().arrival?.pickUpPointOptionalAddress ? snap.data().arrival.pickUpPointOptionalAddress : "";
     }
 
-    public static getArrivalPickupDate(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}`;
-        // } else if (snap.data().journeyType === 1) {
-        //     return `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}`;
-        // } else {
-        //     return "";
-        // }
-        return `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}`;
+    static getArrivalPickupDate(snap: QueryDocumentSnapshot) {
+        return snap.data().arrival?.pickUpDate ? `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}` : "";
     }
 
-    public static getDepartureDropPoint(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.dropPoint;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.dropPoint;
-        // } else {
-        //     return snap.data().departure.dropPoint;
-        // }
-        return snap.data().departure.dropPoint;
+    static getDepartureDropPoint(snap: QueryDocumentSnapshot) {
+        return snap.data().departure?.dropPoint ? snap.data().departure.dropPoint : "";
     }
 
-    public static getDepartureDropPointAddress(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.dropPointOptionalAddress;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.dropPointOptionalAddress;
-        // } else {
-        //     return snap.data().departure.dropPointOptionalAddress;
-        // }
-        return snap.data().departure.dropPointOptionalAddress;
+    static getDepartureDropPointAddress(snap: QueryDocumentSnapshot) {
+        return snap.data().departure?.dropPointOptionalAddress ? snap.data().departure.dropPointOptionalAddress : "";
     }
 
-    public static getDeparturePickupDate(snap: QueryDocumentSnapshot): string {
-        // if (snap.data().journeyType === 0) {
-        //     return `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}`;
-        // } else if (snap.data().journeyType === 1) {
-        //     return `${snap.data().arrival.pickUpDate} ${snap.data().arrival.pickUpTime}`;
-        // } else {
-        //     return `${snap.data().departure.pickUpDate} ${snap.data().departure.pickUpTime}`;
-        // }
-        return `${snap.data().departure.pickUpDate} ${snap.data().departure.pickUpTime}`;
+    static getDeparturePickupDate(snap: QueryDocumentSnapshot) {
+        return snap.data().departure?.pickUpDate ? `${snap.data().departure.pickUpDate} ${snap.data().departure.pickUpTime}` : "";
     }
 
-    public static getDeparturePickupPointAddress(snap: QueryDocumentSnapshot): string {
-        return snap.data().departure.pickUpPointOptionalAddress;
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.pickUpPointOptionalAddress;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.pickUpPointOptionalAddress;
-        // } else {
-        //     return snap.data().departure.pickUpPointOptionalAddress;
-        // }
+    static getDeparturePickupPointAddress(snap: QueryDocumentSnapshot) {
+        return snap.data().departure?.pickUpPointOptionalAddress ? snap.data().departure.pickUpPointOptionalAddress : "";
     }
 
-    public static getDeparturePickupPoint(snap: QueryDocumentSnapshot): string {
-        return snap.data().departure.pickUpPoint;
-        // if (snap.data().journeyType === 0) {
-        //     return snap.data().arrival.pickUpPoint;
-        // } else if (snap.data().journeyType === 1) {
-        //     return snap.data().arrival.pickUpPoint;
-        // } else {
-        //     return snap.data().departure.pickUpPoint;
-        // }
+    static getDeparturePickupPoint(snap: QueryDocumentSnapshot) {
+        return snap.data().departure?.pickUpPoint ? snap.data().departure.pickUpPoint : "";
     }
 
 }

@@ -28,7 +28,7 @@ export class MailUtils {
                 from: BackendConfig.emailCredentials.username
             },
             // uncomment below to send emails in development/test env:
-            send: true,
+            send: false,
             transport
         });
         const ownerEmail = new Email({
@@ -36,7 +36,7 @@ export class MailUtils {
                 from: BackendConfig.emailCredentials.username
             },
             // uncomment below to send emails in development/test env:
-            send: true,
+            send: false,
             transport
         });
 
@@ -57,6 +57,24 @@ export class MailUtils {
                 supportTeam: phones.support,
                 tripDate: DataExtractUtils.getTripDate(snap),
                 bookedDate: DataExtractUtils.getBookedDate(snap),
+                comment: DataExtractUtils.getComments(snap),
+
+                dropPoint_arrival: DataExtractUtils.getArrivalDropPoint(snap),
+                dropPointOptionalAddress_arrival: DataExtractUtils.getArrivalDropPointAddress(snap),
+                flightArrivalDate_arrival: DataExtractUtils.getFlightArrivalDate(snap),
+                flightArrivalTime_arrival: DataExtractUtils.getFlightArrivalDate(snap),
+                flightComeFrom_arrival: DataExtractUtils.getArrivalFlightComeFrom(snap),
+                flightNumber_arrival: DataExtractUtils.getArrivalFlightNumber(snap),
+                pickUpDate_arrival: DataExtractUtils.getArrivalPickupDate(snap),
+                pickUpPoint_arrival: DataExtractUtils.getPickupPoint(snap),
+                pickUpPointOptionalAddress_arrival: DataExtractUtils.getArrivalPickupPointAddress(snap),
+
+                dropPoint_departure: DataExtractUtils.getDepartureDropPoint(snap),
+                dropPointOptionalAddress_departure: DataExtractUtils.getDepartureDropPointAddress(snap),
+                pickUpDate_departure: DataExtractUtils.getDeparturePickupDate(snap),
+                pickUpPoint_departure: DataExtractUtils.getDeparturePickupPoint(snap),
+                pickUpPointOptionalAddress_departure: DataExtractUtils.getDeparturePickupPointAddress(snap),
+
             }
         ).then((w: string) => {
             renderedCustomerEmail = w;
@@ -79,6 +97,24 @@ export class MailUtils {
                 bookedDate: DataExtractUtils.getBookedDate(snap),
                 phone: DataExtractUtils.getPhone(snap),
                 email: DataExtractUtils.getEmail(snap),
+                comment: DataExtractUtils.getComments(snap),
+
+                dropPoint_arrival: DataExtractUtils.getArrivalDropPoint(snap),
+                dropPointOptionalAddress_arrival: DataExtractUtils.getArrivalDropPointAddress(snap),
+                flightArrivalDate_arrival: DataExtractUtils.getFlightArrivalDate(snap),
+                flightArrivalTime_arrival: DataExtractUtils.getFlightArrivalDate(snap),
+                flightComeFrom_arrival: DataExtractUtils.getArrivalFlightComeFrom(snap),
+                flightNumber_arrival: DataExtractUtils.getArrivalFlightNumber(snap),
+                pickUpDate_arrival: DataExtractUtils.getArrivalPickupDate(snap),
+                pickUpPoint_arrival: DataExtractUtils.getPickupPoint(snap),
+                pickUpPointOptionalAddress_arrival: DataExtractUtils.getArrivalPickupPointAddress(snap),
+
+                dropPoint_departure: DataExtractUtils.getDepartureDropPoint(snap),
+                dropPointOptionalAddress_departure: DataExtractUtils.getDepartureDropPointAddress(snap),
+                pickUpDate_departure: DataExtractUtils.getDeparturePickupDate(snap),
+                pickUpPoint_departure: DataExtractUtils.getDeparturePickupPoint(snap),
+                pickUpPointOptionalAddress_departure: DataExtractUtils.getDeparturePickupPointAddress(snap),
+
             }
         ).then((w: string) => {
             renderedAdminEmail = w;
