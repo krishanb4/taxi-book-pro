@@ -1,4 +1,4 @@
-import {TwitterIcon, TwitterShareButton} from "react-share";
+import {FacebookIcon, TwitterIcon} from "react-share";
 import {AppConfig} from "../../config/app-config";
 
 export const SocialShare = () => {
@@ -8,11 +8,14 @@ export const SocialShare = () => {
                  data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
             &nbsp;
             &nbsp;
-            <TwitterShareButton style={{position: "relative", top: "-8px"}}
-                                url={AppConfig.hostAddress}
-            >
+            <a href={AppConfig.facebookPage} style={{position: "relative", top: "-8px"}}>
+                <FacebookIcon size={32} round/>
+            </a>
+            &nbsp;
+            &nbsp;
+            <a href={AppConfig.hostAddress} style={{position: "relative", top: "-8px"}}>
                 <TwitterIcon size={32} round/>
-            </TwitterShareButton>
+            </a>
         </div>
     );
 }
