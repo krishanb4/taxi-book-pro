@@ -59,6 +59,23 @@ export class ReservationService extends StatefulService<IReservationServiceState
         super(ReservationService.initialState);
     }
 
+    public clearState() {
+        this.setState({
+            ...this.state,
+            homeFormData: null,
+            personalFormData: null,
+            journeyType: JourneyType.ARRIVAL_ONE_WAY,
+            arrivalFromDetails: null,
+            departureFormDetails: null,
+            isFormsReady: false,
+            isSubmitting: false
+        })
+        this._homeFormHook?.reset()
+        this._departureFormHook?.reset()
+        this._arrivalFormHook?.reset()
+        this._personalDetailFormHook?.reset()
+    }
+
     public get hasHomeData(): boolean {
         return !_.isEmpty(this.state.homeFormData);
     }
@@ -125,6 +142,7 @@ export class ReservationService extends StatefulService<IReservationServiceState
             title: 'Reservation Submitted!',
             subtitle: 'We will get back to you shortly. You will receive a mail with the details of the reservation.'
         })
+        this.clearState();
         return true;
     }
 

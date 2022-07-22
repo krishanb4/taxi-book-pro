@@ -28,7 +28,7 @@ export class MailUtils {
                 from: BackendConfig.emailCredentials.username
             },
             // uncomment below to send emails in development/test env:
-            send: false,
+            send: true,
             transport
         });
         const ownerEmail = new Email({
@@ -36,7 +36,7 @@ export class MailUtils {
                 from: BackendConfig.emailCredentials.username
             },
             // uncomment below to send emails in development/test env:
-            send: false,
+            send: true,
             transport
         });
 
