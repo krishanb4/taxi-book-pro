@@ -97,7 +97,7 @@ export function FeaturesSection() {
                                         <div>
                                             <div className={"py-4"}>
                                                 <Button className={"px-5 py-2 features-book-btn"}
-                                                        href={"mailto:bookings@prestigeparistransfers.com"}>ENQUIRE
+                                                        href={"mailto:bookings@espressoparistransfer.com"}>ENQUIRE
                                                     NOW</Button>
                                             </div>
                                             <Row className={'pt-3'}>
@@ -167,7 +167,7 @@ export function FeaturesSection() {
                                         <div>
                                             <div className={"py-4"}>
                                                 <Button className={"px-5 py-2 features-book-btn"}
-                                                        href={"mailto:bookings@prestigeparistransfers.com"}>ENQUIRE
+                                                        href={"mailto:bookings@espressoparistransfer.com"}>ENQUIRE
                                                     NOW</Button>
                                             </div>
                                             <Row className={'pt-3'}>
@@ -239,7 +239,7 @@ export function FeaturesSection() {
                                         <div>
                                             <div className={"py-4"}>
                                                 <Button className={"px-5 py-2 features-book-btn"}
-                                                        href={"mailto:bookings@prestigeparistransfers.com"}>ENQUIRE
+                                                        href={"mailto:bookings@espressoparistransfer.com"}>ENQUIRE
                                                     NOW</Button>
                                             </div>
                                             <Row className={'pt-3'}>

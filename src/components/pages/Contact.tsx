@@ -33,13 +33,13 @@ export const Contact = () => {
                                         <div className=" contact-sub-title">
                                             <div className="contact-details">
                                                 <EnvelopeFill/> &nbsp; <a
-                                                href="mailto:bookings@prestigeparistransfers.com">bookings@prestigeparistransfers.com</a>
+                                                href="mailto:bookings@espressoparistransfer.com">bookings@espressoparistransfer.com</a>
                                             </div>
                                         </div>
                                         <div className="contact-sub-title">
                                             <div className="contact-details">
                                                 <Globe2/> &nbsp; <a
-                                                href="https://prestigeparistransfers.com">https://prestigeparistransfers.com</a>
+                                                href="https://espressoparistransfer.com">https://espressoparistransfer.com</a>
                                             </div>
                                         </div>
                                         <div className="contact-sub-title">
@@ -50,7 +50,7 @@ export const Contact = () => {
                                         <div className="contact-sub-title">
                                             <div className="contact-details">
                                                 <Facebook/> &nbsp; <a
-                                                href="https://www.facebook.com/Prestige-Paris-Transfer-103291185784885/">Prestige
+                                                href="https://www.facebook.com/Espresso-Paris-Transfer-103291185784885/">Espresso
                                                 Paris Transfer</a>
                                             </div>
                                         </div>

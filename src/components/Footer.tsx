@@ -69,14 +69,14 @@ export const Footer = () => {
                                 </h6>
                                 {/*<p><PinMapFill/> &nbsp; New York, NY 10012, US</p>*/}
                                 <div className={'pb-2'}>
-                                    <EnvelopeFill/> &nbsp; bookings@prestigeparistransfers.com
+                                    <EnvelopeFill/> &nbsp; bookings@espressoparistransfer.com
                                 </div>
                                 <div className={'pb-2'}><PhoneFill/> &nbsp; +33 605 822 259</div>
                                 <div className={'pb-2'}><SocialIcon network="facebook" bgColor="#ffffff" style={{
                                     height: 18,
                                     width: 18
                                 }}/>  &nbsp; <a href={AppConfig.facebookPage}
-                                                style={{textDecoration: "none", color: "inherit"}}>Prestige Paris
+                                                style={{textDecoration: "none", color: "inherit"}}>Espresso Paris
                                     Transfer</a>
                                 </div>
                                 <div className={'pb-2'}><GeoAltFill/> &nbsp; 8 Parc des Courtilières, 93500 Pantin,
@@ -91,7 +91,7 @@ export const Footer = () => {
                 {/* Section: Links  */}
                 {/* Copyright */}
                 <div className="text-center p-4">
-                    © 2022 Copyright Prestige Paris Transfer
+                    © 2022 Copyright Espresso Paris Transfer
                 </div>
                 {/* Copyright */}
             </Container>
