@@ -1,9 +1,9 @@
 export class AppConfig {
-    public static recaptchaSiteKey = "6Ld7B5wgAAAAANF5s1Z4tJfhWPhEoDNSyM7bOfNO";
+    public static recaptchaSiteKey = "6LeilDUhAAAAAN71GxhOkbj9jgKAc8VeFuigHli2";
     public static isEmulatorMode = false;
     public static isDebug = false;
     public static isFakeSubmit = false;
-    public static GoogleAnalyticsTrackingID = "UA-234220107-1";
+    public static GoogleAnalyticsTrackingID = "UA-236098581-1";
     public static hostAddress = "https://www.espressoparistransfer.com/";
     public static facebookPage = "https://www.facebook.com/Espresso-Paris-Transfer-103291185784885";
 }
