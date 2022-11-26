@@ -19,7 +19,7 @@ export function MainNavbar(props: { src: any }) {
             <Navbar.Brand onClick={(e) => {
                 e.preventDefault();
                 navigate('/')
-            }}><img height={50} src={props.src} alt="Espresso Paris Transfers"/></Navbar.Brand>
+            }}><img height={50} src={props.src} alt="Espresso Paris Transfer"/></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
                 <Nav

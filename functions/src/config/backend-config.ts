@@ -1,6 +1,6 @@
 export class BackendConfig {
     public static readonly emailCredentials = {
-        username: 'bookings@espressoparistransfers.com',
+        username: 'bookings@espressoparistransfer.com',
         password: 'Book@PresTrans',
         host: 'mail.privateemail.com'
     };
