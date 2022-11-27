@@ -5,12 +5,12 @@ import {AppConfig} from "./app-config";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDcTmJFadajAHt_mLjPZGuteN3UnUmGgw4",
-    authDomain: "espresso-paris-transfer.firebaseapp.com",
-    projectId: "espresso-paris-transfer",
-    storageBucket: "espresso-paris-transfer.appspot.com",
-    messagingSenderId: "146903883327",
-    appId: "1:146903883327:web:82a30d4e75752aa2e9628a"
+    apiKey: "AIzaSyDW4YcWgKqSKNDhwg9_dHEYSVOKDEaG5gw",
+    authDomain: "espresso-taxi-web.firebaseapp.com",
+    projectId: "espresso-taxi-web",
+    storageBucket: "espresso-taxi-web.appspot.com",
+    messagingSenderId: "69089911121",
+    appId: "1:69089911121:web:a625509b2dff665d617370"
 };
 const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
