@@ -127,7 +127,7 @@ export class ReservationService extends StatefulService<IReservationServiceState
             departure: this.state.departureFormDetails,
             cost: this.secondPageTripPrice,
         };
-        console.log(submissionData);
+        console.log('Finalized Submission Data:', submissionData);
         if (AppConfig.isFakeSubmit) {
             await Helpers.sleep(5000);
         } else {

@@ -4,7 +4,8 @@ import {useService} from "react-service-locator";
 import SectionFrame from "../frames/SectionFrame";
 import {ReservationService} from "../../services/reservation-service";
 import {useTranslation} from "react-i18next";
-
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 export const PersonalDetailsForm = (params: any) => {
     const reservationService = useService(ReservationService);
@@ -16,8 +17,14 @@ export const PersonalDetailsForm = (params: any) => {
             <input type="text" required={true} className="form-control" id="name"
                    placeholder={t('your-name-ph')} {...reservationService.personalDetailFormHook.register("name", {required: true})}/>
             <label htmlFor="last-name" className="mb-3 form-sub-title">{t('phone')}</label>
-            <input type="text" required={true} className="form-control"
-                   id="phone" {...reservationService.personalDetailFormHook.register("phone", {required: true})}/>
+            <PhoneInput
+                className={'mb-3 form-control'}
+                placeholder="Your Phone Number"
+                value={reservationService.personalDetailFormHook.watch('phone')}
+                defaultCountry={"US"}
+                international={false}
+                onChange={(value) => reservationService.personalDetailFormHook.setValue('phone', value)}
+            />
             <label htmlFor="email" className="mb-3 form-sub-title">{t('email')}</label>
             <input type="email" required={true} className="form-control" id="email"
                    placeholder={t('email-ph')} {...reservationService.personalDetailFormHook.register("email", {required: true})}/>

@@ -33,6 +33,7 @@
     "react-hook-form": "^7.33.0",
     "react-i18next": "^11.18.0",
     "react-loading-overlay-ts": "^2.0.0",
+    "react-phone-number-input": "^3.2.13",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-service-locator": "^1.4.3",
