@@ -53,6 +53,9 @@
         "deploy": "pnpm build && firebase deploy",
         "postbuild": "react-snap"
     },
+    "reactSnap": {
+        "inlineCss": true
+    },
     "eslintConfig": {
         "extends": [
             "react-app"
