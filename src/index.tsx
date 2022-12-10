@@ -1,24 +1,50 @@
-import 'reflect-metadata';
-import ReactDOM from 'react-dom';
-import React, {Suspense} from 'react';
-import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter} from "react-router-dom";
-import {ServiceContainer} from "react-service-locator";
-import {App} from "./App";
+import "reflect-metadata";
+import ReactDOM from "react-dom";
+import React, { Suspense } from "react";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter } from "react-router-dom";
+import { ServiceContainer } from "react-service-locator";
+import { App } from "./App";
 // import i18n (needs to be bundled ;))
-import './i18n';
+import "./i18n";
 
-ReactDOM.render(
+// ReactDOM.render(
+//     <ServiceContainer>
+//         <BrowserRouter>
+//             <Suspense fallback={(<div>Loading</div>)}>
+//                 <App/>
+//             </Suspense>
+//         </BrowserRouter>
+//     </ServiceContainer>,
+//     document.getElementById('root')
+// );
+
+const rootElement = document.getElementById("root");
+
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrate(
     <ServiceContainer>
-        <BrowserRouter>
-            <Suspense fallback={(<div>Loading</div>)}>
-                <App/>
-            </Suspense>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Suspense fallback={<div>Loading</div>}>
+          <App />
+        </Suspense>
+      </BrowserRouter>
     </ServiceContainer>,
-    document.getElementById('root')
-);
+    rootElement
+  );
+} else {
+  ReactDOM.render(
+    <ServiceContainer>
+      <BrowserRouter>
+        <Suspense fallback={<div>Loading</div>}>
+          <App />
+        </Suspense>
+      </BrowserRouter>
+    </ServiceContainer>,
+    rootElement
+  );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
