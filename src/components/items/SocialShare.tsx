@@ -13,7 +13,7 @@ export const SocialShare = () => {
             </a>
             &nbsp;
             &nbsp;
-            <a href={AppConfig.hostAddress} style={{position: "relative", top: "-8px"}}>
+            <a href={AppConfig.twitterAddress} style={{position: "relative", top: "-8px"}}>
                 <TwitterIcon size={32} round/>
             </a>
         </div>
