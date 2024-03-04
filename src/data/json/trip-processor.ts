@@ -1,5 +1,5 @@
-import {JourneyType} from "../../enums/journey-type";
-import {allTrips} from "../../definitions/all-trip-data";
+import { JourneyType } from "../../enums/journey-type";
+import { allTrips } from "../../definitions/all-trip-data";
 
 export interface ITripDataUnit {
     "trip": string;
@@ -30,7 +30,10 @@ export class TripProcessor {
         });
         selectedPrice = selected?.list[this.getPriceKey(homeData)];
         console.log(trip)
+        console.log(`price: ${selectedPrice}`);
         return selectedPrice;
+
+
     }
 
     private static getJourneyTypeString(journeyType: JourneyType) {
