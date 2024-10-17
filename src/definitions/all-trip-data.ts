@@ -35,7 +35,7 @@ export const allTrips:
       "list": {
         "From": "BEAUVAIS",
         "Destination": "DISNEYLAND",
-        "1-3 P.": "€ 130",
+        "1-3 P.": "€ 150",
         "4 P.": "€ 170",
         "5 P.": "€ 170",
         "6 P.": "€ 170",
