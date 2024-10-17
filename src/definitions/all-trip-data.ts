@@ -11,7 +11,7 @@ export const allTrips:
       "list": {
         "From": "BEAUVAIS",
         "Destination": "PARIS",
-        "1-3 P.": "€ 130",
+        "1-3 P.": "€ 140",
         "4 P.": "€ 170",
         "5 P.": "€ 170",
         "6 P.": "€ 170",
